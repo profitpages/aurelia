@@ -1,0 +1,48 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "a1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping on orders over $100  •  Easy 30-day returns  •  Secure checkout",
+            "link": "",
+            "icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "a1"
+      ],
+      "settings": {
+        "enable": true,
+        "color_scheme": "scheme-5",
+        "caps": true,
+        "interval": 5
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "logo_position": "center",
+        "nav_style": "caps",
+        "sticky": true,
+        "cart_style": "icon",
+        "show_search": true,
+        "show_account": true,
+        "show_wishlist": true,
+        "color_scheme": "scheme-2",
+        "menu_scheme": "scheme-2",
+        "sheet_note": "Free shipping on orders over $100."
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

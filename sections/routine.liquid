@@ -1,0 +1,176 @@
+{%- comment -%}
+  Complete the set — connected product steps (e.g. Ring → Necklace → Earrings)
+  with an "Add the set" button that adds every in-stock step to the bag in one request.
+{%- endcomment -%}
+{{ 'section-routine.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign ids = ''
+-%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text, side: true -%}
+    <routine-bundle class="routine">
+      <ol class="routine__steps" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign p = block.settings.product
+            if block.settings.use_current and product
+              assign p = product
+            endif
+            if p != blank and p.available
+              assign v = p.selected_or_first_available_variant
+              assign ids = ids | append: v.id | append: ','
+            endif
+          -%}
+          <li class="routine__step" data-reveal {{ block.shopify_attributes }}>
+            <span class="routine__label">{{ forloop.index | prepend: '0' | slice: -2, 2 }} · {{ block.settings.label | escape }}</span>
+            <a class="routine__card" href="{{ p.url | default: '#' }}"{% if p == blank %} aria-disabled="true" tabindex="-1"{% endif %}>
+              <span class="routine__media">
+                {%- render 'responsive-image', image: p.featured_media.preview_image, max: 600, sizes: '(min-width: 990px) 20vw, 60vw', art: 'pump', tone: 'blush' -%}
+              </span>
+              <span class="routine__name">{%- if p != blank -%}{{ p.title | escape }}{%- else -%}{{ 'products.placeholder_title' | t }}{%- endif -%}</span>
+              {%- if p != blank -%}{%- render 'price', product: p -%}{%- endif -%}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ol>
+      <div class="routine__bundle color-{{ s.bundle_scheme }}">
+        {%- render 'decor', preset: 'corner' -%}
+        {%- if s.bundle_kicker != blank -%}<p class="kicker">{{ s.bundle_kicker | escape }}</p>{%- endif -%}
+        <h3 class="routine__bundle-title">{{ s.bundle_title | escape }}</h3>
+        {%- if s.bundle_text != blank -%}<div class="rte routine__bundle-text">{{ s.bundle_text }}</div>{%- endif -%}
+        <button class="btn btn--solid" type="button" data-routine-add="{{ ids | remove_last: ',' }}"{% if ids == blank %} disabled{% endif %}>
+          {%- render 'icon', name: 'bag', size: 18 -%}<span>{{ s.button_label | escape }}</span>
+        </button>
+        <p class="form-msg form-msg--error" role="alert" hidden data-routine-error></p>
+      </div>
+    </routine-bundle>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Complete the set",
+  "class": "section-routine",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Complete the set"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Pieces designed to be worn together."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>A ring, a chain and a pair of hoops — made from the same gold to layer beautifully.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bundle card"
+    },
+    {
+      "type": "text",
+      "id": "bundle_kicker",
+      "label": "Kicker",
+      "default": "The full set"
+    },
+    {
+      "type": "text",
+      "id": "bundle_title",
+      "label": "Title",
+      "default": "Take the whole set home."
+    },
+    {
+      "type": "richtext",
+      "id": "bundle_text",
+      "label": "Text",
+      "info": "Mention a bundle discount only if you've set one up under Discounts."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add the set"
+    },
+    {
+      "type": "color_scheme",
+      "id": "bundle_scheme",
+      "label": "Bundle card color scheme",
+      "default": "scheme-6"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Section color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Step name",
+          "default": "Ring"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_current",
+          "label": "Use the product being viewed",
+          "default": false,
+          "info": "On product pages, this step shows the current product."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Complete the set",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "label": "Ring"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Polish",
+            "use_current": true
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Earrings"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Refresh"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

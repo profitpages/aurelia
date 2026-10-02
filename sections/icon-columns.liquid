@@ -1,0 +1,65 @@
+{%- comment -%} Icon columns — centred gold line icons with a serif title and a short line (Canva product page "Everyday ease · Responsible finish · Gift ready"). {%- endcomment -%}
+{{ 'section-aurelia.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="icols color-{{ s.color_scheme }}{% if s.bordered %} icols--bordered{% endif %}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, align: 'center' -%}
+    <ul class="icols__list" role="list" style="--cols: {{ section.blocks.size | at_least: 1 | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li class="icols__item" data-reveal {{ block.shopify_attributes }}>
+          {%- if b.image != blank -%}
+            <span class="icols__icon">{{ b.image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', width: 32, height: 32 }}</span>
+          {%- elsif b.icon != 'none' -%}
+            <span class="icols__icon">{%- render 'icon', name: b.icon, size: 24 -%}</span>
+          {%- endif -%}
+          {%- if b.title != blank -%}<h3 class="icols__title">{{ b.title | escape }}</h3>{%- endif -%}
+          {%- if b.text != blank -%}<p class="icols__text">{{ b.text | escape }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Icon columns",
+  "class": "section-icon-columns",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "checkbox", "id": "bordered", "label": "Hairlines above and below", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "column", "name": "Column",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "sparkle", "label": "Sparkle" }, { "value": "leaf", "label": "Leaf" }, { "value": "gift", "label": "Gift" }, { "value": "gem", "label": "Gem" },
+            { "value": "ring", "label": "Ring" }, { "value": "award", "label": "Quality" }, { "value": "pen", "label": "Engraving" }, { "value": "shield-check", "label": "Guarantee" },
+            { "value": "truck", "label": "Delivery" }, { "value": "return", "label": "Returns" }, { "value": "package", "label": "Packaging" }, { "value": "none", "label": "None" }
+          ],
+          "default": "sparkle"
+        },
+        { "type": "image_picker", "id": "image", "label": "Custom icon image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Everyday ease" },
+        { "type": "text", "id": "text", "label": "Text", "default": "A comfortable silhouette designed for repeat wear." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon columns",
+      "blocks": [
+        { "type": "column", "settings": { "icon": "sparkle", "title": "Everyday ease", "text": "A comfortable silhouette designed for repeat wear." } },
+        { "type": "column", "settings": { "icon": "leaf", "title": "Responsible finish", "text": "Made with considered materials and lasting detail." } },
+        { "type": "column", "settings": { "icon": "gift", "title": "Gift ready", "text": "Presented in our signature Aurelia packaging." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

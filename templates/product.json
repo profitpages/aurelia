@@ -1,0 +1,272 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_breadcrumb": true,
+        "sticky_bar": true
+      },
+      "blocks": {
+        "kicker_1": {
+          "type": "kicker",
+          "settings": {}
+        },
+        "title_2": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating_3": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price_4": {
+          "type": "price",
+          "settings": {
+            "show_stock": false
+          }
+        },
+        "description_5": {
+          "type": "description",
+          "settings": {}
+        },
+        "gift_line_6": {
+          "type": "gift_line",
+          "settings": {}
+        },
+        "material_line_7": {
+          "type": "material_line",
+          "settings": {}
+        },
+        "variant_picker_8": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "engraving_9": {
+          "type": "engraving",
+          "settings": {}
+        },
+        "buy_buttons_10": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_buy_now": true,
+            "show_wishlist": false
+          }
+        },
+        "microcopy_11": {
+          "type": "microcopy",
+          "settings": {}
+        },
+        "shipping_note_12": {
+          "type": "shipping_note",
+          "settings": {}
+        },
+        "collapsible_13": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Shipping & Delivery",
+            "source": "shipping",
+            "open": true,
+            "content": "<p>Free standard shipping on orders over $100. Orders typically ship within 1–2 business days.</p>"
+          }
+        },
+        "collapsible_14": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Returns & Exchanges",
+            "source": "custom",
+            "content": "<p>Enjoy easy 30-day returns on eligible unworn pieces.</p>"
+          }
+        },
+        "collapsible_15": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Jewellery Care",
+            "source": "care",
+            "content": "<p>Store separately and avoid direct contact with perfume, lotions, and water.</p>"
+          }
+        },
+        "details_16": {
+          "type": "details",
+          "settings": {
+            "heading": "Materials & Details"
+          }
+        }
+      },
+      "block_order": [
+        "kicker_1",
+        "title_2",
+        "rating_3",
+        "price_4",
+        "description_5",
+        "gift_line_6",
+        "material_line_7",
+        "variant_picker_8",
+        "engraving_9",
+        "buy_buttons_10",
+        "microcopy_11",
+        "shipping_note_12",
+        "collapsible_13",
+        "collapsible_14",
+        "collapsible_15",
+        "details_16"
+      ]
+    },
+    "trust": {
+      "type": "trust-bar",
+      "settings": {
+        "show_icons": false,
+        "caps": true,
+        "full_width": false,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": "On orders over $100"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "30-day returns",
+            "text": "Shop with confidence"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "gem",
+            "title": "Premium quality",
+            "text": "Made to last"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Secure checkout",
+            "text": "Safe & protected payments"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ]
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "split",
+        "image_ratio": "portrait",
+        "kicker": "The Aurelia edit",
+        "heading": "Made to catch the light",
+        "text": "<p>A softly sculpted silhouette that feels effortless and looks luminous in every moment. Wear it alone for quiet impact or stack it with pieces you already love.</p>",
+        "button_label": "",
+        "placeholder_art": "ring",
+        "use_product_image": true,
+        "use_product_story": true,
+        "kicker_plain": false
+      }
+    },
+    "features": {
+      "type": "icon-columns",
+      "settings": {},
+      "blocks": {
+        "column_1": {
+          "type": "column",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Everyday ease",
+            "text": "A comfortable silhouette designed for repeat wear."
+          }
+        },
+        "column_2": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "Responsible finish",
+            "text": "Made with considered materials and lasting detail."
+          }
+        },
+        "column_3": {
+          "type": "column",
+          "settings": {
+            "icon": "gift",
+            "title": "Gift ready",
+            "text": "Presented in our signature Aurelia packaging."
+          }
+        }
+      },
+      "block_order": [
+        "column_1",
+        "column_2",
+        "column_3"
+      ]
+    },
+    "style_with": {
+      "type": "product-recommendations",
+      "settings": {
+        "intent": "complementary",
+        "kicker": "The signature collection",
+        "heading": "Style it with",
+        "limit": 4,
+        "columns": 4,
+        "card_style": "plain",
+        "image_ratio": "portrait",
+        "card_button": "solid",
+        "show_quick_add": true
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {
+        "color_scheme": "scheme-3"
+      }
+    },
+    "related": {
+      "type": "product-recommendations",
+      "settings": {
+        "intent": "related",
+        "kicker": "",
+        "heading": "You may also like",
+        "limit": 4,
+        "columns": 4,
+        "card_style": "plain",
+        "image_ratio": "portrait",
+        "show_quick_add": false
+      }
+    },
+    "recent": {
+      "type": "recently-viewed",
+      "settings": {
+        "kicker": "",
+        "heading": "Recently viewed",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "kicker": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "trust",
+    "story",
+    "features",
+    "style_with",
+    "reviews",
+    "related",
+    "recent",
+    "newsletter"
+  ]
+}

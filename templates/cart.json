@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {}
+    },
+    "also": {
+      "type": "featured-products",
+      "settings": {
+        "kicker": "",
+        "heading": "You might also love",
+        "link_label": "",
+        "limit": 4,
+        "columns": 4,
+        "card_style": "plain",
+        "image_ratio": "portrait"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "also"
+  ]
+}

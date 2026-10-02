@@ -1,0 +1,46 @@
+{%- comment -%}
+  Jewellery details — a definition list built only from product metafields that have values (plus SKU).
+  Usage: {% render 'jewellery-details', product: product, variant: current_variant, block: block %}
+{%- endcomment -%}
+{%- liquid
+  assign keys = 'material,metal_type,metal_color,stone_type,stone_size,carat,weight,dimensions,finish,plating,hypoallergenic,water_resistance' | split: ','
+  assign rows = 0
+  for k in keys
+    if product.metafields.custom[k].value != blank
+      assign rows = rows | plus: 1
+    endif
+  endfor
+  if block.settings.show_sku and variant.sku != blank
+    assign rows = rows | plus: 1
+  endif
+-%}
+{%- if rows > 0 -%}
+  <details class="acc acc--compact" data-accordion{% if block.settings.open %} open{% endif %} {{ block.shopify_attributes }}>
+    <summary class="acc__q">{{ block.settings.heading | escape }}<span class="acc__plus" aria-hidden="true"></span></summary>
+    <div class="acc__a">
+      <div class="acc__inner">
+        <dl class="specs">
+          {%- for k in keys -%}
+            {%- assign mf = product.metafields.custom[k] -%}
+            {%- if mf.value != blank -%}
+              {%- assign label_key = 'products.details.' | append: k -%}
+              <div class="specs__row">
+                <dt>{{ label_key | t }}</dt>
+                <dd>
+                  {%- case mf.type -%}
+                    {%- when 'boolean' -%}{%- if mf.value -%}{{ 'sections.yes' | t }}{%- else -%}{{ 'sections.no' | t }}{%- endif -%}
+                    {%- when 'weight', 'dimension', 'volume' -%}{{ mf.value }}
+                    {%- else -%}{{ mf | metafield_text }}
+                  {%- endcase -%}
+                </dd>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if block.settings.show_sku and variant.sku != blank -%}
+            <div class="specs__row"><dt>{{ 'products.details.sku' | t }}</dt><dd data-sku>{{ variant.sku | escape }}</dd></div>
+          {%- endif -%}
+        </dl>
+      </div>
+    </div>
+  </details>
+{%- endif -%}

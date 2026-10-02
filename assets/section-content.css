@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Aurelia sections — concerns, ingredient edit, before/after, community,
+   FAQ.
+   ========================================================================== */
+
+/* ---------- Shop by concern ---------- */
+.concerns { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px); list-style: none; margin: 0; padding: 0; }
+.concern__link { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 12px 12px 22px; background: var(--card); border: 1px solid color-mix(in srgb, var(--text) 9%, transparent); border-radius: var(--radius-card); text-decoration: none; transition: box-shadow .3s ease, transform .35s cubic-bezier(.2, .8, .2, 1); }
+.concern__link:hover { transform: translateY(calc(var(--depth) * -1)); box-shadow: 0 20px 48px rgba(var(--shadow-rgb), calc(.12 * var(--shadow-k))); }
+.concern__media { display: block; aspect-ratio: 1; overflow: hidden; margin-bottom: 12px; background: var(--linen); }
+.concern__img, .concern__media .art-fallback { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.concern__link:hover .concern__img { transform: scale(1.05); }
+.concern__title { font: 400 1.3rem/1.2 var(--font-heading); letter-spacing: -.01em; }
+.concern__text { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+.concern__go { align-self: flex-start; margin-top: auto; padding: 10px 0 3px; border-bottom: 1px solid currentColor; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.concern__link:hover .concern__go { color: var(--accent); }
+.section--chips { padding-block: 26px; border-block: 1px solid color-mix(in srgb, var(--text) 9%, transparent); }
+.concern-chips { display: grid; gap: 12px; }
+.concern-chips .kicker { font-size: .68rem; }
+.concern-chips .chip-row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.concern-chips .chip { white-space: nowrap; }
+
+/* ---------- Ingredient edit ---------- */
+.ing { display: grid; gap: 22px; }
+.ing--feature { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ing--feature .ing__media { grid-row: 1 / span 2; aspect-ratio: 15 / 10.4; }
+.ing--feature .ing__copy { align-self: end; display: grid; gap: 14px; }
+.ing__media-pane, .ing__media-pane .art-fallback, .ing__img { width: 100%; height: 100%; object-fit: cover; }
+.ing__media-pane { animation: fadeslide .5s ease both; }
+.ing__tabs { display: grid; gap: 22px; align-content: start; }
+.ing__list { border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent); }
+.ing__text { max-width: 46ch; line-height: 1.75; }
+.ing__benefit { margin-bottom: 10px; }
+/* Panel (product page) */
+.ing--panel { grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); column-gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ing--panel .ing__copy { display: grid; gap: 14px; position: sticky; top: calc(var(--header-h, 80px) + 24px); }
+.ing--panel .ing__list { gap: 22px; }
+.ing--panel .ing__tab { padding-bottom: 12px; font: 400 1.25rem var(--font-heading); color: var(--text); }
+.ing--panel .ing__tab[aria-selected='true'] { color: var(--accent); border-color: transparent; padding-left: .6rem; }
+.ing__card { display: grid; grid-template-columns: 1fr 1fr; min-height: 370px; overflow: hidden; border-radius: var(--radius-image); background: color-mix(in srgb, var(--linen) 70%, var(--bg)); border: 1px solid color-mix(in srgb, var(--text) 8%, transparent); }
+.ing__card-copy { display: grid; align-content: center; gap: 12px; padding: clamp(24px, 3.4vw, 44px); }
+.ing__card-copy > * { margin: 0; }
+.ing__card-copy .ing__text { color: var(--muted); font-size: .92rem; }
+.ing__card-media { border-left: 1px solid color-mix(in srgb, var(--text) 10%, transparent); }
+.ing__card-media img, .ing__card-media .art-fallback { width: 100%; height: 100%; object-fit: cover; }
+.ing__name { margin: 0; }
+.ing__cta { margin-top: 4px; }
+
+/* ---------- FAQ ---------- */
+.page-width--faq { max-width: 860px; }
+.faq--side { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(28px, 6vw, 96px); align-items: start; }
+.faq--side .sec-head { margin: 0; }
+.accordion-list--bare { border-top: 0; }
+.accordion-list--bare .acc { border-color: color-mix(in srgb, var(--blush) 75%, transparent); }
+

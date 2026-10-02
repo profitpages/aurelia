@@ -1,0 +1,229 @@
+{
+  "sections": {
+    "social_gallery_social_gallery": {
+      "type": "social-gallery",
+      "settings": {},
+      "blocks": {
+        "photo_1": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_2": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_3": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_4": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_5": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_6": {
+          "type": "photo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5",
+        "photo_6"
+      ]
+    },
+    "statement_strip_statement_strip": {
+      "type": "statement-strip",
+      "settings": {}
+    },
+    "testimonials_testimonials": {
+      "type": "testimonials",
+      "settings": {},
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {}
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My necklace has become part of my everyday uniform. It is delicate, polished, and endlessly wearable."
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The presentation made it feel truly special. A beautiful gift that felt considered from start to finish."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ]
+    },
+    "testimonials_quote_band": {
+      "type": "testimonials",
+      "settings": {
+        "layout": "single",
+        "kicker": "",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "testimonial_1"
+      ]
+    },
+    "timeline_timeline": {
+      "type": "timeline",
+      "settings": {},
+      "blocks": {
+        "milestone_1": {
+          "type": "milestone",
+          "settings": {}
+        },
+        "milestone_2": {
+          "type": "milestone",
+          "settings": {
+            "year": "2021",
+            "title": "The first collection",
+            "text": "Rings, chains and hoops designed to be layered."
+          }
+        },
+        "milestone_3": {
+          "type": "milestone",
+          "settings": {
+            "year": "2023",
+            "title": "Recycled metals",
+            "text": "Every piece now made in recycled gold and silver."
+          }
+        },
+        "milestone_4": {
+          "type": "milestone",
+          "settings": {
+            "year": "Today",
+            "title": "Modern heirlooms",
+            "text": "Considered jewellery for every chapter of your story."
+          }
+        }
+      },
+      "block_order": [
+        "milestone_1",
+        "milestone_2",
+        "milestone_3",
+        "milestone_4"
+      ]
+    },
+    "trust_bar_trust_strip": {
+      "type": "trust-bar",
+      "settings": {},
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": "On orders over $100"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "30-day returns",
+            "text": "Shop with confidence"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "gem",
+            "title": "Premium quality",
+            "text": "Made to last"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Secure checkout",
+            "text": "Safe & protected payments"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ]
+    },
+    "video_video": {
+      "type": "video",
+      "settings": {}
+    },
+    "video_reviews_video_reviews": {
+      "type": "video-reviews",
+      "settings": {},
+      "blocks": {
+        "video_1": {
+          "type": "video",
+          "settings": {
+            "quote": "The hoops I never take off."
+          }
+        },
+        "video_2": {
+          "type": "video",
+          "settings": {
+            "quote": "The finish is unreal."
+          }
+        },
+        "video_3": {
+          "type": "video",
+          "settings": {
+            "quote": "Worn every single day."
+          }
+        },
+        "video_4": {
+          "type": "video",
+          "settings": {
+            "quote": "My new everyday stack."
+          }
+        },
+        "video_5": {
+          "type": "video",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "video_1",
+        "video_2",
+        "video_3",
+        "video_4",
+        "video_5"
+      ]
+    }
+  },
+  "order": [
+    "social_gallery_social_gallery",
+    "statement_strip_statement_strip",
+    "testimonials_testimonials",
+    "testimonials_quote_band",
+    "timeline_timeline",
+    "trust_bar_trust_strip",
+    "video_video",
+    "video_reviews_video_reviews"
+  ]
+}

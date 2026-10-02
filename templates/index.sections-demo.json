@@ -1,0 +1,557 @@
+{
+  "sections": {
+    "benefits_benefits": {
+      "type": "benefits",
+      "settings": {},
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Hand finished",
+            "text": "<p>Hand-polished to a soft, light-catching finish that lasts.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "drop",
+            "title": "Tarnish resistant",
+            "text": "<p>A thick layer of 18k gold that resists tarnish with everyday wear.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sun",
+            "title": "Hypoallergenic",
+            "text": "<p>Gentle on skin and safe for sensitive ears, from post to clasp.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3"
+      ]
+    },
+    "benefits_key_benefits": {
+      "type": "benefits",
+      "settings": {
+        "kicker": "Why you’ll love it",
+        "heading": "Key benefits",
+        "style": "pills",
+        "columns": 5,
+        "section_scheme": "scheme-1"
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "drop",
+            "title": "Water resistant",
+            "text": ""
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sun",
+            "title": "Polished",
+            "text": ""
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "flower",
+            "title": "Gift ready",
+            "text": ""
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Lightweight",
+            "text": ""
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "clock",
+            "title": "Long-lasting",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5"
+      ]
+    },
+    "blog_posts_blog_posts": {
+      "type": "blog-posts",
+      "settings": {}
+    },
+    "collage_editorial_collage": {
+      "type": "collage",
+      "settings": {},
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {}
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {}
+        },
+        "collection_3": {
+          "type": "collection",
+          "settings": {
+            "title": "Gift sets"
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "product_2",
+        "collection_3"
+      ]
+    },
+    "collection_grid_collection_grid": {
+      "type": "collection-grid",
+      "settings": {},
+      "blocks": {
+        "collection_1": {
+          "type": "collection",
+          "settings": {
+            "title": "Rings"
+          }
+        },
+        "collection_2": {
+          "type": "collection",
+          "settings": {
+            "title": "Necklaces"
+          }
+        },
+        "collection_3": {
+          "type": "collection",
+          "settings": {
+            "title": "Earrings"
+          }
+        },
+        "collection_4": {
+          "type": "collection",
+          "settings": {
+            "title": "Bracelets"
+          }
+        },
+        "collection_5": {
+          "type": "collection",
+          "settings": {
+            "title": "Chains"
+          }
+        },
+        "collection_6": {
+          "type": "collection",
+          "settings": {
+            "title": "Gift sets"
+          }
+        }
+      },
+      "block_order": [
+        "collection_1",
+        "collection_2",
+        "collection_3",
+        "collection_4",
+        "collection_5",
+        "collection_6"
+      ]
+    },
+    "collection_hero_collection_banner": {
+      "type": "collection-hero",
+      "settings": {}
+    },
+    "collection_tabs_collection_tabs": {
+      "type": "collection-tabs",
+      "settings": {},
+      "blocks": {
+        "collection_1": {
+          "type": "collection",
+          "settings": {
+            "label": "All jewellery"
+          }
+        },
+        "collection_2": {
+          "type": "collection",
+          "settings": {
+            "label": "Makeup"
+          }
+        },
+        "collection_3": {
+          "type": "collection",
+          "settings": {
+            "label": "Body"
+          }
+        }
+      },
+      "block_order": [
+        "collection_1",
+        "collection_2",
+        "collection_3"
+      ]
+    },
+    "comparison_table_comparison_table": {
+      "type": "comparison-table",
+      "settings": {},
+      "blocks": {
+        "column_1": {
+          "type": "column",
+          "settings": {
+            "title": "18k Vermeil",
+            "values": "Everyday stacking\nWarm polish\nSterling silver\nyes\nyes\nyes"
+          }
+        },
+        "column_2": {
+          "type": "column",
+          "settings": {
+            "title": "Solid 14k Gold",
+            "values": "Heirloom pieces\nDeep warm gold\nSolid gold\nyes\nyes\nyes",
+            "highlight": true
+          }
+        },
+        "column_3": {
+          "type": "column",
+          "settings": {
+            "title": "Sterling Silver",
+            "values": "Cool tones\nBright polish\nSterling silver\nyes\nno\nyes"
+          }
+        }
+      },
+      "block_order": [
+        "column_1",
+        "column_2",
+        "column_3"
+      ]
+    },
+    "consultation_consultation_atelier": {
+      "type": "consultation",
+      "settings": {},
+      "blocks": {
+        "detail_1": {
+          "type": "detail",
+          "settings": {}
+        },
+        "detail_2": {
+          "type": "detail",
+          "settings": {
+            "icon": "user",
+            "label": "The atelier",
+            "value": "<p>Add your studio address here</p>"
+          }
+        },
+        "detail_3": {
+          "type": "detail",
+          "settings": {
+            "icon": "mail",
+            "label": "Questions",
+            "value": "<p>hello@yourstore.com</p>"
+          }
+        }
+      },
+      "block_order": [
+        "detail_1",
+        "detail_2",
+        "detail_3"
+      ]
+    },
+    "contact_form_contact_form": {
+      "type": "contact-form",
+      "settings": {}
+    },
+    "countdown_countdown_banner": {
+      "type": "countdown",
+      "settings": {}
+    },
+    "custom_liquid_custom_liquid": {
+      "type": "custom-liquid",
+      "settings": {}
+    },
+    "editorial_cards_editorial_cards": {
+      "type": "editorial-cards",
+      "settings": {},
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Everyday",
+            "text": "Effortless pieces for every day"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Date night",
+            "text": "Make an unforgettable impression"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Celebration",
+            "text": "Jewellery for life's biggest moments"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Gifting",
+            "text": "Something they'll always remember"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
+    "faq_faq": {
+      "type": "faq",
+      "settings": {},
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order ship?",
+            "answer": "<p>Orders are prepared within one business day and usually arrive in 2–5 days.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "What is your returns approach?",
+            "answer": "<p>Unworn pieces can be returned within 30 days for a full refund. Engraved pieces are final sale.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "How do I care for my jewellery?",
+            "answer": "<p>Store pieces separately in their pouch, keep them away from perfume and water, and polish gently with a soft cloth.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "Is your jewellery suitable for sensitive skin?",
+            "answer": "<p>Most pieces are nickel-free and hypoallergenic. Each product page lists its materials.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Where are your pieces made?",
+            "answer": "<p>Add details about your materials, sourcing and certifications here.</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "How can I get order support?",
+            "answer": "<p>Write to us any time — we reply within one business day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6"
+      ]
+    },
+    "faq_product_details_faq": {
+      "type": "faq",
+      "settings": {
+        "layout": "side",
+        "style": "plus",
+        "kicker": "Good to know",
+        "heading": "Every last detail.",
+        "schema_markup": false
+      },
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "Materials",
+            "answer": "<p>Connect this to the product's material metafield with the dynamic-source button.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "Size & fit",
+            "answer": "<p>Share dimensions, weight and how the piece sits when worn.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Packaging",
+            "answer": "<p>Share packaging and gift-wrap details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3"
+      ]
+    },
+    "featured_product_featured_product": {
+      "type": "featured-product",
+      "settings": {}
+    },
+    "featured_products_featured_products": {
+      "type": "featured-products",
+      "settings": {}
+    },
+    "featured_products_gift_sets": {
+      "type": "featured-products",
+      "settings": {
+        "kicker": "A little something lovely",
+        "heading": "Gift sets & limited editions",
+        "link_label": "",
+        "limit": 3,
+        "card_style": "bordered",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "featured_products_bestseller_carousel": {
+      "type": "featured-products",
+      "settings": {
+        "kicker": "Cult favourites",
+        "heading": "Bestsellers, on repeat.",
+        "link_label": "",
+        "layout": "carousel",
+        "limit": 8
+      }
+    },
+    "founder_note_founder_s_note": {
+      "type": "founder-note",
+      "settings": {}
+    },
+    "hero_hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "hero_image_banner": {
+      "type": "hero",
+      "settings": {
+        "height": "md",
+        "content_x": "left",
+        "content_y": "center",
+        "overlay": 45,
+        "placeholder_art": "ring",
+        "title_as_h1": false,
+        "kicker": "Our process",
+        "heading": "Crafted to be remembered",
+        "text": "<p>Thoughtfully designed pieces made to celebrate your individuality, your milestones, and the moments you never want to forget.</p>",
+        "button_label": "Discover our story",
+        "button_style": "link",
+        "button2_label": ""
+      }
+    },
+    "hero_image_banner_centered": {
+      "type": "hero",
+      "settings": {
+        "height": "md",
+        "content_x": "center",
+        "content_y": "center",
+        "overlay": 55,
+        "placeholder_art": "stack",
+        "title_as_h1": false,
+        "kicker": "Aurelia icons",
+        "heading": "The signature collection",
+        "text": "<p>Iconic pieces designed to become timeless essentials.</p>",
+        "button_label": "Explore the collection",
+        "button_style": "light",
+        "button2_label": ""
+      }
+    },
+    "icon_columns_icon_columns": {
+      "type": "icon-columns",
+      "settings": {},
+      "blocks": {
+        "column_1": {
+          "type": "column",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Everyday ease",
+            "text": "A comfortable silhouette designed for repeat wear."
+          }
+        },
+        "column_2": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "Responsible finish",
+            "text": "Made with considered materials and lasting detail."
+          }
+        },
+        "column_3": {
+          "type": "column",
+          "settings": {
+            "icon": "gift",
+            "title": "Gift ready",
+            "text": "Presented in our signature Aurelia packaging."
+          }
+        }
+      },
+      "block_order": [
+        "column_1",
+        "column_2",
+        "column_3"
+      ]
+    },
+    "image_with_text_image_with_text": {
+      "type": "image-with-text",
+      "settings": {}
+    }
+  },
+  "order": [
+    "benefits_benefits",
+    "benefits_key_benefits",
+    "blog_posts_blog_posts",
+    "collage_editorial_collage",
+    "collection_grid_collection_grid",
+    "collection_hero_collection_banner",
+    "collection_tabs_collection_tabs",
+    "comparison_table_comparison_table",
+    "consultation_consultation_atelier",
+    "contact_form_contact_form",
+    "countdown_countdown_banner",
+    "custom_liquid_custom_liquid",
+    "editorial_cards_editorial_cards",
+    "faq_faq",
+    "faq_product_details_faq",
+    "featured_product_featured_product",
+    "featured_products_featured_products",
+    "featured_products_gift_sets",
+    "featured_products_bestseller_carousel",
+    "founder_note_founder_s_note",
+    "hero_hero",
+    "hero_image_banner",
+    "hero_image_banner_centered",
+    "icon_columns_icon_columns",
+    "image_with_text_image_with_text"
+  ]
+}

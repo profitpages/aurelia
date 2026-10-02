@@ -1,0 +1,181 @@
+{%- comment -%} Steps / care guide — numbered steps (numbers follow block order). {%- endcomment -%}
+{%- assign s = section.settings -%}
+<section class="section color-{{ s.section_scheme }}">
+  <div class="page-width">
+    <div class="{% if s.panel %}panel color-{{ s.color_scheme }}{% endif %} steps-wrap">
+      {%- if s.panel -%}{%- render 'decor', preset: 'corner' -%}{%- endif -%}
+      <div class="steps-head">{%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text -%}</div>
+      {%- if s.use_metafield and product and product.metafields.custom.how_to_use != blank -%}
+        <div class="steps__full rte">{{ product.metafields.custom.how_to_use | metafield_tag }}</div>
+      {%- endif -%}
+      <ol class="steps" role="list" style="--cols: {{ section.blocks.size | at_most: 4 | at_least: 1 }};">
+        {%- for block in section.blocks -%}
+          <li class="step" data-reveal {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <div class="step__media">{{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 600', sizes: '(min-width: 990px) 22vw, 80vw', alt: '' }}</div>
+            {%- endif -%}
+            <span class="step__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            <h3 class="step__title">{{ block.settings.title | escape }}</h3>
+            {%- if block.settings.text != blank -%}<p class="step__text">{{ block.settings.text | escape }}</p>{%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+      {%- if s.button_label != blank -%}
+        <div class="btn-row steps__cta">{%- render 'button', label: s.button_label, url: s.button_link, style: 'solid' -%}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Steps",
+  "class": "section-steps",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Care guide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Caring for your jewellery, in three steps."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_metafield",
+      "label": "On product pages, also show the product's how-to-use text",
+      "default": false,
+      "info": "Reads custom.how_to_use."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "panel",
+      "label": "Show inside a panel",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Panel color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_scheme",
+      "label": "Section color scheme",
+      "default": "scheme-6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Wear"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Put jewellery on last, after perfume, lotion and hairspray have settled."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Care guide",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Wear",
+            "text": "Put jewellery on last, after perfume, lotion and hairspray have settled."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Polish",
+            "text": "Wipe with a soft dry cloth after wearing to keep the polish bright."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Store",
+            "text": "Store each piece in its pouch, away from moisture and other jewellery."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Steps",
+      "settings": {
+        "kicker": "Care guide",
+        "heading": "Wear, polish, store.",
+        "section_scheme": "scheme-1"
+      },
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Wear",
+            "text": "Put jewellery on last, after perfume and lotion."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Polish",
+            "text": "Polish gently with the soft cloth in your box."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Store",
+            "text": "Keep pieces apart so chains do not tangle."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Refresh",
+            "text": "Bring it to us for a free polish once a year."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

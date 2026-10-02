@@ -1,0 +1,60 @@
+{%- comment -%} Social gallery — six square photos linking to posts or the Instagram profile (Canva "As seen on you"). {%- endcomment -%}
+{{ 'section-aurelia.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign arts = 'ring,necklace,earrings,bracelet,stack,gift' | split: ','
+  assign profile = s.profile_link | default: settings.social_instagram
+-%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text, align: 'center' -%}
+    <ul class="social-grid" role="list" style="--cols: {{ s.columns }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        {%- assign i = forloop.index0 | modulo: 6 -%}
+        {%- assign url = b.link | default: b.product.url | default: profile -%}
+        {%- capture alt -%}{% if b.alt != blank %}{{ b.alt }}{% else %}{{ 'sections.social_post' | t: index: forloop.index }}{% endif %}{%- endcapture -%}
+        <li {{ block.shopify_attributes }}>
+          {%- if url != blank -%}
+            <a class="social-grid__tile" href="{{ url }}"{% if b.product == blank %} target="_blank" rel="noopener"{% endif %} aria-label="{{ alt | escape }}">
+              {%- render 'responsive-image', image: b.image, max: 700, sizes: '(min-width: 990px) 16vw, 48vw', class: 'social-grid__img', art: arts[i], alt: '' -%}
+              <span class="social-grid__icon" aria-hidden="true">{% render 'icon', name: 'instagram', size: 22 %}</span>
+            </a>
+          {%- else -%}
+            <span class="social-grid__tile">{%- render 'responsive-image', image: b.image, max: 700, sizes: '(min-width: 990px) 16vw, 48vw', class: 'social-grid__img', art: arts[i], alt: alt -%}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social gallery",
+  "class": "section-social-gallery",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "As seen on you" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Share your style with @aureliajewellery</p>" },
+    { "type": "url", "id": "profile_link", "label": "Profile link", "info": "Defaults to Theme settings › Social media › Instagram." },
+    { "type": "range", "id": "columns", "label": "Photos per row (desktop)", "min": 3, "max": 6, "step": 1, "default": 6 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "photo", "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Description (for screen readers)" },
+        { "type": "product", "id": "product", "label": "Tagged product", "info": "The photo links to this product." },
+        { "type": "url", "id": "link", "label": "Post link", "info": "Overrides the product link." }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Social gallery", "blocks": [{ "type": "photo" }, { "type": "photo" }, { "type": "photo" }, { "type": "photo" }, { "type": "photo" }, { "type": "photo" }] }
+  ]
+}
+{% endschema %}

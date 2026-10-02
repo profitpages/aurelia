@@ -1,0 +1,21 @@
+{%- comment -%}
+  Aurelia collection tile — photo with a soft dark fade, serif name and an "Explore collection →" line.
+  Usage: {% render 'collection-tile', collection: c, image: img, title: 'Rings', link_label: 'Explore collection →', url: '', art: 'ring', show_count: false, sizes: '33vw', ratio: 0.83 %}
+{%- endcomment -%}
+{%- liquid
+  assign tile_title = title | default: collection.title
+  assign tile_url = url | default: collection.url | default: routes.collections_url
+  assign tile_img = image | default: collection.featured_image
+  assign tile_ratio = ratio | default: 0.83
+-%}
+<a class="ctile" href="{{ tile_url }}" style="--ratio: {{ tile_ratio }};" data-reveal>
+  <span class="ctile__media">
+    {%- render 'responsive-image', image: tile_img, max: 1100, sizes: sizes, class: 'ctile__img', art: art, alt: '' -%}
+  </span>
+  <span class="ctile__shade" aria-hidden="true"></span>
+  <span class="ctile__body">
+    <span class="ctile__title">{{ tile_title | escape }}</span>
+    {%- if show_count and collection != blank -%}<span class="ctile__count">{{ 'collections.product_count' | t: count: collection.products_count }}</span>{%- endif -%}
+    {%- if link_label != blank -%}<span class="ctile__go">{{ link_label | escape | replace: ' →', '&nbsp;→' }}</span>{%- endif -%}
+  </span>
+</a>

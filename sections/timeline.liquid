@@ -1,0 +1,120 @@
+{%- comment -%} Our journey — milestones on a hairline (horizontal on desktop, vertical on mobile). {%- endcomment -%}
+{{ 'section-features.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text -%}
+    <ol class="tline" role="list" style="--cols: {{ section.blocks.size | at_least: 1 | at_most: 5 }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li class="tline__item" data-reveal {{ block.shopify_attributes }}>
+          <span class="tline__dot" aria-hidden="true"></span>
+          <span class="tline__year">{{ b.year | escape }}</span>
+          {%- if b.image != blank -%}
+            <span class="tline__media frame{% if forloop.first %} frame--arch{% endif %}">{%- render 'responsive-image', image: b.image, max: 600, sizes: '(min-width: 990px) 20vw, 60vw' -%}</span>
+          {%- endif -%}
+          <h3 class="tline__title">{{ b.title | escape }}</h3>
+          {%- if b.text != blank -%}<p class="tline__text">{{ b.text | escape }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Timeline",
+  "class": "section-timeline",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Our journey"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "From a single ring to a house of modern heirlooms."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Milestone",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year or label",
+          "default": "2019"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "The first ring"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "One gold band, cast by hand at a kitchen-table bench."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Timeline",
+      "blocks": [
+        {
+          "type": "milestone"
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2021",
+            "title": "The first collection",
+            "text": "Rings, chains and hoops designed to be layered."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "2023",
+            "title": "Recycled metals",
+            "text": "Every piece now made in recycled gold and silver."
+          }
+        },
+        {
+          "type": "milestone",
+          "settings": {
+            "year": "Today",
+            "title": "Modern heirlooms",
+            "text": "Considered jewellery for every chapter of your story."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {}
+    },
+    "best": {
+      "type": "featured-products",
+      "settings": {
+        "kicker": "While you're here",
+        "heading": "Best sellers",
+        "link_label": "",
+        "card_style": "boxed",
+        "limit": 4,
+        "columns": 4,
+        "color_scheme": "scheme-3"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "best"
+  ]
+}

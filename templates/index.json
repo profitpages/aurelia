@@ -1,0 +1,300 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "height": "lg",
+        "content_x": "left",
+        "content_y": "bottom"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "settings": {
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": "On orders over $100"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "30-day returns",
+            "text": "Shop with confidence"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "gem",
+            "title": "Premium quality",
+            "text": "Made to last"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Secure checkout",
+            "text": "Safe & protected payments"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ]
+    },
+    "categories": {
+      "type": "collection-grid",
+      "settings": {},
+      "blocks": {
+        "collection_1": {
+          "type": "collection",
+          "settings": {
+            "title": "Rings"
+          }
+        },
+        "collection_2": {
+          "type": "collection",
+          "settings": {
+            "title": "Necklaces"
+          }
+        },
+        "collection_3": {
+          "type": "collection",
+          "settings": {
+            "title": "Earrings"
+          }
+        },
+        "collection_4": {
+          "type": "collection",
+          "settings": {
+            "title": "Bracelets"
+          }
+        },
+        "collection_5": {
+          "type": "collection",
+          "settings": {
+            "title": "Chains"
+          }
+        },
+        "collection_6": {
+          "type": "collection",
+          "settings": {
+            "title": "Gift sets"
+          }
+        }
+      },
+      "block_order": [
+        "collection_1",
+        "collection_2",
+        "collection_3",
+        "collection_4",
+        "collection_5",
+        "collection_6"
+      ]
+    },
+    "best_sellers": {
+      "type": "featured-products",
+      "settings": {
+        "kicker": "Curated for you",
+        "heading": "Best sellers",
+        "text": "<p>Pieces our customers keep coming back for.</p>",
+        "link_label": "View all best sellers →",
+        "limit": 4,
+        "columns": 4,
+        "card_style": "boxed",
+        "image_ratio": "square",
+        "color_scheme": "scheme-3"
+      }
+    },
+    "everyday": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "panel",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "new_arrivals": {
+      "type": "featured-products",
+      "settings": {
+        "kicker": "Just landed",
+        "heading": "New arrivals",
+        "text": "<p>Meet the latest additions to our collection.</p>",
+        "link_label": "Shop all new arrivals →",
+        "limit": 4,
+        "columns": 4,
+        "card_style": "bordered",
+        "image_ratio": "square",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "story": {
+      "type": "hero",
+      "settings": {
+        "height": "md",
+        "content_x": "left",
+        "content_y": "center",
+        "overlay": 45,
+        "placeholder_art": "ring",
+        "title_as_h1": false,
+        "kicker": "Our process",
+        "heading": "Crafted to be remembered",
+        "text": "<p>Thoughtfully designed pieces made to celebrate your individuality, your milestones, and the moments you never want to forget.</p>",
+        "button_label": "Discover our story",
+        "button_style": "link",
+        "button2_label": ""
+      }
+    },
+    "occasions": {
+      "type": "editorial-cards",
+      "settings": {},
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Everyday",
+            "text": "Effortless pieces for every day"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Date night",
+            "text": "Make an unforgettable impression"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Celebration",
+            "text": "Jewellery for life's biggest moments"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Gifting",
+            "text": "Something they'll always remember"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
+    "signature": {
+      "type": "hero",
+      "settings": {
+        "height": "md",
+        "content_x": "center",
+        "content_y": "center",
+        "overlay": 55,
+        "placeholder_art": "stack",
+        "title_as_h1": false,
+        "kicker": "Aurelia icons",
+        "heading": "The signature collection",
+        "text": "<p>Iconic pieces designed to become timeless essentials.</p>",
+        "button_label": "Explore the collection",
+        "button_style": "light",
+        "button2_label": ""
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {},
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {}
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My necklace has become part of my everyday uniform. It is delicate, polished, and endlessly wearable."
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The presentation made it feel truly special. A beautiful gift that felt considered from start to finish."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ]
+    },
+    "social": {
+      "type": "social-gallery",
+      "settings": {},
+      "blocks": {
+        "photo_1": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_2": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_3": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_4": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_5": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_6": {
+          "type": "photo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5",
+        "photo_6"
+      ]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "categories",
+    "best_sellers",
+    "everyday",
+    "new_arrivals",
+    "story",
+    "occasions",
+    "signature",
+    "testimonials",
+    "social",
+    "newsletter"
+  ]
+}

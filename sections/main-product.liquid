@@ -1,0 +1,466 @@
+{{ 'component-product.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign current_variant = product.selected_or_first_available_variant
+  assign form_id = 'product-form-' | append: section.id
+  assign media_count = product.media.size
+  assign first_media_id = current_variant.featured_media.id | default: product.featured_media.id
+-%}
+<product-info class="pdp color-{{ s.color_scheme }}" data-section="{{ section.id }}" data-url="{{ product.url }}" data-product-handle="{{ product.handle }}" data-recent {% if s.sticky_bar %}data-sticky{% endif %}>
+  <div class="page-width">
+    {%- if s.show_breadcrumb -%}{%- render 'breadcrumb' -%}{%- endif -%}
+
+    <div class="pdp__grid">
+      {%- comment -%} ── Gallery ── {%- endcomment -%}
+      <media-gallery class="gallery{% if settings.grain_enable %} grain{% endif %}" data-gallery>
+        <div class="gallery__stage">
+          {%- if s.show_badge -%}<div class="gallery__badge" data-media-badge>{%- render 'badge', product: product -%}</div>{%- endif -%}
+          {%- if s.show_wishlist -%}{%- render 'wishlist-button', product: product, class: 'gallery__wish' -%}{%- endif -%}
+          {%- if media_count > 1 -%}<span class="gallery__count" aria-hidden="true"><span data-gallery-index>1</span> / {{ media_count }}</span>{%- endif -%}
+
+          <ul class="gallery__track" role="list" data-gallery-track>
+            {%- if media_count > 0 -%}
+              {%- for media in product.media -%}
+                <li class="gallery__slide" data-media-id="{{ media.id }}" aria-label="{{ 'products.gallery_slide' | t: index: forloop.index, count: media_count }}">
+                  {%- case media.media_type -%}
+                    {%- when 'image' -%}
+                      {%- liquid
+                        assign media_alt = media.alt | default: product.title
+                        assign media_load = 'lazy'
+                        if media.id == first_media_id or forloop.first
+                          assign media_load = 'eager'
+                        endif
+                      -%}
+                      {{ media | image_url: width: 1800 | image_tag: loading: media_load, widths: '480, 720, 960, 1200, 1500, 1800', sizes: '(min-width: 990px) 52vw, 100vw', alt: media_alt, class: 'gallery__img' }}
+                      {%- if s.enable_zoom -%}<button class="gallery__zoom-hit" type="button" data-zoom="{{ media.id }}" aria-label="{{ 'products.zoom' | t }}"></button>{%- endif -%}
+                    {%- when 'video', 'external_video' -%}
+                      <div class="gallery__video">{{ media | media_tag: image_size: '1500x', autoplay: false, loop: false, controls: true, preload: 'none' }}</div>
+                    {%- when 'model' -%}
+                      <div class="gallery__video">{{ media | model_viewer_tag: image_size: '1500x', reveal: 'interaction', toggleable: true }}</div>
+                  {%- endcase -%}
+                </li>
+              {%- endfor -%}
+            {%- else -%}
+              <li class="gallery__slide gallery__slide--art">{%- render 'cosmetic-art', name: 'ring' -%}</li>
+            {%- endif -%}
+          </ul>
+
+          <div class="gallery__controls">
+            {%- if media_count > 1 -%}
+              <button class="circle-btn circle-btn--glass" type="button" data-gallery-prev aria-label="{{ 'general.previous' | t }}">{% render 'icon', name: 'arrow-left', size: 18 %}</button>
+              <button class="circle-btn circle-btn--glass" type="button" data-gallery-next aria-label="{{ 'general.next' | t }}">{% render 'icon', name: 'arrow-right', size: 18 %}</button>
+            {%- endif -%}
+            {%- if s.enable_zoom and media_count > 0 -%}
+              <button class="pill-btn pill-btn--glass" type="button" data-zoom>{% render 'icon', name: 'expand', size: 16 %}<span>{{ 'products.zoom_short' | t }}</span></button>
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- if s.enable_zoom and s.zoom_hint != blank and media_count > 0 -%}<p class="gallery__hint">{{ s.zoom_hint | escape }}</p>{%- endif -%}
+        {%- if media_count > 1 -%}
+          <ul class="gallery__thumbs" role="list">
+            {%- for media in product.media -%}
+              <li>
+                <button class="gallery__thumb{% if media.id == first_media_id %} is-active{% endif %}" type="button" data-thumb="{{ media.id }}" aria-label="{{ 'products.gallery_slide' | t: index: forloop.index, count: media_count }}"{% if media.id == first_media_id %} aria-current="true"{% endif %}>
+                  {{ media.preview_image | image_url: width: 220 | image_tag: loading: 'lazy', alt: '', widths: '110, 220' }}
+                  {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}<span class="gallery__thumb-play">{% render 'icon', name: 'play', size: 14 %}</span>{%- endif -%}
+                </button>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if s.enable_zoom and media_count > 0 -%}
+          <dialog class="zoom" data-zoom-dialog aria-label="{{ 'products.zoom' | t }}">
+            <button class="icon-btn icon-btn--ring zoom__close" type="button" data-zoom-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close', size: 22 %}</button>
+            <div class="zoom__list">
+              {%- for media in product.media -%}
+                {%- if media.media_type == 'image' -%}
+                  {%- assign zoom_alt = media.alt | default: product.title -%}
+                  <div class="zoom__item" data-zoom-item="{{ media.id }}">{{ media | image_url: width: 2400 | image_tag: loading: 'lazy', widths: '1000, 1600, 2400', sizes: '100vw', alt: zoom_alt }}</div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </dialog>
+        {%- endif -%}
+      </media-gallery>
+
+      {%- comment -%} ── Info ── {%- endcomment -%}
+      <div class="pdp__info">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+
+            {%- when 'kicker' -%}
+              {%- liquid
+                assign kicker_text = product.metafields.custom.collection_label.value | default: block.settings.text
+                if kicker_text == blank and block.settings.use_collection
+                  for c in product.collections
+                    if c.handle != 'all' and c.handle != 'frontpage'
+                      assign kicker_text = c.title
+                      break
+                    endif
+                  endfor
+                endif
+                if kicker_text == blank
+                  assign kicker_text = product.type
+                endif
+              -%}
+              <div class="pdp__top" {{ block.shopify_attributes }}>
+                {%- if kicker_text != blank -%}<p class="kicker">{{ kicker_text | escape }}</p>{%- endif -%}
+                {%- if block.settings.show_save -%}{%- render 'wishlist-button', product: product, class: 'wish--text', label: true -%}{%- endif -%}
+              </div>
+
+            {%- when 'title' -%}
+              <h1 class="pdp__title" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
+              {%- if block.settings.show_vendor and product.vendor != blank -%}<p class="pdp__vendor">{{ product.vendor | escape }}</p>{%- endif -%}
+
+            {%- when 'description' -%}
+              <div class="pdp__lead rte" {{ block.shopify_attributes }}>
+                {%- if block.settings.text != blank -%}{{ block.settings.text }}{%- else -%}<p>{{ product.description | strip_html | truncatewords: block.settings.words }}</p>{%- endif -%}
+              </div>
+
+            {%- when 'rating' -%}
+              <div {{ block.shopify_attributes }}>{%- render 'rating', product: product, show_count: true, link: '#reviews' -%}</div>
+
+            {%- when 'divider' -%}
+              <hr class="pdp__rule" {{ block.shopify_attributes }}>
+
+            {%- when 'price' -%}
+              <div class="pdp__price-row" {{ block.shopify_attributes }}>
+                <div class="pdp__price" data-product-price>
+                  {%- render 'price', product: product, variant: current_variant, size: 'lg', show_save: true -%}
+                </div>
+                {%- if block.settings.show_stock -%}
+                  <p class="pdp__stock pdp__stock--inline" data-inventory>
+                    {%- if current_variant.available -%}{{ 'products.in_stock' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
+                  </p>
+                {%- endif -%}
+              </div>
+              {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+                <p class="pdp__tax">
+                  {%- if cart.taxes_included -%}{{ 'products.taxes_included' | t }} {% endif -%}
+                  {%- if shop.shipping_policy.body != blank -%}{{ 'products.shipping_at_checkout_html' | t: link: shop.shipping_policy.url }}{%- endif -%}
+                </p>
+              {%- endif -%}
+
+            {%- when 'inventory' -%}
+              <p class="pdp__stock" data-inventory {{ block.shopify_attributes }}>
+                {%- if current_variant.available -%}
+                  {%- if current_variant.inventory_management == 'shopify' and current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= block.settings.threshold -%}
+                    <span class="dot dot--low"></span>{{ 'products.low_stock' | t: count: current_variant.inventory_quantity }}
+                  {%- else -%}
+                    <span class="dot"></span>{%- if block.settings.in_stock_text != blank -%}{{ block.settings.in_stock_text | escape }}{%- else -%}{{ 'products.in_stock' | t }}{%- endif -%}
+                  {%- endif -%}
+                {%- endif -%}
+              </p>
+
+            {%- when 'highlights' -%}
+              {%- liquid
+                assign pills = product.metafields.custom.highlights.value
+                if pills == blank
+                  assign pills = block.settings.items | newline_to_br | split: '<br />'
+                endif
+              -%}
+              <ul class="pills" role="list" {{ block.shopify_attributes }}>
+                {%- for p in pills -%}{%- assign pt = p | strip -%}{%- if pt != blank -%}<li class="pill">{{ pt | escape }}</li>{%- endif -%}{%- endfor -%}
+              </ul>
+
+            {%- when 'gift_line' -%}
+              {%- assign gift_text = product.metafields.custom.gift_note.value | default: block.settings.text -%}
+              {%- if gift_text != blank -%}<p class="pdp__gift" {{ block.shopify_attributes }}>{{ gift_text | escape }}</p>{%- endif -%}
+
+            {%- when 'material_line' -%}
+              {%- liquid
+                assign mparts = ''
+                assign m1 = product.metafields.custom.material.value | default: product.metafields.custom.metal_type.value
+                if m1 != blank
+                  assign mparts = mparts | append: m1 | append: '|'
+                endif
+                if product.metafields.custom.stone_type.value != blank
+                  assign mparts = mparts | append: product.metafields.custom.stone_type.value | append: '|'
+                endif
+                if product.metafields.custom.plating.value != blank
+                  assign mparts = mparts | append: product.metafields.custom.plating.value | append: '|'
+                endif
+                if product.metafields.custom.hypoallergenic.value == true
+                  assign hypo_label = 'products.hypoallergenic' | t
+                  assign mparts = mparts | append: hypo_label | append: '|'
+                endif
+                assign mlist = mparts | split: '|'
+                if mlist.size == 0 and block.settings.text != blank
+                  assign mlist = block.settings.text | split: '·'
+                endif
+              -%}
+              {%- if mlist.size > 0 -%}
+                <p class="pdp__materials" {{ block.shopify_attributes }}>
+                  {%- for m in mlist -%}{{ m | strip | escape }}{%- unless forloop.last %} · {% endunless -%}{%- endfor -%}
+                </p>
+              {%- endif -%}
+
+            {%- when 'engraving' -%}
+              {%- assign eng_id = 'Engraving-' | append: section.id -%}
+              {%- assign eng_prop = block.settings.property_name | default: 'Engraving' -%}
+              <engraving-field class="engrave" data-max="{{ block.settings.max_chars }}" {{ block.shopify_attributes }}>
+                <label class="engrave__toggle">
+                  <span>{{ block.settings.label | escape }}</span>
+                  <input type="checkbox" class="engrave__check" data-engrave-toggle aria-controls="{{ eng_id }}-area" aria-expanded="false">
+                </label>
+                <div class="engrave__area" id="{{ eng_id }}-area" hidden>
+                  <label class="engrave__label" for="{{ eng_id }}">{{ block.settings.input_label | escape }}</label>
+                  <input class="input engrave__input" id="{{ eng_id }}" type="text" name="properties[{{ eng_prop | escape }}]" form="{{ form_id }}" maxlength="{{ block.settings.max_chars }}" placeholder="{{ 'products.engraving_placeholder' | t: count: block.settings.max_chars }}" autocomplete="off" disabled data-engrave-input>
+                  <div class="engrave__meta">
+                    {%- if block.settings.note != blank -%}<span>{{ block.settings.note | escape }}</span>{%- endif -%}
+                    <span data-engrave-count aria-live="polite">0/{{ block.settings.max_chars }}</span>
+                  </div>
+                </div>
+              </engraving-field>
+
+            {%- when 'microcopy' -%}
+              {%- assign micro_1 = product.metafields.custom.shipping_note.value | default: block.settings.text_1 -%}
+              <div class="pdp__micro" {{ block.shopify_attributes }}>
+                {%- if micro_1 != blank -%}<p>{{ micro_1 | escape }}</p>{%- endif -%}
+                {%- if block.settings.text_2 != blank -%}<p>{{ block.settings.text_2 | escape }}</p>{%- endif -%}
+              </div>
+
+            {%- when 'details' -%}
+              {%- render 'jewellery-details', product: product, variant: current_variant, block: block -%}
+
+            {%- when 'variant_picker' -%}
+              {%- liquid
+                assign guide_html = block.settings.size_guide_page.content | default: block.settings.size_guide_text
+                assign guide_id = 'SizeGuide-' | append: section.id
+              -%}
+              <div {{ block.shopify_attributes }}>
+                {%- render 'variant-picker', product: product, form_id: form_id, uid: section.id, guide_id: guide_id, guide_option: block.settings.size_guide_option, guide_label: block.settings.size_guide_label, has_guide: guide_html, label_prefix: block.settings.label_prefix -%}
+              </div>
+              {%- if guide_html != blank -%}
+                <dialog class="modal" id="{{ guide_id }}" aria-labelledby="{{ guide_id }}-title">
+                  <div class="modal__card">
+                    <button class="icon-btn modal__close" type="button" data-dialog-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close', size: 20 %}</button>
+                    <h2 class="h3 modal__title" id="{{ guide_id }}-title">{{ block.settings.size_guide_title | default: block.settings.size_guide_page.title | escape }}</h2>
+                    <div class="rte modal__body">{{ guide_html }}</div>
+                  </div>
+                </dialog>
+              {%- endif -%}
+
+            {%- when 'buy_buttons' -%}
+              <div class="pdp__buy" {{ block.shopify_attributes }}>
+                {%- assign qty_note = block.settings.qty_note -%}
+                {%- render 'product-form', product: product, form_id: form_id, variant: current_variant, show_qty: block.settings.show_qty, show_buy_now: block.settings.show_buy_now, show_wishlist: block.settings.show_wishlist, qty_note: qty_note -%}
+              </div>
+
+            {%- when 'reassurance' -%}
+              <ul class="reassure color-{{ block.settings.color_scheme }}" role="list" {{ block.shopify_attributes }}>
+                {%- assign r_icons = 'truck,return,shield,gift' | split: ',' -%}
+                {%- for i in (1..4) -%}
+                  {%- assign key = 'text_' | append: i -%}
+                  {%- if block.settings[key] != blank -%}
+                    <li>{%- render 'icon', name: r_icons[forloop.index0], size: 20 -%}<span>{{ block.settings[key] | escape }}</span></li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+
+            {%- when 'shipping_note' -%}
+              <p class="ship-note color-{{ block.settings.color_scheme }}" {{ block.shopify_attributes }}>{%- render 'icon', name: block.settings.icon, size: 18 -%}<span>{{ block.settings.text | escape }}</span></p>
+
+            {%- when 'collapsible' -%}
+              {%- render 'detail-row', block: block, product: product, compact: true -%}
+
+            {%- when 'share' -%}
+              <button class="link-underline pdp__share" type="button" data-share data-url="{{ request.origin }}{{ product.url }}" data-title="{{ product.title | escape }}" {{ block.shopify_attributes }}>{% render 'icon', name: 'arrow-right', size: 16 %} {{ 'products.share' | t }}</button>
+
+            {%- when 'custom_liquid' -%}
+              <div {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  {%- if s.sticky_bar and product.available -%}
+    <div class="sticky-buy color-{{ s.color_scheme }}" data-sticky-bar aria-hidden="true">
+      <div class="sticky-buy__media">{%- if product.featured_media -%}{{ product.featured_media | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}</div>
+      <div class="sticky-buy__info">
+        <p class="sticky-buy__title">{{ product.title | escape }}</p>
+        <div class="sticky-buy__meta" data-sticky-price>{%- render 'price', product: product, variant: current_variant -%}</div>
+      </div>
+      <button class="btn btn--solid btn--sm" type="submit" form="{{ form_id }}" name="add" tabindex="-1" data-sticky-add>{{ 'products.add_to_cart' | t }}</button>
+    </div>
+  {%- endif -%}
+</product-info>
+
+{%- comment -%} Product structured data {%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {%- if product.featured_media -%}"image": [{{ product.featured_media | image_url: width: 1200 | prepend: 'https:' | json }}],{%- endif -%}
+    "description": {{ product.description | strip_html | json }},
+    {%- if current_variant.sku != blank -%}"sku": {{ current_variant.sku | json }},{%- endif -%}
+    {%- if current_variant.barcode != blank -%}"gtin": {{ current_variant.barcode | json }},{%- endif -%}
+    "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    {%- assign r = product.metafields.reviews.rating.value -%}
+    {%- if r != blank -%}
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": {{ r.rating | json }}, "bestRating": {{ r.scale_max | json }}, "reviewCount": {{ product.metafields.reviews.rating_count.value | default: 1 | json }} },
+    {%- endif -%}
+    "offers": [
+      {%- for variant in product.variants -%}
+        { "@type": "Offer", {% if variant.sku != blank %}"sku": {{ variant.sku | json }},{% endif %} "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}", "price": {{ variant.price | divided_by: 100.00 | json }}, "priceCurrency": {{ cart.currency.iso_code | json }}, "url": {{ request.origin | append: variant.url | json }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product information",
+  "class": "section-main-product",
+  "settings": [
+    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
+    { "type": "checkbox", "id": "enable_zoom", "label": "Enable image zoom", "default": true },
+    { "type": "text", "id": "zoom_hint", "label": "Hint under the image", "default": "Click image to expand" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show badge on the main image", "default": true, "info": "Sold out, sale, custom (custom.badge) or New." },
+    { "type": "checkbox", "id": "show_wishlist", "label": "Show wishlist heart on the main image", "default": true },
+    { "type": "checkbox", "id": "sticky_bar", "label": "Sticky add-to-bag bar", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "kicker", "name": "Collection label", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Label", "info": "The product metafield custom.collection_label overrides it." },
+        { "type": "checkbox", "id": "use_collection", "label": "When empty, use the product's first collection", "default": true },
+        { "type": "checkbox", "id": "show_save", "label": "Show Save (wishlist) button", "default": false }
+      ]
+    },
+    { "type": "title", "name": "Title", "limit": 1, "settings": [{ "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false }] },
+    {
+      "type": "description", "name": "Short description", "limit": 1,
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text", "info": "Connect a metafield, or leave empty to use the start of the description." },
+        { "type": "range", "id": "words", "label": "Words from description", "min": 10, "max": 60, "step": 5, "default": 25 }
+      ]
+    },
+    { "type": "rating", "name": "Rating", "limit": 1 },
+    { "type": "divider", "name": "Divider" },
+    { "type": "price", "name": "Price", "limit": 1, "settings": [{ "type": "checkbox", "id": "show_stock", "label": "Show stock status beside the price", "default": false }] },
+    {
+      "type": "gift_line", "name": "Gift line", "limit": 1,
+      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Complimentary gift packaging included.", "info": "The product metafield custom.gift_note overrides it." }]
+    },
+    {
+      "type": "material_line", "name": "Materials line", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Fallback text", "placeholder": "18k gold vermeil · Tarnish resistant", "info": "Built automatically from custom.material (or custom.metal_type), custom.stone_type, custom.plating and custom.hypoallergenic when they have values. Separate fallback items with ·" }
+      ]
+    },
+    {
+      "type": "engraving", "name": "Engraving", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Toggle label", "default": "Add complimentary engraving" },
+        { "type": "text", "id": "input_label", "label": "Field label", "default": "Your engraving" },
+        { "type": "range", "id": "max_chars", "label": "Maximum characters", "min": 6, "max": 40, "step": 1, "default": 18 },
+        { "type": "text", "id": "property_name", "label": "Order note name", "default": "Engraving", "info": "Shown on the order and in the cart, e.g. 'Engraving: A & J'." },
+        { "type": "text", "id": "note", "label": "Small print", "default": "Personalized items are final sale." }
+      ]
+    },
+    {
+      "type": "microcopy", "name": "Shipping lines", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text_1", "label": "First line", "default": "Free shipping on orders over $100", "info": "The product metafield custom.shipping_note overrides it." },
+        { "type": "text", "id": "text_2", "label": "Second line", "default": "Usually ships within 1–2 business days" }
+      ]
+    },
+    {
+      "type": "details", "name": "Jewellery details", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Jewellery details" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false },
+        { "type": "checkbox", "id": "show_sku", "label": "Show SKU", "default": true },
+        { "type": "paragraph", "content": "Lists any of these product metafields that have values: custom.material, custom.metal_type, custom.metal_color, custom.stone_type, custom.stone_size, custom.carat, custom.weight, custom.dimensions, custom.finish, custom.plating, custom.hypoallergenic, custom.water_resistance." }
+      ]
+    },
+    {
+      "type": "inventory", "name": "Stock status", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "in_stock_text", "label": "In-stock message", "default": "In stock — ships within 24 hours" },
+        { "type": "range", "id": "threshold", "label": "Show low stock below", "min": 1, "max": 20, "step": 1, "default": 5 }
+      ]
+    },
+    {
+      "type": "highlights", "name": "Highlight pills", "limit": 1,
+      "settings": [
+        { "type": "textarea", "id": "items", "label": "Pills (one per line)", "default": "Tarnish resistant\nHypoallergenic\nGift ready", "info": "The product metafield custom.highlights (list) overrides these." }
+      ]
+    },
+    {
+      "type": "variant_picker", "name": "Variant picker", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "label_prefix", "label": "Option label prefix", "default": "Select", "info": "E.g. 'Select' shows 'Select ring size'." },
+        { "type": "header", "content": "Size guide" },
+        { "type": "text", "id": "size_guide_option", "label": "Show the guide link beside the option named", "default": "Size", "info": "Matches any option whose name contains this word, e.g. 'Ring size'." },
+        { "type": "text", "id": "size_guide_label", "label": "Link label", "default": "Size Guide" },
+        { "type": "text", "id": "size_guide_title", "label": "Guide title", "default": "Ring Size Guide" },
+        { "type": "page", "id": "size_guide_page", "label": "Guide content from page" },
+        { "type": "richtext", "id": "size_guide_text", "label": "Guide content", "default": "<p>Measure the inside diameter of a ring that fits comfortably, then compare it below. Between sizes? We recommend choosing the larger size.</p><p>US 5 — 15.7 mm · US 6 — 16.5 mm · US 7 — 17.3 mm · US 8 — 18.2 mm · US 9 — 19.0 mm</p>" }
+      ]
+    },
+    {
+      "type": "buy_buttons", "name": "Buy buttons", "limit": 1,
+      "settings": [
+        { "type": "checkbox", "id": "show_qty", "label": "Show quantity", "default": true },
+        { "type": "checkbox", "id": "show_buy_now", "label": "Show Buy it now", "default": true },
+        { "type": "checkbox", "id": "show_wishlist", "label": "Show wishlist button beside Add to bag", "default": false },
+        { "type": "text", "id": "qty_note", "label": "Note beside quantity" }
+      ]
+    },
+    {
+      "type": "reassurance", "name": "Reassurance panel", "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text_1", "label": "Shipping", "default": "Free shipping over $100" },
+        { "type": "text", "id": "text_2", "label": "Returns", "default": "30-day easy returns" },
+        { "type": "text", "id": "text_3", "label": "Security", "default": "Secure checkout" },
+        { "type": "text", "id": "text_4", "label": "Gift", "default": "Complimentary gift packaging" },
+        { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+      ]
+    },
+    {
+      "type": "shipping_note", "name": "Icon note",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Secure checkout · Visa · Mastercard · Amex" },
+        { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "shield-check", "label": "Secure" }, { "value": "credit-card", "label": "Payment" }, { "value": "gift", "label": "Gift" }, { "value": "truck", "label": "Delivery" }, { "value": "return", "label": "Returns" }], "default": "shield-check" },
+        { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+      ]
+    },
+    {
+      "type": "collapsible", "name": "Collapsible row",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shipping & Delivery" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false },
+        {
+          "type": "select", "id": "source", "label": "Content source",
+          "options": [
+            { "value": "custom", "label": "Text below" },
+            { "value": "description", "label": "Product description" },
+            { "value": "care", "label": "Metafield: care (custom.care)" },
+            { "value": "materials", "label": "Metafield: material (custom.material)" },
+            { "value": "shipping", "label": "Metafield: shipping note (custom.shipping_note)" },
+            { "value": "story", "label": "Metafield: product story (custom.product_story)" },
+            { "value": "dimensions", "label": "Metafield: dimensions (custom.dimensions)" }
+          ],
+          "default": "custom"
+        },
+        { "type": "richtext", "id": "content", "label": "Text", "default": "<p>Free standard shipping on orders over $100. Orders typically ship within 1–2 business days.</p>" },
+        { "type": "page", "id": "page", "label": "Content from page" }
+      ]
+    },
+    { "type": "share", "name": "Share", "limit": 1 },
+    { "type": "custom_liquid", "name": "Custom Liquid", "settings": [{ "type": "liquid", "id": "custom_liquid", "label": "Custom Liquid" }] }
+  ]
+}
+{% endschema %}

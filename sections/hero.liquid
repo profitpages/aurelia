@@ -1,0 +1,139 @@
+{%- comment -%}
+  Aurelia hero / image banner — full-bleed photograph with a tonal overlay and editorial copy.
+  The same section powers the home hero ("Jewelry that tells your story"), the story banner and the
+  centred "Signature collection" banner via presets. Separate desktop and mobile images.
+{%- endcomment -%}
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign htag = 'h2'
+  if section.index == 1 and s.title_as_h1
+    assign htag = 'h1'
+  endif
+  assign eager = false
+  if section.index <= 2
+    assign eager = true
+  endif
+  assign title_class = 'hero__title display'
+  if s.title_size == 'md'
+    assign title_class = 'hero__title h1'
+  endif
+-%}
+<section class="hero hero--{{ s.height }} hero--x-{{ s.content_x }} hero--y-{{ s.content_y }} hero--text-{{ s.text_tone }} color-{{ s.color_scheme }}" style="--img-pos: {{ s.image_position }}; --hero-overlay: {{ s.overlay | divided_by: 100.0 }};">
+  <div class="hero__media{% if s.mobile_image != blank %} has-mobile{% endif %}" aria-hidden="true">
+    {%- if s.image != blank -%}
+      {%- render 'responsive-image', image: s.image, max: 2800, sizes: '100vw', class: 'hero__img hero__img--desk', eager: eager, alt: '' -%}
+      {%- if s.mobile_image != blank -%}{%- render 'responsive-image', image: s.mobile_image, max: 1200, sizes: '100vw', class: 'hero__img hero__img--mob', eager: eager, alt: '' -%}{%- endif -%}
+    {%- else -%}
+      <div class="hero__art">{%- render 'cosmetic-art', name: s.placeholder_art, tone: 'gold' -%}</div>
+    {%- endif -%}
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+
+  <div class="hero__content page-width">
+    <div class="hero__copy" data-reveal>
+      {%- if s.kicker != blank -%}<p class="kicker hero__kicker">{{ s.kicker | escape }}</p>{%- endif -%}
+      {%- if s.heading != blank -%}<{{ htag }} class="{{ title_class }}">{{ s.heading | escape }}</{{ htag }}>{%- endif -%}
+      {%- if s.text != blank -%}<div class="hero__text rte">{{ s.text }}</div>{%- endif -%}
+      {%- if s.button_label != blank or s.button2_label != blank -%}
+        <div class="btn-row hero__buttons">
+          {%- render 'button', label: s.button_label, url: s.button_link, style: s.button_style -%}
+          {%- render 'button', label: s.button2_label, url: s.button2_link, style: s.button2_style -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "section-hero",
+  "settings": [
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "image", "label": "Desktop image", "info": "2800 × 1500px or larger. Keep the subject away from the text side." },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image", "info": "Optional portrait crop, around 1200 × 1600px." },
+    {
+      "type": "select", "id": "image_position", "label": "Image focal point",
+      "options": [
+        { "value": "center", "label": "Center" }, { "value": "left center", "label": "Left" }, { "value": "right center", "label": "Right" },
+        { "value": "center top", "label": "Top" }, { "value": "center bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select", "id": "placeholder_art", "label": "Placeholder drawing (until an image is chosen)",
+      "options": [{ "value": "bust", "label": "Necklace on bust" }, { "value": "ring", "label": "Ring" }, { "value": "stack", "label": "Ring stack" }, { "value": "necklace", "label": "Necklace" }, { "value": "earrings", "label": "Earrings" }],
+      "default": "bust"
+    },
+    { "type": "range", "id": "overlay", "label": "Overlay strength", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 45 },
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "select", "id": "height", "label": "Height",
+      "options": [{ "value": "sm", "label": "Small" }, { "value": "md", "label": "Medium" }, { "value": "lg", "label": "Large" }, { "value": "full", "label": "Full screen" }],
+      "default": "lg"
+    },
+    {
+      "type": "select", "id": "content_x", "label": "Content position",
+      "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }],
+      "default": "left"
+    },
+    {
+      "type": "select", "id": "content_y", "label": "Vertical position",
+      "options": [{ "value": "top", "label": "Top" }, { "value": "center", "label": "Middle" }, { "value": "bottom", "label": "Bottom" }],
+      "default": "bottom"
+    },
+    {
+      "type": "select", "id": "text_tone", "label": "Text color",
+      "options": [{ "value": "light", "label": "Light (on photos)" }, { "value": "scheme", "label": "Color scheme" }],
+      "default": "light"
+    },
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "The Aurelia collection" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Jewelry that tells your story" },
+    {
+      "type": "select", "id": "title_size", "label": "Heading size",
+      "options": [{ "value": "lg", "label": "Large" }, { "value": "md", "label": "Medium" }],
+      "default": "lg"
+    },
+    { "type": "checkbox", "id": "title_as_h1", "label": "Use as the page's main heading (h1) when first on the page", "default": true },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Timeless pieces designed to become part of your everyday.</p>" },
+    { "type": "text", "id": "button_label", "label": "First button label", "default": "Shop new arrivals" },
+    { "type": "url", "id": "button_link", "label": "First button link" },
+    {
+      "type": "select", "id": "button_style", "label": "First button style",
+      "options": [{ "value": "light", "label": "Ivory" }, { "value": "solid", "label": "Solid (scheme)" }, { "value": "ghost-light", "label": "White outline" }, { "value": "outline", "label": "Outline (scheme)" }, { "value": "link", "label": "Underlined link" }],
+      "default": "light"
+    },
+    { "type": "text", "id": "button2_label", "label": "Second button label", "default": "Explore collection" },
+    { "type": "url", "id": "button2_link", "label": "Second button link" },
+    {
+      "type": "select", "id": "button2_style", "label": "Second button style",
+      "options": [{ "value": "light", "label": "Ivory" }, { "value": "solid", "label": "Solid (scheme)" }, { "value": "ghost-light", "label": "White outline" }, { "value": "outline", "label": "Outline (scheme)" }, { "value": "link", "label": "Underlined link" }],
+      "default": "ghost-light"
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-5" }
+  ],
+  "presets": [
+    { "name": "Hero" },
+    {
+      "name": "Image banner",
+      "settings": {
+        "height": "md", "content_x": "left", "content_y": "center", "overlay": 45, "placeholder_art": "ring", "title_as_h1": false,
+        "kicker": "Our process", "heading": "Crafted to be remembered",
+        "text": "<p>Thoughtfully designed pieces made to celebrate your individuality, your milestones, and the moments you never want to forget.</p>",
+        "button_label": "Discover our story", "button_style": "link", "button2_label": ""
+      }
+    },
+    {
+      "name": "Image banner — centered",
+      "settings": {
+        "height": "md", "content_x": "center", "content_y": "center", "overlay": 55, "placeholder_art": "stack", "title_as_h1": false,
+        "kicker": "Aurelia icons", "heading": "The signature collection",
+        "text": "<p>Iconic pieces designed to become timeless essentials.</p>",
+        "button_label": "Explore the collection", "button_style": "light", "button2_label": ""
+      }
+    }
+  ]
+}
+{% endschema %}

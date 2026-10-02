@@ -1,0 +1,102 @@
+{%- comment -%}
+  Aurelia placeholder art: fine gold monoline jewellery drawings shown wherever an image hasn't been chosen yet.
+  Usage: {% render 'cosmetic-art', name: 'ring', tone: 'gold' %}
+  names: ring, necklace, earrings, bracelet, chain, gift, bust, stack  ·  tones: gold (default), linen, ink
+  Legacy names from shared sections are mapped (serum → ring, jar → gift, tube → earrings, pump → necklace,
+  compact → bracelet, lipstick → chain, swatch → stack, portrait → bust).
+{%- endcomment -%}
+{%- liquid
+  assign art_name = name | default: 'ring'
+  case art_name
+    when 'serum'
+      assign art_name = 'ring'
+    when 'jar'
+      assign art_name = 'gift'
+    when 'tube'
+      assign art_name = 'earrings'
+    when 'pump'
+      assign art_name = 'necklace'
+    when 'compact'
+      assign art_name = 'bracelet'
+    when 'lipstick'
+      assign art_name = 'chain'
+    when 'swatch'
+      assign art_name = 'stack'
+    when 'portrait'
+      assign art_name = 'bust'
+  endcase
+  case tone
+    when 'linen', 'blush', 'sand'
+      assign art_tone = 'linen'
+    when 'ink', 'dark'
+      assign art_tone = 'ink'
+    else
+      assign art_tone = 'gold'
+  endcase
+-%}
+<span class="cosmo cosmo--{{ art_name }} cosmo-tone--{{ art_tone }}" aria-hidden="true">
+  <svg viewBox="0 0 160 200" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+    <ellipse class="cosmo__floor" cx="80" cy="182" rx="50" ry="5" stroke="none"/>
+    {%- case art_name -%}
+      {%- when 'necklace' -%}
+        <path d="M30 22c4 62 30 92 50 92s46-30 50-92"/>
+        <path d="M36 22c5 56 28 84 44 84s39-28 44-84" opacity=".35"/>
+        <path d="M80 114v8"/>
+        <circle class="cosmo__fill" cx="80" cy="136" r="13"/>
+        <circle cx="80" cy="136" r="13"/>
+        <path d="M74 132l6-6 6 6-6 10z"/>
+        <path d="M74 132h12" opacity=".5"/>
+      {%- when 'earrings' -%}
+        <circle cx="54" cy="70" r="4"/><circle cx="106" cy="70" r="4"/>
+        <path d="M54 74v6M106 74v6"/>
+        <circle class="cosmo__fill" cx="54" cy="110" r="26"/>
+        <circle cx="54" cy="110" r="26"/><circle cx="54" cy="110" r="20" opacity=".4"/>
+        <circle class="cosmo__fill" cx="106" cy="110" r="26"/>
+        <circle cx="106" cy="110" r="26"/><circle cx="106" cy="110" r="20" opacity=".4"/>
+        <path d="M54 136v8M106 136v8" opacity=".5"/>
+        <circle cx="54" cy="148" r="4"/><circle cx="106" cy="148" r="4"/>
+      {%- when 'bracelet' -%}
+        <ellipse class="cosmo__fill" cx="80" cy="118" rx="60" ry="30"/>
+        <ellipse cx="80" cy="118" rx="60" ry="30"/>
+        <ellipse cx="80" cy="114" rx="50" ry="22" opacity=".45"/>
+        <path d="M24 108l8 4M40 92l5 7M60 86l2 8M80 84v8M100 86l-2 8M120 92l-5 7M136 108l-8 4" opacity=".55"/>
+        <path d="M74 146l6-6 6 6-6 6z"/>
+      {%- when 'chain' -%}
+        <g opacity=".95">
+          <ellipse cx="44" cy="54" rx="13" ry="8" transform="rotate(35 44 54)"/>
+          <ellipse cx="58" cy="72" rx="13" ry="8" transform="rotate(55 58 72)"/>
+          <ellipse cx="70" cy="92" rx="13" ry="8" transform="rotate(35 70 92)"/>
+          <ellipse cx="84" cy="110" rx="13" ry="8" transform="rotate(55 84 110)"/>
+          <ellipse cx="96" cy="130" rx="13" ry="8" transform="rotate(35 96 130)"/>
+          <ellipse cx="110" cy="148" rx="13" ry="8" transform="rotate(55 110 148)"/>
+        </g>
+        <circle class="cosmo__fill" cx="122" cy="162" r="7"/><circle cx="122" cy="162" r="7"/>
+      {%- when 'gift' -%}
+        <rect class="cosmo__fill" x="36" y="96" width="88" height="74"/>
+        <rect x="36" y="96" width="88" height="74"/>
+        <rect x="30" y="80" width="100" height="18"/>
+        <path d="M80 80v90"/>
+        <path d="M80 80c-8-16-30-22-30-8 0 9 18 9 30 8zM80 80c8-16 30-22 30-8 0 9-18 9-30 8z"/>
+        <path d="M46 112h22M46 122h14" opacity=".4"/>
+      {%- when 'bust' -%}
+        <path d="M58 28c0 22 4 40 8 50-22 6-38 22-44 52h116c-6-30-22-46-44-52 4-10 8-28 8-50"/>
+        <path class="cosmo__fill" d="M22 130h116v40H22z" opacity=".6"/>
+        <path d="M22 130h116v40H22z"/>
+        <path d="M60 82c6 18 34 18 40 0" opacity=".9"/>
+        <path d="M80 98v6"/><circle cx="80" cy="110" r="5"/>
+      {%- when 'stack' -%}
+        <ellipse cx="80" cy="76" rx="40" ry="12"/>
+        <ellipse class="cosmo__fill" cx="80" cy="100" rx="44" ry="13"/>
+        <ellipse cx="80" cy="100" rx="44" ry="13"/>
+        <ellipse cx="80" cy="124" rx="40" ry="12"/>
+        <path d="M76 64l4-6 4 6-4 4z"/>
+        <path d="M44 124c10 6 62 6 72 0" opacity=".4"/>
+      {%- else -%}
+        <ellipse class="cosmo__fill" cx="80" cy="124" rx="44" ry="46"/>
+        <ellipse cx="80" cy="124" rx="44" ry="46"/>
+        <ellipse cx="80" cy="124" rx="35" ry="37" opacity=".5"/>
+        <path d="M64 78l16-22 16 22-16 14z"/>
+        <path d="M64 78h32M72 78l8 14 8-14M70 66h20" opacity=".55"/>
+    {%- endcase -%}
+  </svg>
+</span>

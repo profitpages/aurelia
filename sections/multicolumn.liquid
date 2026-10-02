@@ -1,0 +1,415 @@
+{%- comment -%}
+  Multicolumn — columns of image / icon / numeral + text in Lumière's editorial language.
+  Styles: editorial (paper frame cards) | open (image + hairline) | numbered (large serif numerals) | icon (arch icon wells)
+{%- endcomment -%}
+{{ 'section-features.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign arts = 'serum,jar,pump,tube,compact,swatch' | split: ','
+-%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text, align: s.heading_align -%}
+    <ul class="lcol lcol--{{ s.style }} lcol--{{ s.text_align }}{% if s.swipe %} lcol--swipe{% endif %}" role="list" style="--cols: {{ s.columns }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        {%- assign i = forloop.index0 | modulo: 6 -%}
+        <li class="lcol__item" data-reveal {{ block.shopify_attributes }}>
+          {%- case s.style -%}
+            {%- when 'numbered' -%}
+              <span class="lcol__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            {%- when 'icon' -%}
+              <span class="lcol__icon">
+                {%- if b.image != blank -%}
+                  {{ b.image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '', width: 40, height: 40 }}
+                {%- else -%}
+                  {%- render 'icon', name: b.icon, size: 24 -%}
+                {%- endif -%}
+              </span>
+            {%- else -%}
+              {%- liquid
+                assign shape = s.shape
+                if shape == 'mixed'
+                  assign shape = 'square'
+                  if forloop.first
+                    assign shape = 'corner'
+                  elsif forloop.index == 2
+                    assign shape = 'arch'
+                  endif
+                endif
+              -%}
+              <span class="lcol__media lcol__media--{{ shape }}">
+                {%- render 'responsive-image', image: b.image, max: 900, sizes: '(min-width: 990px) 30vw, 80vw', class: 'lcol__img', art: arts[i], tone: 'linen' -%}
+              </span>
+          {%- endcase -%}
+          <div class="lcol__body">
+            {%- if b.kicker != blank -%}<p class="kicker">{{ b.kicker | escape }}</p>{%- endif -%}
+            {%- if b.title != blank -%}<h3 class="lcol__title">{{ b.title | escape }}</h3>{%- endif -%}
+            {%- if b.text != blank -%}<div class="rte lcol__text">{{ b.text }}</div>{%- endif -%}
+            {%- if b.link_label != blank -%}<a class="link-underline lcol__link" href="{{ b.link | default: routes.all_products_collection_url }}">{{ b.link_label | escape }}</a>{%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if s.button_label != blank -%}<div class="btn-row lcol__cta lcol__cta--{{ s.heading_align }}">{%- render 'button', label: s.button_label, url: s.button_link, style: 'outline' -%}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Multicolumn",
+  "class": "section-multicolumn",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Jewellery for every moment"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Pieces that fit the day."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Column style",
+      "options": [
+        {
+          "value": "editorial",
+          "label": "Editorial cards (paper frame)"
+        },
+        {
+          "value": "open",
+          "label": "Open (image + hairline)"
+        },
+        {
+          "value": "numbered",
+          "label": "Numbered (large numerals)"
+        },
+        {
+          "value": "icon",
+          "label": "Icons"
+        }
+      ],
+      "default": "editorial"
+    },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Image shape",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait 4:5"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape 4:3"
+        },
+        {
+          "value": "arch",
+          "label": "Arch"
+        },
+        {
+          "value": "corner",
+          "label": "Curved corner"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "mixed",
+          "label": "Mixed (corner, arch, square)"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe",
+      "label": "Swipe on mobile",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "In the Icons style, an uploaded image replaces the icon."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon (Icons style)",
+          "options": [
+            {
+              "value": "sparkle",
+              "label": "Sparkle"
+            },
+            {
+              "value": "drop",
+              "label": "Drop"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "flower",
+              "label": "Flower"
+            },
+            {
+              "value": "sun",
+              "label": "Morning"
+            },
+            {
+              "value": "moon",
+              "label": "Evening"
+            },
+            {
+              "value": "shield",
+              "label": "Shield"
+            },
+            {
+              "value": "rabbit",
+              "label": "Hypoallergenic"
+            },
+            {
+              "value": "recycle",
+              "label": "Recyclable"
+            },
+            {
+              "value": "flask",
+              "label": "Clinical"
+            },
+            {
+              "value": "truck",
+              "label": "Delivery"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            }
+          ],
+          "default": "sparkle"
+        },
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "Kicker"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Morning"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Delicate chains and studs for a polished start.</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Shop the AM edit"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multicolumn",
+      "blocks": [
+        {
+          "type": "column"
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "Evening",
+            "text": "<p>Statement pieces for the evening.</p>",
+            "link_label": "Shop evening"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "Everyday",
+            "text": "<p>Delicate hoops and studs for every day.</p>",
+            "link_label": "Shop everyday"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Multicolumn — icons",
+      "settings": {
+        "style": "icon",
+        "kicker": "The Aurelia promise",
+        "heading": "Small details, carefully kept.",
+        "columns": 4,
+        "text_align": "center",
+        "heading_align": "center",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "title": "Complimentary shipping",
+            "text": "<p>On every order over $100.</p>",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "icon": "gift",
+            "title": "Free engraving",
+            "text": "<p>On any ring or pendant.</p>",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "icon": "recycle",
+            "title": "Recycled metals",
+            "text": "<p>Made to be kept.</p>",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "icon": "rabbit",
+            "title": "Hypoallergenic",
+            "text": "<p>Always, everywhere.</p>",
+            "link_label": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Multicolumn — numbered",
+      "settings": {
+        "style": "numbered",
+        "kicker": "How it works",
+        "heading": "Your piece, in three steps.",
+        "color_scheme": "scheme-3"
+      },
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "title": "Choose your piece",
+            "text": "<p>Browse or book a styling appointment.</p>",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "Personalise it",
+            "text": "<p>Gift-wrapped and delivered in two to five days.</p>",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "Wear it every day",
+            "text": "<p>Free resizing within 30 days.</p>",
+            "link_label": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

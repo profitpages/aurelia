@@ -1,0 +1,871 @@
+{
+  "sections": {
+    "image_with_text_image_with_text_dark_blo": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "inset",
+        "color_scheme": "scheme-7",
+        "kicker": "The Aurelia edit",
+        "kicker_plain": false,
+        "heading": "The art of layering",
+        "text": "<p>Build a collection that feels entirely your own, from delicate essentials to unmistakable statement pieces.</p>",
+        "button_label": "Explore styling notes",
+        "placeholder_art": "stack"
+      }
+    },
+    "image_with_text_image_with_text_split": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "split",
+        "image_ratio": "landscape",
+        "kicker": "Our approach",
+        "heading": "Crafted for your every day",
+        "text": "<p>Every Aurelia piece is thoughtfully designed to feel effortless, distinctive, and enduring.</p>",
+        "button_label": "Discover our story",
+        "placeholder_art": "ring"
+      }
+    },
+    "ingredients_material_tabs": {
+      "type": "ingredients",
+      "settings": {},
+      "blocks": {
+        "ingredient_1": {
+          "type": "ingredient",
+          "settings": {}
+        },
+        "ingredient_2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Freshwater pearl",
+            "benefit": "Soft lustre",
+            "text": "<p>Lustrous freshwater pearls, each one slightly different, hand-selected for their glow.</p>"
+          }
+        },
+        "ingredient_3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Lab-grown stones",
+            "benefit": "Brilliant sparkle",
+            "text": "<p>Brilliant lab-grown stones, cut to sparkle and set by hand in recycled metals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_1",
+        "ingredient_2",
+        "ingredient_3"
+      ]
+    },
+    "ingredients_material_tabs_panel": {
+      "type": "ingredients",
+      "settings": {
+        "layout": "panel",
+        "kicker": "The materials",
+        "heading": "Chosen to catch the light.",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "ingredient_1": {
+          "type": "ingredient",
+          "settings": {
+            "text": "<p>A thick layer of 18k gold over sterling silver: the warmth of solid gold, made for everyday wear.</p>"
+          }
+        },
+        "ingredient_2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Freshwater pearl",
+            "benefit": "Soft lustre",
+            "text": "<p>Lustrous freshwater pearls, each one slightly different, hand-selected for their glow.</p>"
+          }
+        },
+        "ingredient_3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Lab-grown stones",
+            "benefit": "Brilliant sparkle",
+            "text": "<p>Brilliant lab-grown stones, cut to sparkle and set by hand in recycled metals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_1",
+        "ingredient_2",
+        "ingredient_3"
+      ]
+    },
+    "logo_list_press_logos": {
+      "type": "logo-list",
+      "settings": {},
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "name": "The Gem Journal",
+            "quote": "The everyday gold we keep reaching for."
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "name": "Style Weekly",
+            "quote": "Quietly brilliant."
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "name": "The Edit",
+            "quote": "Quietly luxurious."
+          }
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {
+            "name": "Luxe Daily",
+            "quote": "A modern classic."
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4"
+      ]
+    },
+    "marquee_scrolling_text": {
+      "type": "marquee",
+      "settings": {},
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "text": "Hypoallergenic"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "text": "Hypoallergenic"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "text": "Free engraving"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "text": "Free shipping over $100"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "text": "Gift-ready packaging"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ]
+    },
+    "multicolumn_multicolumn": {
+      "type": "multicolumn",
+      "settings": {},
+      "blocks": {
+        "column_1": {
+          "type": "column",
+          "settings": {}
+        },
+        "column_2": {
+          "type": "column",
+          "settings": {
+            "title": "Evening",
+            "text": "<p>Statement pieces for the evening.</p>",
+            "link_label": "Shop evening"
+          }
+        },
+        "column_3": {
+          "type": "column",
+          "settings": {
+            "title": "Everyday",
+            "text": "<p>Delicate hoops and studs for every day.</p>",
+            "link_label": "Shop everyday"
+          }
+        }
+      },
+      "block_order": [
+        "column_1",
+        "column_2",
+        "column_3"
+      ]
+    },
+    "multicolumn_multicolumn_icons": {
+      "type": "multicolumn",
+      "settings": {
+        "style": "icon",
+        "kicker": "The Aurelia promise",
+        "heading": "Small details, carefully kept.",
+        "columns": 4,
+        "text_align": "center",
+        "heading_align": "center",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "column_1": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "title": "Complimentary shipping",
+            "text": "<p>On every order over $100.</p>",
+            "link_label": ""
+          }
+        },
+        "column_2": {
+          "type": "column",
+          "settings": {
+            "icon": "gift",
+            "title": "Free engraving",
+            "text": "<p>On any ring or pendant.</p>",
+            "link_label": ""
+          }
+        },
+        "column_3": {
+          "type": "column",
+          "settings": {
+            "icon": "recycle",
+            "title": "Recycled metals",
+            "text": "<p>Made to be kept.</p>",
+            "link_label": ""
+          }
+        },
+        "column_4": {
+          "type": "column",
+          "settings": {
+            "icon": "rabbit",
+            "title": "Hypoallergenic",
+            "text": "<p>Always, everywhere.</p>",
+            "link_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_1",
+        "column_2",
+        "column_3",
+        "column_4"
+      ]
+    },
+    "multicolumn_multicolumn_numbered": {
+      "type": "multicolumn",
+      "settings": {
+        "style": "numbered",
+        "kicker": "How it works",
+        "heading": "Your piece, in three steps.",
+        "color_scheme": "scheme-3"
+      },
+      "blocks": {
+        "column_1": {
+          "type": "column",
+          "settings": {
+            "title": "Choose your piece",
+            "text": "<p>Browse or book a styling appointment.</p>",
+            "link_label": ""
+          }
+        },
+        "column_2": {
+          "type": "column",
+          "settings": {
+            "title": "Personalise it",
+            "text": "<p>Gift-wrapped and delivered in two to five days.</p>",
+            "link_label": ""
+          }
+        },
+        "column_3": {
+          "type": "column",
+          "settings": {
+            "title": "Wear it every day",
+            "text": "<p>Free resizing within 30 days.</p>",
+            "link_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_1",
+        "column_2",
+        "column_3"
+      ]
+    },
+    "multirow_multirow": {
+      "type": "multirow",
+      "settings": {},
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "caption": "Light to wear, made to last.",
+            "button_label": "Discover the collection"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "frame": "arch",
+            "kicker": "Craft",
+            "heading": "Finished by hand.",
+            "text": "<p>Each piece is cast, set and polished by hand, then checked twice before it leaves the studio.</p>",
+            "show_dot": true,
+            "button_label": "Explore the craft"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "frame": "offset",
+            "kicker": "Packaging",
+            "heading": "Packaging you'll want to keep.",
+            "text": "<p>Recycled card and a soft cotton pouch — made to keep your jewellery safe for years.</p>",
+            "button_label": "Our commitments"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3"
+      ]
+    },
+    "newsletter_newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    },
+    "newsletter_newsletter_champagne": {
+      "type": "newsletter",
+      "settings": {
+        "color_scheme": "scheme-8"
+      }
+    },
+    "promo_banner_promotional_cards": {
+      "type": "promo-banner",
+      "settings": {},
+      "blocks": {
+        "promo_1": {
+          "type": "promo",
+          "settings": {}
+        },
+        "promo_2": {
+          "type": "promo",
+          "settings": {
+            "kicker": "After dark",
+            "heading": "The evening edit, made to shine.",
+            "link_label": "Shop evening",
+            "color_scheme": "scheme-3"
+          }
+        }
+      },
+      "block_order": [
+        "promo_1",
+        "promo_2"
+      ]
+    },
+    "promo_banner_editorial_banner": {
+      "type": "promo-banner",
+      "settings": {
+        "kicker": "",
+        "heading": ""
+      },
+      "blocks": {
+        "promo_1": {
+          "type": "promo",
+          "settings": {
+            "kicker": "Our material philosophy",
+            "heading": "Precious, considered materials.",
+            "text": "<p>Every piece begins with recycled gold and silver, responsibly sourced stones, and a focus on lasting comfort.</p>",
+            "link_label": "Meet the materials",
+            "color_scheme": "scheme-8"
+          }
+        }
+      },
+      "block_order": [
+        "promo_1"
+      ]
+    },
+    "recently_viewed_recently_viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    },
+    "rich_text_rich_text": {
+      "type": "rich-text",
+      "settings": {},
+      "blocks": {
+        "kicker_1": {
+          "type": "kicker",
+          "settings": {}
+        },
+        "heading_2": {
+          "type": "heading",
+          "settings": {}
+        },
+        "text_3": {
+          "type": "text",
+          "settings": {}
+        },
+        "signature_4": {
+          "type": "signature",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "kicker_1",
+        "heading_2",
+        "text_3",
+        "signature_4"
+      ]
+    },
+    "ritual_steps_care_guide": {
+      "type": "ritual-steps",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Wear",
+            "text": "Put jewellery on last, after perfume, lotion and hairspray have settled."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Polish",
+            "text": "Wipe with a soft dry cloth after wearing to keep the polish bright."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Store",
+            "text": "Store each piece in its pouch, away from moisture and other jewellery."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "ritual_steps_steps": {
+      "type": "ritual-steps",
+      "settings": {
+        "kicker": "Care guide",
+        "heading": "Wear, polish, store.",
+        "section_scheme": "scheme-1"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Wear",
+            "text": "Put jewellery on last, after perfume and lotion."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Polish",
+            "text": "Polish gently with the soft cloth in your box."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Store",
+            "text": "Keep pieces apart so chains do not tangle."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Refresh",
+            "text": "Bring it to us for a free polish once a year."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "routine_complete_the_set": {
+      "type": "routine",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "label": "Ring"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "label": "Polish",
+            "use_current": true
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "label": "Earrings"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "label": "Refresh"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "shop_by_concern_shop_by_occasion": {
+      "type": "shop-by-concern",
+      "settings": {},
+      "blocks": {
+        "concern_1": {
+          "type": "concern",
+          "settings": {
+            "title": "Everyday",
+            "text": "Effortless pieces for every day."
+          }
+        },
+        "concern_2": {
+          "type": "concern",
+          "settings": {
+            "title": "Celebration",
+            "text": "Pieces for life’s biggest moments."
+          }
+        },
+        "concern_3": {
+          "type": "concern",
+          "settings": {
+            "title": "Date night",
+            "text": "Make an unforgettable impression."
+          }
+        },
+        "concern_4": {
+          "type": "concern",
+          "settings": {
+            "title": "Gifting",
+            "text": "Gifts they will treasure."
+          }
+        }
+      },
+      "block_order": [
+        "concern_1",
+        "concern_2",
+        "concern_3",
+        "concern_4"
+      ]
+    },
+    "shop_by_concern_occasion_chips": {
+      "type": "shop-by-concern",
+      "settings": {
+        "layout": "chips",
+        "heading": "Shop by occasion",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "concern_1": {
+          "type": "concern",
+          "settings": {
+            "title": "Everyday"
+          }
+        },
+        "concern_2": {
+          "type": "concern",
+          "settings": {
+            "title": "Celebration"
+          }
+        },
+        "concern_3": {
+          "type": "concern",
+          "settings": {
+            "title": "Date night"
+          }
+        },
+        "concern_4": {
+          "type": "concern",
+          "settings": {
+            "title": "Gifting"
+          }
+        },
+        "concern_5": {
+          "type": "concern",
+          "settings": {
+            "title": "Wedding"
+          }
+        }
+      },
+      "block_order": [
+        "concern_1",
+        "concern_2",
+        "concern_3",
+        "concern_4",
+        "concern_5"
+      ]
+    },
+    "shop_the_look_shop_the_look": {
+      "type": "shop-the-look",
+      "settings": {},
+      "blocks": {
+        "hotspot_1": {
+          "type": "hotspot",
+          "settings": {
+            "x": 34,
+            "y": 38
+          }
+        },
+        "hotspot_2": {
+          "type": "hotspot",
+          "settings": {
+            "x": 62,
+            "y": 56
+          }
+        },
+        "hotspot_3": {
+          "type": "hotspot",
+          "settings": {
+            "x": 46,
+            "y": 76
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_1",
+        "hotspot_2",
+        "hotspot_3"
+      ]
+    },
+    "shoppable_gallery_shoppable_gallery": {
+      "type": "shoppable-gallery",
+      "settings": {},
+      "blocks": {
+        "photo_1": {
+          "type": "photo",
+          "settings": {
+            "handle": "@maya.stacks"
+          }
+        },
+        "photo_2": {
+          "type": "photo",
+          "settings": {
+            "handle": "@anika.wears"
+          }
+        },
+        "photo_3": {
+          "type": "photo",
+          "settings": {
+            "handle": "@leena.layers"
+          }
+        },
+        "photo_4": {
+          "type": "photo",
+          "settings": {
+            "handle": "@goldandlinen"
+          }
+        },
+        "photo_5": {
+          "type": "photo",
+          "settings": {
+            "handle": "@aureliajewellery"
+          }
+        }
+      },
+      "block_order": [
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5"
+      ]
+    },
+    "skin_quiz_gift_finder_quiz": {
+      "type": "skin-quiz",
+      "settings": {},
+      "blocks": {
+        "skin_1": {
+          "type": "skin",
+          "settings": {
+            "label": "For her",
+            "note": "Partner, sister, friend",
+            "icon": "heart",
+            "param": "filter.p.tag=for-her"
+          }
+        },
+        "skin_2": {
+          "type": "skin",
+          "settings": {
+            "label": "For him",
+            "note": "Partner, brother, dad",
+            "icon": "leaf",
+            "param": "filter.p.tag=for-him"
+          }
+        },
+        "skin_3": {
+          "type": "skin",
+          "settings": {
+            "label": "For me",
+            "note": "A little treat",
+            "icon": "sparkle",
+            "param": "filter.p.tag=self-purchase"
+          }
+        },
+        "concern_4": {
+          "type": "concern",
+          "settings": {
+            "label": "Rings",
+            "icon": "sparkle",
+            "param": "filter.p.product_type=Rings"
+          }
+        },
+        "concern_5": {
+          "type": "concern",
+          "settings": {
+            "label": "Necklaces",
+            "icon": "sun",
+            "param": "filter.p.product_type=Necklaces"
+          }
+        },
+        "concern_6": {
+          "type": "concern",
+          "settings": {
+            "label": "Earrings",
+            "icon": "drop",
+            "param": "filter.p.product_type=Earrings"
+          }
+        },
+        "concern_7": {
+          "type": "concern",
+          "settings": {
+            "label": "Bracelets",
+            "icon": "leaf",
+            "param": "filter.p.product_type=Bracelets"
+          }
+        },
+        "budget_8": {
+          "type": "budget",
+          "settings": {
+            "label": "Under $100",
+            "icon": "tag",
+            "param": "filter.v.price.lte=100"
+          }
+        },
+        "budget_9": {
+          "type": "budget",
+          "settings": {
+            "label": "Under $200",
+            "icon": "gift",
+            "param": "filter.v.price.lte=200"
+          }
+        },
+        "budget_10": {
+          "type": "budget",
+          "settings": {
+            "label": "Something special",
+            "icon": "sparkle",
+            "param": "filter.v.price.gte=200"
+          }
+        }
+      },
+      "block_order": [
+        "skin_1",
+        "skin_2",
+        "skin_3",
+        "concern_4",
+        "concern_5",
+        "concern_6",
+        "concern_7",
+        "budget_8",
+        "budget_9",
+        "budget_10"
+      ]
+    },
+    "slideshow_slideshow": {
+      "type": "slideshow",
+      "settings": {},
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "kicker": "Just landed",
+            "heading": "New arrivals",
+            "art": "earrings",
+            "content_x": "center",
+            "text": "<p>Meet the latest additions to our collection.</p>"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "kicker": "Aurelia icons",
+            "heading": "The signature collection",
+            "art": "stack",
+            "text": "<p>Iconic pieces designed to become timeless essentials.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ]
+    }
+  },
+  "order": [
+    "image_with_text_image_with_text_dark_blo",
+    "image_with_text_image_with_text_split",
+    "ingredients_material_tabs",
+    "ingredients_material_tabs_panel",
+    "logo_list_press_logos",
+    "marquee_scrolling_text",
+    "multicolumn_multicolumn",
+    "multicolumn_multicolumn_icons",
+    "multicolumn_multicolumn_numbered",
+    "multirow_multirow",
+    "newsletter_newsletter",
+    "newsletter_newsletter_champagne",
+    "promo_banner_promotional_cards",
+    "promo_banner_editorial_banner",
+    "recently_viewed_recently_viewed",
+    "rich_text_rich_text",
+    "ritual_steps_care_guide",
+    "ritual_steps_steps",
+    "routine_complete_the_set",
+    "shop_by_concern_shop_by_occasion",
+    "shop_by_concern_occasion_chips",
+    "shop_the_look_shop_the_look",
+    "shoppable_gallery_shoppable_gallery",
+    "skin_quiz_gift_finder_quiz",
+    "slideshow_slideshow"
+  ]
+}

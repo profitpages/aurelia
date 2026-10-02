@@ -1,0 +1,38 @@
+{%- comment -%}
+  Product badges: sold out > sale % > custom (custom.badge metafield or "badge:Text" tag) > New
+  (tagged 'new', or published within Theme settings › Product cards › 'New' days).
+  Usage: {% render 'badge', product: product, class: 'card-badge' %}
+{%- endcomment -%}
+{%- liquid
+  assign custom = product.metafields.custom.badge.value | default: product.metafields.custom.badge
+  if custom == blank
+    for tag in product.tags
+      assign tag_down = tag | downcase
+      if tag_down contains 'badge:'
+        assign custom = tag | split: ':' | last | strip
+        break
+      endif
+    endfor
+  endif
+  assign is_new = false
+  if product.tags contains 'new' or product.tags contains 'New'
+    assign is_new = true
+  elsif settings.card_new_days > 0 and product.published_at
+    assign age_s = 'now' | date: '%s' | plus: 0
+    assign pub_s = product.published_at | date: '%s' | plus: 0
+    assign age_days = age_s | minus: pub_s | divided_by: 86400
+    if age_days <= settings.card_new_days
+      assign is_new = true
+    endif
+  endif
+-%}
+{%- if product.available == false -%}
+  <span class="badge badge--muted {{ class }}">{{ 'products.sold_out' | t }}</span>
+{%- elsif product.compare_at_price > product.price -%}
+  {%- assign pct = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+  <span class="badge badge--sale {{ class }}">{{ 'products.save_percent' | t: percent: pct }}</span>
+{%- elsif custom != blank -%}
+  <span class="badge badge--{{ custom | handleize }} {{ class }}">{{ custom | escape }}</span>
+{%- elsif is_new -%}
+  <span class="badge badge--new {{ class }}">{{ 'products.new' | t }}</span>
+{%- endif -%}

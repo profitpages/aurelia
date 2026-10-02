@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+ <head><script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..nIVjrumaUsj4cfWw.ad0X4CESQdvJBeFDXJCTidIED_kanDex7UswtjbGkNHeCzrMn4mc_ibgrRC69daGn8FL8tSZ9aHvzBvBxNvomZIMOrduKfJrdLA4WsTreCeUbZkmG8zLyck8XP4JBCa2kt0CxO6dR0LIb7olkZXzX7hmuzKQZSe-MCz_-KqYRk1_qMSm_qf4UEKt3zwhcTe4Ykt7N1UFpYmnvkBnLYdtfbONFnzakYnQLmJLfjQtmvrTbygXKezSAD4MUZujpIRROJ0KhZw0GqoNWCy4im9Cksr55SU10iEe8IzwX78LDfcJsE4VJDNxUBAJq0bnWeB7CUohcSA-RBXwisehlbGMIItNXIE3zz0UU5Yua5T2XLaKhP6EmaEvMjVavqOpLc3KTmgCoHYn0_kyPq3wyqoBn2-geHo5To1owW5PaIYqw2FlzYV_uqVPP9c5v1amjlwnFjW43cMraj-ZS_Fi0OVb1oQFoXGN7I9CUQ.jKxgOSIZ5VX6lXGbBoBcvA/telemetry_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURELIA — Fine Jewellery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#1d1a17; --ivory:#f8f5ef; --paper:#fffdf9; --gold:#a68756; --line:#ded7ca; --muted:#706b63; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; width:100%; color:var(--ink); background:var(--ivory); font-family:"Work Sans",sans-serif; }
+    h1,h2,h3,.serif { font-family:"Fraunces",serif; }
+    .site-header { transition:background .25s,box-shadow .25s; }
+    .site-header.scrolled { background:rgba(255,253,249,.95); box-shadow:0 1px 0 var(--line); backdrop-filter:blur(12px); }
+    .nav-link,.footer-link { position:relative; }
+    .nav-link:after,.footer-link:after { content:""; position:absolute; left:0; bottom:-4px; width:0; height:1px; background:currentColor; transition:width .2s; }
+    .nav-link:hover:after,.footer-link:hover:after { width:100%; }
+    .editorial-img { transition:transform .7s cubic-bezier(.2,.7,.2,1); }
+    .media-card:hover .editorial-img { transform:scale(1.045); }
+    .product-card { transition:transform .25s, box-shadow .25s; }
+    .product-card:hover { transform:translateY(-4px); box-shadow:0 14px 30px rgba(38,30,18,.09); }
+    .heart.active { color:#8c2e2e; fill:#8c2e2e; }
+    .drawer { transform:translateX(100%); transition:transform .35s ease; }
+    .drawer.open { transform:translateX(0); }
+    .panel-left { transform:translateX(-100%); transition:transform .35s ease; }
+    .panel-left.open { transform:translateX(0); }
+    .overlay { opacity:0; visibility:hidden; transition:opacity .25s,visibility .25s; }
+    .overlay.open { opacity:1; visibility:visible; }
+    .search-panel { transform:translateY(-16px); opacity:0; transition:transform .25s,opacity .25s; }
+    .overlay.open .search-panel { transform:none; opacity:1; }
+    .focus-ring:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible { outline:2px solid #8c7046; outline-offset:3px; }
+    .reveal { animation:rise .7s ease both; } @keyframes rise { from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none} }
+    .line-icon svg { width:21px;height:21px;stroke-width:1.3; }
+    @media(max-width:640px){ .hero-copy { background:linear-gradient(90deg,rgba(24,20,15,.72),rgba(24,20,15,.16)); } }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..nIVjrumaUsj4cfWw.ad0X4CESQdvJBeFDXJCTidIED_kanDex7UswtjbGkNHeCzrMn4mc_ibgrRC69daGn8FL8tSZ9aHvzBvBxNvomZIMOrduKfJrdLA4WsTreCeUbZkmG8zLyck8XP4JBCa2kt0CxO6dR0LIb7olkZXzX7hmuzKQZSe-MCz_-KqYRk1_qMSm_qf4UEKt3zwhcTe4Ykt7N1UFpYmnvkBnLYdtfbONFnzakYnQLmJLfjQtmvrTbygXKezSAD4MUZujpIRROJ0KhZw0GqoNWCy4im9Cksr55SU10iEe8IzwX78LDfcJsE4VJDNxUBAJq0bnWeB7CUohcSA-RBXwisehlbGMIItNXIE3zz0UU5Yua5T2XLaKhP6EmaEvMjVavqOpLc3KTmgCoHYn0_kyPq3wyqoBn2-geHo5To1owW5PaIYqw2FlzYV_uqVPP9c5v1amjlwnFjW43cMraj-ZS_Fi0OVb1oQFoXGN7I9CUQ.jKxgOSIZ5VX6lXGbBoBcvA/data_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64" type="text/javascript"></script>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..nIVjrumaUsj4cfWw.ad0X4CESQdvJBeFDXJCTidIED_kanDex7UswtjbGkNHeCzrMn4mc_ibgrRC69daGn8FL8tSZ9aHvzBvBxNvomZIMOrduKfJrdLA4WsTreCeUbZkmG8zLyck8XP4JBCa2kt0CxO6dR0LIb7olkZXzX7hmuzKQZSe-MCz_-KqYRk1_qMSm_qf4UEKt3zwhcTe4Ykt7N1UFpYmnvkBnLYdtfbONFnzakYnQLmJLfjQtmvrTbygXKezSAD4MUZujpIRROJ0KhZw0GqoNWCy4im9Cksr55SU10iEe8IzwX78LDfcJsE4VJDNxUBAJq0bnWeB7CUohcSA-RBXwisehlbGMIItNXIE3zz0UU5Yua5T2XLaKhP6EmaEvMjVavqOpLc3KTmgCoHYn0_kyPq3wyqoBn2-geHo5To1owW5PaIYqw2FlzYV_uqVPP9c5v1amjlwnFjW43cMraj-ZS_Fi0OVb1oQFoXGN7I9CUQ.jKxgOSIZ5VX6lXGbBoBcvA/editing_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64" type="text/javascript"></script>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..nIVjrumaUsj4cfWw.ad0X4CESQdvJBeFDXJCTidIED_kanDex7UswtjbGkNHeCzrMn4mc_ibgrRC69daGn8FL8tSZ9aHvzBvBxNvomZIMOrduKfJrdLA4WsTreCeUbZkmG8zLyck8XP4JBCa2kt0CxO6dR0LIb7olkZXzX7hmuzKQZSe-MCz_-KqYRk1_qMSm_qf4UEKt3zwhcTe4Ykt7N1UFpYmnvkBnLYdtfbONFnzakYnQLmJLfjQtmvrTbygXKezSAD4MUZujpIRROJ0KhZw0GqoNWCy4im9Cksr55SU10iEe8IzwX78LDfcJsE4VJDNxUBAJq0bnWeB7CUohcSA-RBXwisehlbGMIItNXIE3zz0UU5Yua5T2XLaKhP6EmaEvMjVavqOpLc3KTmgCoHYn0_kyPq3wyqoBn2-geHo5To1owW5PaIYqw2FlzYV_uqVPP9c5v1amjlwnFjW43cMraj-ZS_Fi0OVb1oQFoXGN7I9CUQ.jKxgOSIZ5VX6lXGbBoBcvA/resizing_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root">
+  <div data-template-id="announcement-bar" class="canva-banner bg-[#201d19] px-4 py-2 text-center">
+   <p data-template-id="announcement-text" class="canva-text m-0 text-[10px] tracking-[.17em] text-[#f7f2e9]"></p>
+  </div>
+  <header class="site-header sticky top-0 z-40 w-full bg-[#fffdf9]">
+   <div class="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-5 md:px-8"><button id="mobile-menu-button" type="button" aria-label="Open menu" class="focus-ring md:hidden"><i data-lucide="menu"></i></button>
+    <nav aria-label="Primary navigation" class="hidden w-1/3 gap-7 text-[11px] font-medium tracking-[.1em] md:flex"><a class="nav-link focus-ring" href="#shop">SHOP</a><a class="nav-link focus-ring" href="#categories">COLLECTIONS</a><a class="nav-link focus-ring" href="#new-arrivals">NEW ARRIVALS</a><a class="nav-link focus-ring" href="#best-sellers">BEST SELLERS</a>
+    </nav><a href="#top" data-template-id="wordmark" class="canva-link serif focus-ring absolute left-1/2 -translate-x-1/2 text-2xl tracking-[.16em]"></a>
+    <div class="flex w-auto items-center justify-end gap-4 md:w-1/3 md:gap-5"><button id="search-button" class="focus-ring" type="button" aria-label="Search"><i data-lucide="search"></i></button> <button id="account-button" class="focus-ring hidden md:block" type="button" aria-label="Account"><i data-lucide="user-round"></i></button> <button id="wishlist-button" class="focus-ring relative hidden md:block" type="button" aria-label="Wishlist"><i data-lucide="heart"></i><span id="wishlist-count" class="absolute -right-2 -top-2 min-w-4 rounded-full bg-[#a68756] px-1 text-[9px] text-white">0</span></button> <button id="cart-button" class="focus-ring relative" type="button" aria-label="Cart"><i data-lucide="shopping-bag"></i><span id="cart-count" class="absolute -right-2 -top-2 min-w-4 rounded-full bg-[#a68756] px-1 text-[9px] text-white">0</span></button>
+    </div>
+   </div>
+  </header>
+  <main id="top">
+   <section class="relative min-h-[620px] overflow-hidden md:min-h-[760px]"><img data-template-id="hero-image" class="canva-image absolute inset-0 h-full w-full object-cover" loading="eager">
+    <div class="hero-copy absolute inset-0 flex items-end bg-gradient-to-r from-black/45 via-black/10 to-transparent">
+     <div class="reveal max-w-xl px-6 pb-16 text-white md:px-14 md:pb-24">
+      <p data-template-id="hero-eyebrow" class="canva-text mb-5 text-[10px] tracking-[.25em]"></p>
+      <h1 data-template-id="hero-title" class="canva-text mb-5 max-w-lg text-5xl leading-[.98] md:text-7xl"></h1>
+      <p data-template-id="hero-copy" class="canva-text mb-8 max-w-sm text-sm leading-6 text-white/90 md:text-base"></p>
+      <div class="flex flex-wrap gap-3"><a data-template-id="hero-primary-cta" href="#new-arrivals" class="canva-button focus-ring bg-[#fffdf9] px-6 py-4 text-[11px] font-semibold tracking-[.12em] text-[#1d1a17]"></a> <a data-template-id="hero-secondary-cta" href="#categories" class="canva-button focus-ring border border-white px-6 py-4 text-[11px] font-semibold tracking-[.12em] text-white"></a>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section data-template-id="trust-strip" class="canva-section border-y border-[#ded7ca] bg-[#fffdf9]">
+    <div class="mx-auto grid max-w-[1500px] grid-cols-2 divide-x divide-y divide-[#ded7ca] md:grid-cols-4 md:divide-y-0">
+     <div class="line-icon flex gap-3 px-5 py-6">
+      <i data-lucide="truck"></i>
+      <div>
+       <p data-template-id="trust-one-title" class="canva-text text-xs font-semibold"></p>
+       <p data-template-id="trust-one-copy" class="canva-text mt-1 text-[11px] text-[#706b63]"></p>
+      </div>
+     </div>
+     <div class="line-icon flex gap-3 px-5 py-6">
+      <i data-lucide="rotate-ccw"></i>
+      <div>
+       <p data-template-id="trust-two-title" class="canva-text text-xs font-semibold"></p>
+       <p data-template-id="trust-two-copy" class="canva-text mt-1 text-[11px] text-[#706b63]"></p>
+      </div>
+     </div>
+     <div class="line-icon flex gap-3 px-5 py-6">
+      <i data-lucide="gem"></i>
+      <div>
+       <p data-template-id="trust-three-title" class="canva-text text-xs font-semibold"></p>
+       <p data-template-id="trust-three-copy" class="canva-text mt-1 text-[11px] text-[#706b63]"></p>
+      </div>
+     </div>
+     <div class="line-icon flex gap-3 px-5 py-6">
+      <i data-lucide="shield-check"></i>
+      <div>
+       <p data-template-id="trust-four-title" class="canva-text text-xs font-semibold"></p>
+       <p data-template-id="trust-four-copy" class="canva-text mt-1 text-[11px] text-[#706b63]"></p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section id="categories" class="mx-auto max-w-[1500px] px-5 py-20 md:px-8 md:py-28">
+    <div class="mb-10 text-center">
+     <p data-template-id="categories-kicker" class="canva-text mb-3 text-[10px] tracking-[.22em] text-[#a68756]"></p>
+     <h2 data-template-id="categories-title" class="canva-text text-4xl md:text-5xl"></h2>
+     <p data-template-id="categories-copy" class="canva-text mt-4 text-sm text-[#706b63]"></p>
+    </div>
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5"><button class="media-card focus-ring group relative aspect-[.83] overflow-hidden text-left" data-filter="rings"><img data-template-id="category-rings-image" class="canva-image editorial-img h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></span><span data-template-id="category-rings-name" class="canva-text absolute bottom-11 left-5 text-2xl text-white"></span><span data-template-id="category-explore" class="canva-text absolute bottom-5 left-5 text-[10px] tracking-[.12em] text-white"></span></button> <button class="media-card focus-ring group relative aspect-[.83] overflow-hidden text-left" data-filter="necklaces"><img data-template-id="category-necklaces-image" class="canva-image editorial-img h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></span><span data-template-id="category-necklaces-name" class="canva-text absolute bottom-11 left-5 text-2xl text-white"></span><span data-template-id="category-explore-two" class="canva-text absolute bottom-5 left-5 text-[10px] tracking-[.12em] text-white"></span></button> <button class="media-card focus-ring group relative aspect-[.83] overflow-hidden text-left" data-filter="earrings"><img data-template-id="category-earrings-image" class="canva-image editorial-img h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></span><span data-template-id="category-earrings-name" class="canva-text absolute bottom-11 left-5 text-2xl text-white"></span><span data-template-id="category-explore-three" class="canva-text absolute bottom-5 left-5 text-[10px] tracking-[.12em] text-white"></span></button> <button class="media-card focus-ring group relative aspect-[.83] overflow-hidden text-left" data-filter="bracelets"><img data-template-id="category-bracelets-image" class="canva-image editorial-img h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></span><span data-template-id="category-bracelets-name" class="canva-text absolute bottom-11 left-5 text-2xl text-white"></span><span data-template-id="category-explore-four" class="canva-text absolute bottom-5 left-5 text-[10px] tracking-[.12em] text-white"></span></button> <button class="media-card focus-ring group relative aspect-[.83] overflow-hidden text-left" data-filter="chains"><img data-template-id="category-chains-image" class="canva-image editorial-img h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></span><span data-template-id="category-chains-name" class="canva-text absolute bottom-11 left-5 text-2xl text-white"></span><span data-template-id="category-explore-five" class="canva-text absolute bottom-5 left-5 text-[10px] tracking-[.12em] text-white"></span></button> <button class="media-card focus-ring group relative aspect-[.83] overflow-hidden text-left" data-filter="gift"><img data-template-id="category-gifts-image" class="canva-image editorial-img h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></span><span data-template-id="category-gifts-name" class="canva-text absolute bottom-11 left-5 text-2xl text-white"></span><span data-template-id="category-explore-six" class="canva-text absolute bottom-5 left-5 text-[10px] tracking-[.12em] text-white"></span></button>
+    </div>
+   </section>
+   <section id="best-sellers" class="bg-[#eee9df] px-5 py-20 md:px-8 md:py-28">
+    <div class="mx-auto max-w-[1500px]">
+     <div class="mb-10 flex items-end justify-between">
+      <div>
+       <p data-template-id="best-kicker" class="canva-text mb-3 text-[10px] tracking-[.22em] text-[#a68756]"></p>
+       <h2 data-template-id="best-title" class="canva-text text-4xl md:text-5xl"></h2>
+       <p data-template-id="best-copy" class="canva-text mt-4 text-sm text-[#706b63]"></p>
+      </div><a data-template-id="best-link" href="#shop" class="canva-link focus-ring hidden text-[11px] font-semibold tracking-[.1em] underline underline-offset-4 md:block"></a>
+     </div>
+     <div id="product-grid" class="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+      <article class="product-card bg-[#fffdf9]" data-product="Celeste Gold Ring" data-category="rings" data-price="189">
+       <div class="relative aspect-square overflow-hidden bg-[#f1ede5]">
+        <img data-template-id="best-one-image" class="canva-image h-full w-full object-cover" loading="lazy"><span data-template-id="best-one-badge" class="canva-tag absolute left-3 top-3 bg-[#1d1a17] px-2 py-1 text-[9px] tracking-[.1em] text-white"></span><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Celeste Gold Ring to wishlist"><i data-lucide="heart"></i></button>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="best-one-name" class="canva-text text-base"></h3>
+        <p data-template-id="best-one-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+        <div class="mt-2 flex gap-2">
+         <p data-template-id="best-one-price" class="canva-text text-sm font-semibold"></p>
+         <p data-template-id="best-one-compare" class="canva-text text-sm text-[#8e877d] line-through"></p>
+        </div><button data-template-id="best-one-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+       </div>
+      </article>
+      <article class="product-card bg-[#fffdf9]" data-product="Luna Pendant Necklace" data-category="necklaces" data-price="148">
+       <div class="relative aspect-square overflow-hidden bg-[#f1ede5]">
+        <img data-template-id="best-two-image" class="canva-image h-full w-full object-cover" loading="lazy"><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Luna Pendant Necklace to wishlist"><i data-lucide="heart"></i></button>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="best-two-name" class="canva-text text-base"></h3>
+        <p data-template-id="best-two-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+        <p data-template-id="best-two-price" class="canva-text mt-2 text-sm font-semibold"></p><button data-template-id="best-two-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+       </div>
+      </article>
+      <article class="product-card bg-[#fffdf9]" data-product="Solara Hoop Earrings" data-category="earrings" data-price="112">
+       <div class="relative aspect-square overflow-hidden bg-[#f1ede5]">
+        <img data-template-id="best-three-image" class="canva-image h-full w-full object-cover" loading="lazy"><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Solara Hoop Earrings to wishlist"><i data-lucide="heart"></i></button>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="best-three-name" class="canva-text text-base"></h3>
+        <p data-template-id="best-three-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+        <p data-template-id="best-three-price" class="canva-text mt-2 text-sm font-semibold"></p><button data-template-id="best-three-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+       </div>
+      </article>
+      <article class="product-card bg-[#fffdf9]" data-product="Elysian Tennis Bracelet" data-category="bracelets" data-price="248">
+       <div class="relative aspect-square overflow-hidden bg-[#f1ede5]">
+        <img data-template-id="best-four-image" class="canva-image h-full w-full object-cover" loading="lazy"><span data-template-id="best-four-badge" class="canva-tag absolute left-3 top-3 bg-[#1d1a17] px-2 py-1 text-[9px] tracking-[.1em] text-white"></span><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Elysian Tennis Bracelet to wishlist"><i data-lucide="heart"></i></button>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="best-four-name" class="canva-text text-base"></h3>
+        <p data-template-id="best-four-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+        <p data-template-id="best-four-price" class="canva-text mt-2 text-sm font-semibold"></p><button data-template-id="best-four-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="grid md:grid-cols-2">
+    <div class="min-h-[460px] overflow-hidden">
+     <img data-template-id="everyday-image" class="canva-image editorial-img h-full w-full object-cover" loading="lazy">
+    </div>
+    <div data-template-id="everyday-panel" class="canva-panel flex min-h-[460px] items-center bg-[#dcd3c4] px-8 py-16 md:px-[14%]">
+     <div>
+      <p data-template-id="everyday-kicker" class="canva-text mb-5 text-[10px] tracking-[.22em]"></p>
+      <h2 data-template-id="everyday-title" class="canva-text text-4xl leading-tight md:text-5xl"></h2>
+      <p data-template-id="everyday-copy" class="canva-text my-6 max-w-sm text-sm leading-6"></p><a data-template-id="everyday-cta" href="#shop" class="canva-button focus-ring inline-block border-b border-[#1d1a17] pb-2 text-[10px] font-semibold tracking-[.12em]"></a>
+     </div>
+    </div>
+   </section>
+   <section id="new-arrivals" class="mx-auto max-w-[1500px] px-5 py-20 md:px-8 md:py-28">
+    <div class="mb-10 flex items-end justify-between">
+     <div>
+      <p data-template-id="new-kicker" class="canva-text mb-3 text-[10px] tracking-[.22em] text-[#a68756]"></p>
+      <h2 data-template-id="new-title" class="canva-text text-4xl md:text-5xl"></h2>
+      <p data-template-id="new-copy" class="canva-text mt-4 text-sm text-[#706b63]"></p>
+     </div><a data-template-id="new-link" href="#shop" class="canva-link focus-ring hidden text-[11px] font-semibold tracking-[.1em] underline underline-offset-4 md:block"></a>
+    </div>
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+     <article class="product-card border border-[#ded7ca] bg-[#fffdf9]" data-product="Arc Sculptural Ring" data-category="rings" data-price="172">
+      <div class="relative aspect-square">
+       <img data-template-id="new-one-image" class="canva-image h-full w-full object-cover" loading="lazy"><span data-template-id="new-badge" class="canva-tag absolute left-3 top-3 bg-[#a68756] px-2 py-1 text-[9px] tracking-[.1em] text-white"></span><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Arc Sculptural Ring to wishlist"><i data-lucide="heart"></i></button>
+      </div>
+      <div class="p-4">
+       <h3 data-template-id="new-one-name" class="canva-text text-base"></h3>
+       <p data-template-id="new-one-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+       <p data-template-id="new-one-price" class="canva-text mt-2 text-sm font-semibold"></p><button data-template-id="new-one-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+      </div>
+     </article>
+     <article class="product-card border border-[#ded7ca] bg-[#fffdf9]" data-product="Serein Fine Chain" data-category="chains" data-price="126">
+      <div class="relative aspect-square">
+       <img data-template-id="new-two-image" class="canva-image h-full w-full object-cover" loading="lazy"><span data-template-id="new-badge-two" class="canva-tag absolute left-3 top-3 bg-[#a68756] px-2 py-1 text-[9px] tracking-[.1em] text-white"></span><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Serein Fine Chain to wishlist"><i data-lucide="heart"></i></button>
+      </div>
+      <div class="p-4">
+       <h3 data-template-id="new-two-name" class="canva-text text-base"></h3>
+       <p data-template-id="new-two-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+       <p data-template-id="new-two-price" class="canva-text mt-2 text-sm font-semibold"></p><button data-template-id="new-two-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+      </div>
+     </article>
+     <article class="product-card border border-[#ded7ca] bg-[#fffdf9]" data-product="Mira Pearl Drops" data-category="earrings" data-price="96">
+      <div class="relative aspect-square">
+       <img data-template-id="new-three-image" class="canva-image h-full w-full object-cover" loading="lazy"><span data-template-id="new-badge-three" class="canva-tag absolute left-3 top-3 bg-[#a68756] px-2 py-1 text-[9px] tracking-[.1em] text-white"></span><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Mira Pearl Drops to wishlist"><i data-lucide="heart"></i></button>
+      </div>
+      <div class="p-4">
+       <h3 data-template-id="new-three-name" class="canva-text text-base"></h3>
+       <p data-template-id="new-three-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+       <p data-template-id="new-three-price" class="canva-text mt-2 text-sm font-semibold"></p><button data-template-id="new-three-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+      </div>
+     </article>
+     <article class="product-card border border-[#ded7ca] bg-[#fffdf9]" data-product="Amalfi Charm Bracelet" data-category="bracelets" data-price="158">
+      <div class="relative aspect-square">
+       <img data-template-id="new-four-image" class="canva-image h-full w-full object-cover" loading="lazy"><span data-template-id="new-badge-four" class="canva-tag absolute left-3 top-3 bg-[#a68756] px-2 py-1 text-[9px] tracking-[.1em] text-white"></span><button class="heart focus-ring absolute right-3 top-3 rounded-full bg-white p-2" aria-label="Add Amalfi Charm Bracelet to wishlist"><i data-lucide="heart"></i></button>
+      </div>
+      <div class="p-4">
+       <h3 data-template-id="new-four-name" class="canva-text text-base"></h3>
+       <p data-template-id="new-four-rating" class="canva-text mt-2 text-[10px] tracking-[.08em] text-[#a68756]"></p>
+       <p data-template-id="new-four-price" class="canva-text mt-2 text-sm font-semibold"></p><button data-template-id="new-four-add" class="quick-add canva-button focus-ring mt-4 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.11em]"></button>
+      </div>
+     </article>
+    </div>
+   </section>
+   <section class="relative min-h-[590px] overflow-hidden">
+    <img data-template-id="story-image" class="canva-image absolute inset-0 h-full w-full object-cover" loading="lazy">
+    <div class="absolute inset-0 bg-black/45"></div>
+    <div class="relative mx-auto flex min-h-[590px] max-w-[1500px] items-center px-6 py-16 md:px-14">
+     <div class="max-w-xl text-white">
+      <p data-template-id="story-kicker" class="canva-text mb-5 text-[10px] tracking-[.22em] text-[#e7cf9b]"></p>
+      <h2 data-template-id="story-title" class="canva-text text-5xl leading-[1.02] md:text-7xl"></h2>
+      <p data-template-id="story-copy" class="canva-text my-7 max-w-md text-sm leading-7 text-white/90"></p><a data-template-id="story-cta" href="#footer" class="canva-button focus-ring inline-block border-b border-white pb-2 text-[10px] font-semibold tracking-[.13em]"></a>
+     </div>
+    </div>
+   </section>
+   <section id="shop" class="mx-auto max-w-[1500px] px-5 py-20 md:px-8 md:py-28">
+    <div class="mb-10 text-center">
+     <p data-template-id="occasion-kicker" class="canva-text mb-3 text-[10px] tracking-[.22em] text-[#a68756]"></p>
+     <h2 data-template-id="occasion-title" class="canva-text text-4xl md:text-5xl"></h2>
+    </div>
+    <div class="grid gap-4 md:grid-cols-4"><button class="media-card focus-ring relative min-h-[370px] overflow-hidden text-left" data-filter="all"><img data-template-id="occasion-one-image" class="canva-image editorial-img absolute inset-0 h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></span><span class="absolute bottom-7 left-6 text-white"><span data-template-id="occasion-one-title" class="canva-text block text-3xl"></span><span data-template-id="occasion-one-copy" class="canva-text mt-2 block text-xs text-white/85"></span><span data-template-id="occasion-one-cta" class="canva-text mt-5 block text-[10px] font-semibold tracking-[.12em]"></span></span></button> <button class="media-card focus-ring relative min-h-[370px] overflow-hidden text-left" data-filter="earrings"><img data-template-id="occasion-two-image" class="canva-image editorial-img absolute inset-0 h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></span><span class="absolute bottom-7 left-6 text-white"><span data-template-id="occasion-two-title" class="canva-text block text-3xl"></span><span data-template-id="occasion-two-copy" class="canva-text mt-2 block text-xs text-white/85"></span><span data-template-id="occasion-two-cta" class="canva-text mt-5 block text-[10px] font-semibold tracking-[.12em]"></span></span></button> <button class="media-card focus-ring relative min-h-[370px] overflow-hidden text-left" data-filter="rings"><img data-template-id="occasion-three-image" class="canva-image editorial-img absolute inset-0 h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></span><span class="absolute bottom-7 left-6 text-white"><span data-template-id="occasion-three-title" class="canva-text block text-3xl"></span><span data-template-id="occasion-three-copy" class="canva-text mt-2 block text-xs text-white/85"></span><span data-template-id="occasion-three-cta" class="canva-text mt-5 block text-[10px] font-semibold tracking-[.12em]"></span></span></button> <button class="media-card focus-ring relative min-h-[370px] overflow-hidden text-left" data-filter="gift"><img data-template-id="occasion-four-image" class="canva-image editorial-img absolute inset-0 h-full w-full object-cover" loading="lazy"><span class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></span><span class="absolute bottom-7 left-6 text-white"><span data-template-id="occasion-four-title" class="canva-text block text-3xl"></span><span data-template-id="occasion-four-copy" class="canva-text mt-2 block text-xs text-white/85"></span><span data-template-id="occasion-four-cta" class="canva-text mt-5 block text-[10px] font-semibold tracking-[.12em]"></span></span></button>
+    </div>
+   </section>
+   <section class="relative min-h-[580px] overflow-hidden">
+    <img data-template-id="signature-image" class="canva-image absolute inset-0 h-full w-full object-cover" loading="lazy">
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="relative mx-auto flex min-h-[580px] max-w-[1500px] items-center justify-center px-6 text-center text-white">
+     <div class="max-w-xl">
+      <p data-template-id="signature-kicker" class="canva-text mb-5 text-[10px] tracking-[.22em] text-[#e7cf9b]"></p>
+      <h2 data-template-id="signature-title" class="canva-text text-5xl md:text-7xl"></h2>
+      <p data-template-id="signature-copy" class="canva-text my-7 text-sm leading-6 text-white/90"></p><a data-template-id="signature-cta" href="#best-sellers" class="canva-button focus-ring inline-block bg-white px-6 py-4 text-[10px] font-semibold tracking-[.12em] text-[#1d1a17]"></a>
+     </div>
+    </div>
+   </section>
+   <section class="bg-[#eee9df] px-5 py-20 md:px-8 md:py-28">
+    <div class="mx-auto max-w-[1200px]">
+     <div class="mb-12 text-center">
+      <p data-template-id="reviews-kicker" class="canva-text mb-3 text-[10px] tracking-[.22em] text-[#a68756]"></p>
+      <h2 data-template-id="reviews-title" class="canva-text text-4xl md:text-5xl"></h2>
+     </div>
+     <div class="grid gap-px bg-[#d4cabb] md:grid-cols-3">
+      <article data-template-id="review-one" class="canva-card bg-[#fffdf9] p-8 md:p-10">
+       <p data-template-id="review-one-stars" class="canva-text text-sm tracking-[.14em] text-[#a68756]"></p>
+       <p data-template-id="review-one-copy" class="canva-text my-6 text-lg leading-7"></p>
+       <p data-template-id="review-one-name" class="canva-text text-xs font-semibold"></p>
+       <p data-template-id="review-one-role" class="canva-text mt-1 text-[10px] tracking-[.1em] text-[#706b63]"></p>
+      </article>
+      <article data-template-id="review-two" class="canva-card bg-[#fffdf9] p-8 md:p-10">
+       <p data-template-id="review-two-stars" class="canva-text text-sm tracking-[.14em] text-[#a68756]"></p>
+       <p data-template-id="review-two-copy" class="canva-text my-6 text-lg leading-7"></p>
+       <p data-template-id="review-two-name" class="canva-text text-xs font-semibold"></p>
+       <p data-template-id="review-two-role" class="canva-text mt-1 text-[10px] tracking-[.1em] text-[#706b63]"></p>
+      </article>
+      <article data-template-id="review-three" class="canva-card bg-[#fffdf9] p-8 md:p-10">
+       <p data-template-id="review-three-stars" class="canva-text text-sm tracking-[.14em] text-[#a68756]"></p>
+       <p data-template-id="review-three-copy" class="canva-text my-6 text-lg leading-7"></p>
+       <p data-template-id="review-three-name" class="canva-text text-xs font-semibold"></p>
+       <p data-template-id="review-three-role" class="canva-text mt-1 text-[10px] tracking-[.1em] text-[#706b63]"></p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="mx-auto max-w-[1500px] px-5 py-20 md:px-8 md:py-28">
+    <div class="mb-10 text-center">
+     <h2 data-template-id="social-title" class="canva-text text-4xl md:text-5xl"></h2>
+     <p data-template-id="social-copy" class="canva-text mt-4 text-sm text-[#706b63]"></p>
+    </div>
+    <div class="grid grid-cols-2 gap-2 md:grid-cols-6">
+     <button class="social-image focus-ring overflow-hidden" data-lightbox="social-one-image"><img data-template-id="social-one-image" class="canva-image editorial-img aspect-square h-full w-full object-cover" loading="lazy"></button><button class="social-image focus-ring overflow-hidden" data-lightbox="social-two-image"><img data-template-id="social-two-image" class="canva-image editorial-img aspect-square h-full w-full object-cover" loading="lazy"></button><button class="social-image focus-ring overflow-hidden" data-lightbox="social-three-image"><img data-template-id="social-three-image" class="canva-image editorial-img aspect-square h-full w-full object-cover" loading="lazy"></button><button class="social-image focus-ring overflow-hidden" data-lightbox="social-four-image"><img data-template-id="social-four-image" class="canva-image editorial-img aspect-square h-full w-full object-cover" loading="lazy"></button><button class="social-image focus-ring overflow-hidden" data-lightbox="social-five-image"><img data-template-id="social-five-image" class="canva-image editorial-img aspect-square h-full w-full object-cover" loading="lazy"></button><button class="social-image focus-ring overflow-hidden" data-lightbox="social-six-image"><img data-template-id="social-six-image" class="canva-image editorial-img aspect-square h-full w-full object-cover" loading="lazy"></button>
+    </div>
+   </section>
+   <section data-template-id="newsletter-section" class="canva-section bg-[#1d1a17] px-5 py-20 text-center text-white md:px-8">
+    <div class="mx-auto max-w-xl">
+     <p data-template-id="newsletter-kicker" class="canva-text mb-5 text-[10px] tracking-[.22em] text-[#dbc18e]"></p>
+     <h2 data-template-id="newsletter-title" class="canva-text text-4xl md:text-5xl"></h2>
+     <p data-template-id="newsletter-copy" class="canva-text mx-auto my-5 max-w-md text-sm leading-6 text-white/75"></p>
+     <form id="newsletter-form" class="mt-8 flex flex-col gap-2 sm:flex-row">
+      <label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" data-template-id="newsletter-input" class="canva-input focus-ring min-w-0 flex-1 border border-white/30 bg-transparent px-4 py-4 text-sm text-white placeholder:text-white/50" type="email" required><button data-template-id="newsletter-button" class="canva-button focus-ring bg-[#e7d0a3] px-7 py-4 text-[10px] font-semibold tracking-[.13em] text-[#1d1a17]" type="submit"></button>
+     </form>
+     <p id="newsletter-status" class="mt-4 min-h-5 text-xs text-[#e7d0a3]" aria-live="polite"></p>
+    </div>
+   </section>
+  </main>
+  <footer id="footer" data-template-id="footer-section" class="canva-footer bg-[#13110f] px-5 pb-8 pt-16 text-[#eee9df] md:px-8">
+   <div class="mx-auto max-w-[1500px]">
+    <div class="grid gap-12 border-b border-white/15 pb-14 md:grid-cols-[1.7fr_repeat(4,1fr)]">
+     <div>
+      <p data-template-id="footer-wordmark" class="canva-text serif text-3xl tracking-[.16em]"></p>
+      <p data-template-id="footer-statement" class="canva-text mt-5 max-w-xs text-sm leading-6 text-white/65"></p>
+      <div class="mt-7 flex gap-4">
+       <a class="focus-ring" href="#social" aria-label="Instagram"><i data-lucide="instagram"></i></a><a class="focus-ring" href="#top" aria-label="Pinterest"><i data-lucide="pin"></i></a><a class="focus-ring" href="#top" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+      </div>
+     </div>
+     <div>
+      <p data-template-id="footer-shop-title" class="canva-text mb-4 text-[10px] font-semibold tracking-[.15em]"></p>
+      <div class="space-y-3 text-xs text-white/65">
+       <a href="#new-arrivals" class="footer-link block">New Arrivals</a><a href="#best-sellers" class="footer-link block">Best Sellers</a><a href="#categories" class="footer-link block">Rings</a><a href="#categories" class="footer-link block">Necklaces</a><a href="#categories" class="footer-link block">Earrings</a><a href="#categories" class="footer-link block">Bracelets</a>
+      </div>
+     </div>
+     <div>
+      <p data-template-id="footer-about-title" class="canva-text mb-4 text-[10px] font-semibold tracking-[.15em]"></p>
+      <div class="space-y-3 text-xs text-white/65">
+       <a href="#top" class="footer-link block">Our Story</a><a href="#top" class="footer-link block">Journal</a><a href="#top" class="footer-link block">Craftsmanship</a><a href="#top" class="footer-link block">Contact</a>
+      </div>
+     </div>
+     <div>
+      <p data-template-id="footer-help-title" class="canva-text mb-4 text-[10px] font-semibold tracking-[.15em]"></p>
+      <div class="space-y-3 text-xs text-white/65">
+       <a href="#top" class="footer-link block">Shipping</a><a href="#top" class="footer-link block">Returns</a><a href="#top" class="footer-link block">FAQ</a><a href="#top" class="footer-link block">Care Guide</a><a href="#top" class="footer-link block">Track Order</a>
+      </div>
+     </div>
+     <div>
+      <p data-template-id="footer-customer-title" class="canva-text mb-4 text-[10px] font-semibold tracking-[.15em]"></p>
+      <div class="space-y-3 text-xs text-white/65">
+       <button id="footer-account" class="footer-link focus-ring block">My Account</button><button id="footer-wishlist" class="footer-link focus-ring block">Wishlist</button><a href="#top" class="footer-link block">Gift Cards</a>
+      </div>
+     </div>
+    </div>
+    <div class="flex flex-col justify-between gap-6 pt-7 text-[10px] text-white/55 md:flex-row md:items-center">
+     <div class="flex flex-wrap gap-4">
+      <a href="#top">Privacy Policy</a><a href="#top">Terms</a><a href="#top">Refund Policy</a>
+     </div>
+     <div class="flex gap-3">
+      <label class="sr-only" for="country">Country</label><select id="country" class="border border-white/20 bg-transparent p-2"><option>India</option><option>United States</option><option>United Kingdom</option></select><label class="sr-only" for="currency">Currency</label><select id="currency" class="border border-white/20 bg-transparent p-2"><option>USD $</option><option>INR ₹</option><option>GBP £</option></select><span class="self-center tracking-[.12em]">VISA · MC · AMEX</span>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <div id="backdrop" class="overlay fixed inset-0 z-40 bg-black/45"></div>
+  <aside id="cart-drawer" class="drawer fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-[#fffdf9] p-6 shadow-2xl" aria-label="Shopping cart" aria-hidden="true">
+   <div class="flex items-center justify-between border-b border-[#ded7ca] pb-5">
+    <h2 class="serif text-2xl">Your Bag</h2><button class="close-drawer focus-ring" aria-label="Close cart"><i data-lucide="x"></i></button>
+   </div>
+   <div id="cart-items" class="flex-1 overflow-auto py-5">
+    <p id="cart-empty" class="text-sm text-[#706b63]">Your bag is waiting for something beautiful.</p>
+   </div>
+   <div class="border-t border-[#ded7ca] pt-5">
+    <div class="mb-4 flex justify-between text-sm">
+     <span>Subtotal</span><strong id="cart-subtotal">$0.00</strong>
+    </div><button id="checkout-button" class="focus-ring w-full bg-[#1d1a17] py-4 text-[10px] font-semibold tracking-[.12em] text-white">CHECKOUT</button>
+    <p id="checkout-note" class="mt-3 min-h-4 text-center text-[11px] text-[#706b63]" aria-live="polite"></p>
+   </div>
+  </aside>
+  <aside id="mobile-drawer" class="panel-left fixed left-0 top-0 z-50 h-full w-[85%] max-w-sm bg-[#fffdf9] p-6 shadow-2xl" aria-label="Mobile navigation">
+   <div class="flex justify-end">
+    <button id="mobile-close" class="focus-ring" aria-label="Close menu"><i data-lucide="x"></i></button>
+   </div>
+   <p class="serif mt-8 text-3xl tracking-[.14em]">AURELIA</p>
+   <nav class="mt-12 space-y-6 text-sm tracking-[.11em]">
+    <a href="#shop" class="mobile-link block">SHOP</a><a href="#categories" class="mobile-link block">COLLECTIONS</a><a href="#new-arrivals" class="mobile-link block">NEW ARRIVALS</a><a href="#best-sellers" class="mobile-link block">BEST SELLERS</a>
+   </nav>
+  </aside>
+  <div id="search-overlay" class="overlay fixed inset-0 z-50 flex items-start justify-center bg-black/45 p-4 pt-16">
+   <div class="search-panel w-full max-w-2xl bg-[#fffdf9] p-6 shadow-2xl">
+    <div class="flex justify-between">
+     <h2 class="serif text-2xl">Search AURELIA</h2><button class="close-search focus-ring" aria-label="Close search"><i data-lucide="x"></i></button>
+    </div><label class="sr-only" for="search-input">Search products</label><input id="search-input" class="focus-ring mt-7 w-full border-b border-[#1d1a17] bg-transparent py-4 text-lg" placeholder="Search rings, necklaces, earrings...">
+    <div id="search-results" class="mt-5 text-sm text-[#706b63]">
+     Begin typing to explore our pieces.
+    </div>
+   </div>
+  </div>
+  <div id="account-panel" class="overlay fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4">
+   <div class="w-full max-w-sm bg-[#fffdf9] p-7 shadow-2xl">
+    <div class="flex justify-between">
+     <h2 class="serif text-2xl">Welcome to AURELIA</h2><button class="close-account focus-ring" aria-label="Close account panel"><i data-lucide="x"></i></button>
+    </div>
+    <p class="mt-4 text-sm leading-6 text-[#706b63]">Sign in is available when this storefront is connected to your Shopify customer accounts.</p><button class="close-account focus-ring mt-7 w-full border border-[#1d1a17] py-3 text-[10px] font-semibold tracking-[.1em]">CONTINUE SHOPPING</button>
+   </div>
+  </div>
+  <div id="lightbox" class="overlay fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-5">
+   <div class="relative max-h-full max-w-4xl">
+    <button id="lightbox-close" class="focus-ring absolute right-3 top-3 z-10 bg-white p-2 text-black" aria-label="Close image preview"><i data-lucide="x"></i></button><img id="lightbox-image" class="max-h-[85vh] max-w-full object-contain" alt="">
+   </div>
+  </div>
+  <div id="toast" class="fixed bottom-5 left-1/2 z-[70] -translate-x-1/2 translate-y-24 bg-[#1d1a17] px-5 py-3 text-xs text-white opacity-0 transition-all" aria-live="polite"></div>
+  <script>
+    const cart=[], products=[...document.querySelectorAll('[data-product]')].map(el=>({name:el.dataset.product,category:el.dataset.category,price:+el.dataset.price}));
+    const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+    const backdrop=$('#backdrop'), cartDrawer=$('#cart-drawer'), mobileDrawer=$('#mobile-drawer');
+    function openDrawer(d){backdrop.classList.add('open');d.classList.add('open');}
+    function closeDrawers(){backdrop.classList.remove('open');cartDrawer.classList.remove('open');mobileDrawer.classList.remove('open');}
+    function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.remove('translate-y-24','opacity-0');setTimeout(()=>t.classList.add('translate-y-24','opacity-0'),2200)}
+    $('#cart-button').onclick=()=>openDrawer(cartDrawer); $('#mobile-menu-button').onclick=()=>openDrawer(mobileDrawer); $('#mobile-close').onclick=closeDrawers; $$('.close-drawer').forEach(b=>b.onclick=closeDrawers); backdrop.onclick=closeDrawers; $$('.mobile-link').forEach(a=>a.onclick=closeDrawers);
+    function renderCart(){const box=$('#cart-items');box.querySelectorAll('.cart-row').forEach(x=>x.remove());$('#cart-empty').style.display=cart.length?'none':'block';let total=0;cart.forEach((item,i)=>{total+=item.price*item.qty;const row=document.createElement('div');row.className='cart-row flex items-center justify-between border-b border-[#ded7ca] py-4 text-sm';row.innerHTML=`<div><p class="font-semibold">${item.name}</p><p class="mt-1 text-[#706b63]">$${item.price.toFixed(2)}</p></div><div class="flex items-center gap-2"><button class="qty border px-2" data-i="${i}" data-d="-1" aria-label="Decrease quantity">−</button><span>${item.qty}</span><button class="qty border px-2" data-i="${i}" data-d="1" aria-label="Increase quantity">+</button><button class="remove ml-2 text-xs underline" data-i="${i}">Remove</button></div>`;box.appendChild(row)});$('#cart-count').textContent=cart.reduce((n,x)=>n+x.qty,0);$('#cart-subtotal').textContent='$'+total.toFixed(2);$$('.qty').forEach(b=>b.onclick=()=>{let x=cart[+b.dataset.i];x.qty+=+b.dataset.d;if(x.qty<1)cart.splice(+b.dataset.i,1);renderCart()});$$('.remove').forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.i,1);renderCart()})}
+    $$('.quick-add').forEach(btn=>btn.onclick=()=>{const p=btn.closest('[data-product]'), found=cart.find(x=>x.name===p.dataset.product);if(found)found.qty++;else cart.push({name:p.dataset.product,price:+p.dataset.price,qty:1});renderCart();toast('Added to your bag');});
+    let wish=0;$$('.heart').forEach(b=>b.onclick=()=>{const active=b.classList.toggle('active');wish+=active?1:-1;$('#wishlist-count').textContent=wish;b.setAttribute('aria-pressed',active)});
+    function filterProducts(term){const q=term.toLowerCase();$$('[data-product]').forEach(el=>{el.style.display=(!q||el.dataset.product.toLowerCase().includes(q)||el.dataset.category.includes(q))?'':'none'});}
+    $$('[data-filter]').forEach(b=>b.onclick=()=>{const f=b.dataset.filter;filterProducts(f==='all'?'':f);$('#best-sellers').scrollIntoView({behavior:'smooth',block:'start'});toast(f==='all'?'Showing all pieces':'Showing '+f);});
+    $('#search-button').onclick=()=>{$('#search-overlay').classList.add('open');setTimeout(()=>$('#search-input').focus(),100)};$$('.close-search').forEach(b=>b.onclick=()=>$('#search-overlay').classList.remove('open'));
+    $('#search-input').oninput=e=>{const q=e.target.value.toLowerCase(), matches=products.filter(p=>p.name.toLowerCase().includes(q)||p.category.includes(q));$('#search-results').textContent=q?(matches.length?matches.map(x=>x.name).join(' · '):'No pieces found. Try rings, necklaces, earrings, or bracelets.'):'Begin typing to explore our pieces.';filterProducts(q)};
+    function account(open){$('#account-panel').classList.toggle('open',open)} $('#account-button').onclick=()=>account(true);$('#footer-account').onclick=()=>account(true);$$('.close-account').forEach(b=>b.onclick=()=>account(false));$('#footer-wishlist').onclick=()=>{toast(wish?'Your saved pieces are marked with hearts.':'Your wishlist is currently empty.')};
+    $$('.social-image').forEach(b=>b.onclick=()=>{const image=document.querySelector(`[data-template-id="${b.dataset.lightbox}"]`);$('#lightbox-image').src=image.src;$('#lightbox-image').alt=image.alt;$('#lightbox').classList.add('open')});$('#lightbox-close').onclick=()=>$('#lightbox').classList.remove('open');$('#lightbox').onclick=e=>{if(e.target.id==='lightbox')e.currentTarget.classList.remove('open')};
+    $('#newsletter-form').addEventListener('submit',e=>{e.preventDefault();const input=$('#newsletter-email'),status=$('#newsletter-status');if(!input.validity.valid){status.textContent='Please enter a valid email address.';input.focus();return}status.textContent='Thank you — you’re on the AURELIA list.';input.value='';});
+    $('#checkout-button').onclick=()=>{$('#checkout-note').textContent=cart.length?'Checkout is ready for Shopify connection.':'Add a piece to your bag first.'};
+    window.addEventListener('scroll',()=>document.querySelector('.site-header').classList.toggle('scrolled',scrollY>18));document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#search-overlay').classList.remove('open');$('#lightbox').classList.remove('open');account(false);closeDrawers()}});
+    lucide.createIcons();
+  </script>
+ </body>
+</html>

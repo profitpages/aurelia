@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-hero",
+      "settings": {}
+    },
+    "intro": {
+      "type": "statement-strip",
+      "settings": {}
+    },
+    "grid": {
+      "type": "main-collection",
+      "settings": {
+        "filter_layout": "drawer",
+        "columns": 4,
+        "card_style": "plain",
+        "image_ratio": "jewel",
+        "per_page": 12,
+        "load_more": true
+      }
+    },
+    "layering": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "inset",
+        "color_scheme": "scheme-7",
+        "kicker": "The Aurelia edit",
+        "kicker_plain": false,
+        "heading": "The art of layering",
+        "text": "<p>Build a collection that feels entirely your own, from delicate essentials to unmistakable statement pieces.</p>",
+        "button_label": "Explore styling notes",
+        "placeholder_art": "stack"
+      }
+    },
+    "craft": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "split",
+        "image_ratio": "landscape",
+        "kicker": "Our approach",
+        "heading": "Crafted for your every day",
+        "text": "<p>Every Aurelia piece is thoughtfully designed to feel effortless, distinctive, and enduring.</p>",
+        "button_label": "Discover our story",
+        "placeholder_art": "ring",
+        "tight": true
+      }
+    },
+    "complete": {
+      "type": "featured-products",
+      "settings": {
+        "kicker": "",
+        "heading": "Complete the look",
+        "link_label": "Shop all",
+        "limit": 4,
+        "columns": 4,
+        "card_style": "plain",
+        "image_ratio": "portrait",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "color_scheme": "scheme-8"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "intro",
+    "grid",
+    "layering",
+    "craft",
+    "complete",
+    "newsletter"
+  ]
+}

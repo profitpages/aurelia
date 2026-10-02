@@ -1,0 +1,57 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu"
+          }
+        },
+        "about": {
+          "type": "menu",
+          "settings": {
+            "heading": "About",
+            "menu": "footer"
+          }
+        },
+        "help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        },
+        "customer": {
+          "type": "text",
+          "settings": {
+            "heading": "Customer",
+            "text": "<p>hello@yourstore.com<br>Mon–Fri, 9am–6pm</p>"
+          }
+        }
+      },
+      "block_order": [
+        "shop",
+        "about",
+        "help",
+        "customer"
+      ],
+      "settings": {
+        "color_scheme": "scheme-6",
+        "blurb": "<p>Modern heirlooms for every chapter of your story.</p>",
+        "show_social": true,
+        "show_country": true,
+        "show_language": true,
+        "show_policies": true,
+        "show_payment": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

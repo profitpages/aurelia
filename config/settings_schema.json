@@ -1,0 +1,699 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Aurelia",
+    "theme_version": "1.0.0",
+    "theme_author": "Profit Pages",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/manual/online-store/themes"
+  },
+  {
+    "name": "Getting started",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Welcome to Aurelia. These steps make your store match the demo:"
+      },
+      {
+        "type": "header",
+        "content": "1. Menus"
+      },
+      {
+        "type": "paragraph",
+        "content": "Online Store › Navigation: build a Main menu (e.g. Shop, Collections, New arrivals, Best sellers) and footer menus (Shop, About, Help, Customer). Nested links become dropdowns or a mega menu."
+      },
+      {
+        "type": "header",
+        "content": "2. Jewellery details"
+      },
+      {
+        "type": "paragraph",
+        "content": "Settings › Custom data › Products: add the optional metafields custom.material, custom.metal_type, custom.metal_color, custom.stone_type, custom.stone_size, custom.carat, custom.weight, custom.dimensions, custom.finish, custom.plating, custom.hypoallergenic, custom.water_resistance, custom.care, custom.shipping_note and custom.product_story. Empty fields are hidden automatically."
+      },
+      {
+        "type": "header",
+        "content": "3. Filters"
+      },
+      {
+        "type": "paragraph",
+        "content": "Install Shopify Search & Discovery to add collection filters (category, metal, stone, price, availability) and complementary products for 'Style it with'."
+      },
+      {
+        "type": "header",
+        "content": "4. Reviews"
+      },
+      {
+        "type": "paragraph",
+        "content": "Install a reviews app (Judge.me, Okendo, Shopify Product Reviews…). Ratings appear on cards automatically; add the app block to the Reviews section on product pages."
+      }
+    ]
+  },
+  {
+    "name": "Logo & favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "Leave empty to show your store name as a wordmark."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 60,
+        "max": 260,
+        "step": 5,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 140
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_inverse",
+        "label": "Logo on dark backgrounds",
+        "info": "Used in dark color schemes, e.g. a dark footer."
+      },
+      {
+        "type": "select",
+        "id": "wordmark_style",
+        "label": "Wordmark style (when no logo)",
+        "options": [
+          {
+            "value": "spaced",
+            "label": "Uppercase, letter-spaced"
+          },
+          {
+            "value": "plain",
+            "label": "As typed"
+          }
+        ],
+        "default": "spaced"
+      },
+      {
+        "type": "select",
+        "id": "wordmark_font",
+        "label": "Wordmark font",
+        "options": [
+          {
+            "value": "heading",
+            "label": "Heading (serif)"
+          },
+          {
+            "value": "body",
+            "label": "Body (sans)"
+          }
+        ],
+        "default": "heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32 × 32px .png"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "color",
+            "id": "background",
+            "label": "Background",
+            "default": "#f8f5ef"
+          },
+          {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "Background gradient",
+            "info": "Overrides the background color when set."
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "Text",
+            "default": "#1d1a17"
+          },
+          {
+            "type": "color",
+            "id": "muted",
+            "label": "Secondary text",
+            "default": "#706b63"
+          },
+          {
+            "type": "color",
+            "id": "accent",
+            "label": "Accent (gold eyebrows, stars, links)",
+            "default": "#a68756"
+          },
+          {
+            "type": "color",
+            "id": "card",
+            "label": "Card surface",
+            "default": "#fffdf9"
+          },
+          {
+            "type": "color",
+            "id": "border",
+            "label": "Borders",
+            "default": "#ded7ca"
+          },
+          {
+            "type": "color",
+            "id": "button",
+            "label": "Solid button",
+            "default": "#1d1a17"
+          },
+          {
+            "type": "color",
+            "id": "button_label",
+            "label": "Solid button label",
+            "default": "#fffdf9"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button_label",
+            "label": "Outline button",
+            "default": "#1d1a17"
+          },
+          {
+            "type": "color",
+            "id": "shadow",
+            "label": "Shadow tint",
+            "default": "#261e12"
+          }
+        ],
+        "role": {
+          "text": "text",
+          "background": {
+            "solid": "background",
+            "gradient": "background_gradient"
+          },
+          "links": "secondary_button_label",
+          "icons": "text",
+          "primary_button": "button",
+          "on_primary_button": "button_label",
+          "primary_button_border": "button",
+          "secondary_button": "background",
+          "on_secondary_button": "secondary_button_label",
+          "secondary_button_border": "secondary_button_label"
+        }
+      },
+      {
+        "type": "header",
+        "content": "Champagne button"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_button",
+        "label": "Background",
+        "default": "#e7d0a3",
+        "info": "Used for buttons on dark bands (e.g. the newsletter)."
+      },
+      {
+        "type": "color",
+        "id": "color_accent_button_label",
+        "label": "Label",
+        "default": "#1d1a17"
+      },
+      {
+        "type": "header",
+        "content": "Jewellery palette"
+      },
+      {
+        "type": "color",
+        "id": "color_blush",
+        "label": "Soft fill (highlights, selected options)",
+        "default": "#efe7da"
+      },
+      {
+        "type": "color",
+        "id": "color_linen",
+        "label": "Image stage (behind product photos)",
+        "default": "#eee8de"
+      },
+      {
+        "type": "color",
+        "id": "color_champagne",
+        "label": "Champagne gold (highlights on dark)",
+        "default": "#e7cf9b"
+      },
+      {
+        "type": "header",
+        "content": "Details"
+      },
+      {
+        "type": "color",
+        "id": "color_stars",
+        "label": "Rating stars",
+        "default": "#a68756"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Badge background",
+        "default": "#1d1a17"
+      },
+      {
+        "type": "color",
+        "id": "color_sale_text",
+        "label": "Badge text",
+        "default": "#fffdf9"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_signature_fonts",
+        "label": "Use Aurelia fonts (Fraunces + Work Sans)",
+        "default": true,
+        "info": "Loaded from Google Fonts. Untick to use the Shopify font pickers below."
+      },
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Heading font",
+        "default": "fraunces_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body font",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 80,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "Heading size",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 90,
+        "max": 120,
+        "step": 5,
+        "unit": "%",
+        "label": "Body text size",
+        "default": 100
+      },
+      {
+        "type": "select",
+        "id": "title_case",
+        "label": "Section headings",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase, spaced (Aurelia)"
+          },
+          {
+            "value": "none",
+            "label": "As typed"
+          }
+        ],
+        "default": "uppercase"
+      },
+      {
+        "type": "select",
+        "id": "heading_case",
+        "label": "Eyebrow (small label) style",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase, spaced"
+          },
+          {
+            "value": "none",
+            "label": "Sentence case"
+          }
+        ],
+        "default": "uppercase"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1100,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "label": "Content width",
+        "default": 1440
+      },
+      {
+        "type": "range",
+        "id": "section_spacing",
+        "min": 40,
+        "max": 140,
+        "step": 4,
+        "unit": "px",
+        "label": "Section spacing (desktop)",
+        "default": 112
+      },
+      {
+        "type": "range",
+        "id": "radius_card",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Card radius",
+        "default": 0,
+        "info": "Cards and panels. Aurelia uses square corners."
+      },
+      {
+        "type": "range",
+        "id": "radius_image",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Media radius",
+        "default": 0,
+        "info": "Product gallery, thumbnails and dialogs."
+      },
+      {
+        "type": "range",
+        "id": "radius_button",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Button radius",
+        "default": 0,
+        "info": "0 = square (Aurelia). 40 = fully rounded pill."
+      }
+    ]
+  },
+  {
+    "name": "Motion & texture",
+    "settings": [
+      {
+        "type": "range",
+        "id": "shadow_intensity",
+        "min": 0,
+        "max": 150,
+        "step": 10,
+        "unit": "%",
+        "label": "Shadow intensity",
+        "default": 70
+      },
+      {
+        "type": "range",
+        "id": "depth",
+        "min": 0,
+        "max": 16,
+        "step": 1,
+        "unit": "px",
+        "label": "Card lift on hover",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "slab_offset",
+        "min": 0,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "label": "Offset frame depth",
+        "default": 0,
+        "info": "A champagne offset frame behind framed images. 0 turns it off."
+      },
+      {
+        "type": "checkbox",
+        "id": "decor_enable",
+        "label": "Show decorative accents",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "float_enable",
+        "label": "Gentle floating motion",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "reveal_enable",
+        "label": "Soft reveal animation on scroll",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "grain_enable",
+        "label": "Fine texture on image stages",
+        "default": false
+      },
+      {
+        "type": "paragraph",
+        "content": "Motion is always turned off for visitors who ask their device to reduce motion."
+      }
+    ]
+  },
+  {
+    "name": "Product cards",
+    "settings": [
+      {
+        "type": "select",
+        "id": "card_style",
+        "label": "Default card style",
+        "options": [
+          {
+            "value": "boxed",
+            "label": "Boxed (paper panel)"
+          },
+          {
+            "value": "bordered",
+            "label": "Bordered (hairline outline)"
+          },
+          {
+            "value": "plain",
+            "label": "Plain (frameless, serif title)"
+          }
+        ],
+        "default": "boxed"
+      },
+      {
+        "type": "select",
+        "id": "card_ratio",
+        "label": "Image ratio",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "jewel",
+            "label": "Jewellery portrait (5:6)"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait 4:5"
+          },
+          {
+            "value": "tall",
+            "label": "Tall 3:4"
+          }
+        ],
+        "default": "square"
+      },
+      {
+        "type": "select",
+        "id": "card_button",
+        "label": "Quick add button",
+        "options": [
+          {
+            "value": "outline",
+            "label": "Outline"
+          },
+          {
+            "value": "solid",
+            "label": "Solid"
+          }
+        ],
+        "default": "outline"
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_secondary",
+        "label": "Show second image on hover",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_type",
+        "label": "Show subtitle (custom.subtitle)",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_rating",
+        "label": "Show rating",
+        "default": true,
+        "info": "From your reviews app. Nothing shows for products without reviews."
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_badges",
+        "label": "Show badges",
+        "default": true,
+        "info": "Sold out, sale %, 'New' (products tagged new) and custom badges from custom.badge or a 'badge:Best seller' tag."
+      },
+      {
+        "type": "number",
+        "id": "card_new_days",
+        "label": "Show 'New' badge for products published in the last (days)",
+        "default": 0,
+        "info": "0 = only products tagged 'new'."
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_quick_add",
+        "label": "Show quick add",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold",
+        "default": 100,
+        "info": "In your store currency. 0 hides the progress bar."
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_recommendations",
+        "label": "Show recommended products",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_promo",
+        "label": "Show promo code field",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_note",
+        "label": "Enable order note",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "cart_reassurance",
+        "label": "Reassurance line",
+        "default": "Secure checkout · Easy 30-day returns"
+      }
+    ]
+  },
+  {
+    "name": "Wishlist",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "wishlist_enable",
+        "label": "Show wishlist hearts",
+        "default": true,
+        "info": "Saves to the shopper's browser. Most wishlist apps can replace this — turn it off if you install one."
+      },
+      {
+        "type": "page",
+        "id": "wishlist_page",
+        "label": "Wishlist page",
+        "info": "Create a page with the 'wishlist' template and select it here."
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "predictive_search",
+        "label": "Search suggestions",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram",
+        "placeholder": "https://instagram.com/"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok",
+        "placeholder": "https://tiktok.com/@"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest",
+        "placeholder": "https://pinterest.com/"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook",
+        "placeholder": "https://facebook.com/"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube",
+        "placeholder": "https://youtube.com/"
+      },
+      {
+        "type": "text",
+        "id": "social_x",
+        "label": "X (Twitter)",
+        "placeholder": "https://x.com/"
+      }
+    ]
+  }
+]

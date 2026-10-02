@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+ <head><script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..8K56YaThwUyM-b3k.8sD-a4T8BXWMXRsRLOy98zrplagYbViJnOahw1emFRFrsyEABfgpGVJCUbxR179lHL-8Yms22-o9HthPCQVpBKzBRk2Xh-ks2AoSVW26zbWKnLHA-IpHBN0j62WUtkiCUrDt3VBWzd_X4z40-C8-IhmsRFUf-TWPi8-9S5t2HcReO6q8nKlu9tD_9X0d7wzrOhZUZHgLRE1XYFqNTwEFFr7ftQIWt7OcSzi4jJck8O-G8voaPxx1ONDzHLDUVcdwULLvx7ETgrA2Fq-oHt-dBDWxFf8Olc5KyrsFuRWZO4Xa9ugKJJh7lo4XedHgKacvupHBrjZSyrlrV4U_eD7MeZArRAzTEzdg0Cqr4fG0n7WJ6xsa5dH7zYci4rEMC_jN5zGDmYfrrGrGB6nOwfcA4y-6uTDBYbLmkffGX-K1DmlmJfnfbcImCCB77Z4Xl7MRG9N2ZGIJH9_a269nLmDKl1mvnJi96stNZA._h2FSWDwYiB4rRUMFSbLcw/telemetry_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURELIA — The Signature Collection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#201d19; --ivory:#f7f4ed; --paper:#fffdfa; --gold:#b49761; --line:#d9d2c5; --muted:#746e65; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; width:100%; color:var(--ink); background:var(--ivory); font-family:"Work Sans",sans-serif; }
+    h1,h2,h3,.serif { font-family:"Fraunces",serif; }
+    button,a,select,input { font:inherit; }
+    button { cursor:pointer; }
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible { outline:2px solid var(--gold); outline-offset:3px; }
+    .utility { font-size:10px; letter-spacing:.16em; text-transform:uppercase; }
+    .icon-btn { display:inline-flex; position:relative; align-items:center; justify-content:center; width:40px; height:40px; background:transparent; border:0; color:inherit; }
+    .count { position:absolute; top:3px; right:1px; min-width:15px; height:15px; padding:0 3px; border-radius:99px; background:var(--ink); color:white; font-size:9px; line-height:15px; text-align:center; }
+    .under-link { display:inline-flex; gap:.55rem; align-items:center; border-bottom:1px solid var(--ink); padding-bottom:5px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+    .card { background:var(--paper); }
+    .product-card { position:relative; min-width:0; }
+    .product-image { width:100%; aspect-ratio: .82; object-fit:cover; background:#eee8de; display:block; transition:transform .65s ease; }
+    .product-media { overflow:hidden; position:relative; background:#eee8de; }
+    .product-card:hover .product-image { transform:scale(1.035); }
+    .badge { position:absolute; top:12px; left:12px; z-index:2; background:#fbfaf7; color:var(--ink); padding:6px 8px; font-size:9px; letter-spacing:.12em; }
+    .heart { position:absolute; top:7px; right:7px; z-index:2; width:38px; height:38px; border:0; background:#fbfaf7e8; display:grid; place-items:center; }
+    .heart.active { color:#9d2933; }
+    .quick { width:100%; padding:12px; border:1px solid var(--ink); background:transparent; font-size:10px; letter-spacing:.13em; text-transform:uppercase; transition:.2s; }
+    .quick:hover { background:var(--ink); color:white; }
+    .filter-option { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid #e5dfd5; font-size:13px; }
+    .filter-option input { accent-color:var(--ink); width:15px; height:15px; }
+    .drawer { position:fixed; z-index:60; top:0; right:0; width:min(440px,100%); height:calc(100 * min(var(--vh, 1vh), 1vh)); transform:translateX(101%); transition:transform .35s ease; background:var(--paper); box-shadow:-15px 0 45px #201d1925; overflow:auto; }
+    .drawer.open { transform:translateX(0); }
+    .backdrop { position:fixed; z-index:55; inset:0; display:none; background:#201d196b; }
+    .backdrop.show { display:block; }
+    .overlay { position:fixed; z-index:65; inset:0; display:none; place-items:start center; padding:90px 20px 20px; background:#201d196b; }
+    .overlay.open { display:grid; }
+    .overlay-panel { width:min(680px,100%); background:var(--paper); box-shadow:0 20px 70px #0004; }
+    .hide { display:none!important; }
+    .grid-compact { grid-template-columns:repeat(5,minmax(0,1fr))!important; }
+    .grid-comfort { grid-template-columns:repeat(3,minmax(0,1fr))!important; }
+    .reveal { animation:rise .65s both; }
+    @keyframes rise { from {opacity:0;transform:translateY(16px)} to {opacity:1;transform:translateY(0)} }
+    @media(max-width:767px){
+      .desktop-nav { display:none; }
+      .hero-copy { padding:38px 24px!important; }
+      .editorial-copy { padding:34px 24px!important; }
+      .product-grid { gap:16px!important; }
+      .product-meta { padding:12px 2px!important; }
+      .utility { font-size:9px; }
+      .quick { padding:10px 4px; font-size:9px; }
+      .product-image { aspect-ratio:.78; }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..8K56YaThwUyM-b3k.8sD-a4T8BXWMXRsRLOy98zrplagYbViJnOahw1emFRFrsyEABfgpGVJCUbxR179lHL-8Yms22-o9HthPCQVpBKzBRk2Xh-ks2AoSVW26zbWKnLHA-IpHBN0j62WUtkiCUrDt3VBWzd_X4z40-C8-IhmsRFUf-TWPi8-9S5t2HcReO6q8nKlu9tD_9X0d7wzrOhZUZHgLRE1XYFqNTwEFFr7ftQIWt7OcSzi4jJck8O-G8voaPxx1ONDzHLDUVcdwULLvx7ETgrA2Fq-oHt-dBDWxFf8Olc5KyrsFuRWZO4Xa9ugKJJh7lo4XedHgKacvupHBrjZSyrlrV4U_eD7MeZArRAzTEzdg0Cqr4fG0n7WJ6xsa5dH7zYci4rEMC_jN5zGDmYfrrGrGB6nOwfcA4y-6uTDBYbLmkffGX-K1DmlmJfnfbcImCCB77Z4Xl7MRG9N2ZGIJH9_a269nLmDKl1mvnJi96stNZA._h2FSWDwYiB4rRUMFSbLcw/data_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64" type="text/javascript"></script>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..8K56YaThwUyM-b3k.8sD-a4T8BXWMXRsRLOy98zrplagYbViJnOahw1emFRFrsyEABfgpGVJCUbxR179lHL-8Yms22-o9HthPCQVpBKzBRk2Xh-ks2AoSVW26zbWKnLHA-IpHBN0j62WUtkiCUrDt3VBWzd_X4z40-C8-IhmsRFUf-TWPi8-9S5t2HcReO6q8nKlu9tD_9X0d7wzrOhZUZHgLRE1XYFqNTwEFFr7ftQIWt7OcSzi4jJck8O-G8voaPxx1ONDzHLDUVcdwULLvx7ETgrA2Fq-oHt-dBDWxFf8Olc5KyrsFuRWZO4Xa9ugKJJh7lo4XedHgKacvupHBrjZSyrlrV4U_eD7MeZArRAzTEzdg0Cqr4fG0n7WJ6xsa5dH7zYci4rEMC_jN5zGDmYfrrGrGB6nOwfcA4y-6uTDBYbLmkffGX-K1DmlmJfnfbcImCCB77Z4Xl7MRG9N2ZGIJH9_a269nLmDKl1mvnJi96stNZA._h2FSWDwYiB4rRUMFSbLcw/editing_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64" type="text/javascript"></script>
+  <script src="/codelet/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..8K56YaThwUyM-b3k.8sD-a4T8BXWMXRsRLOy98zrplagYbViJnOahw1emFRFrsyEABfgpGVJCUbxR179lHL-8Yms22-o9HthPCQVpBKzBRk2Xh-ks2AoSVW26zbWKnLHA-IpHBN0j62WUtkiCUrDt3VBWzd_X4z40-C8-IhmsRFUf-TWPi8-9S5t2HcReO6q8nKlu9tD_9X0d7wzrOhZUZHgLRE1XYFqNTwEFFr7ftQIWt7OcSzi4jJck8O-G8voaPxx1ONDzHLDUVcdwULLvx7ETgrA2Fq-oHt-dBDWxFf8Olc5KyrsFuRWZO4Xa9ugKJJh7lo4XedHgKacvupHBrjZSyrlrV4U_eD7MeZArRAzTEzdg0Cqr4fG0n7WJ6xsa5dH7zYci4rEMC_jN5zGDmYfrrGrGB6nOwfcA4y-6uTDBYbLmkffGX-K1DmlmJfnfbcImCCB77Z4Xl7MRG9N2ZGIJH9_a269nLmDKl1mvnJi96stNZA._h2FSWDwYiB4rRUMFSbLcw/resizing_sdk.js?pin_id=e2284baac3b8b4d3aec3146ae554af64" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root">
+  <div data-template-id="announcement-bar" class="canva-banner bg-[#201d19] text-[#f7f4ed] py-2 text-center utility"></div>
+  <header data-template-id="site-header" class="canva-header sticky top-0 z-40 border-b border-[#d9d2c5] bg-[#f7f4ed]/95 backdrop-blur">
+   <div class="w-full max-w-[1600px] mx-auto h-[74px] px-4 md:px-8 grid grid-cols-3 items-center">
+    <nav class="desktop-nav flex gap-6 items-center" aria-label="Main navigation"><a data-template-id="nav-shop" class="canva-link utility" href="#collection-grid"></a> <a data-template-id="nav-collections" class="canva-link utility" href="#collection-grid"></a> <a data-template-id="nav-new" class="canva-link utility" href="#collection-grid"></a> <a data-template-id="nav-best" class="canva-link utility" href="#collection-grid"></a>
+    </nav>
+    <div class="md:hidden">
+     <button class="icon-btn" type="button" aria-label="Open menu" onclick="openDrawer('menu-drawer')"><i data-lucide="menu"></i></button>
+    </div><a data-template-id="wordmark" class="canva-link serif text-center text-[25px] tracking-[.18em]" href="#top"></a>
+    <div class="flex justify-end items-center gap-0"><button class="icon-btn" type="button" aria-label="Search collection" onclick="openOverlay('search-overlay')"><i data-lucide="search" width="19"></i></button> <button class="icon-btn hidden md:inline-flex" type="button" aria-label="Account" onclick="openDrawer('account-drawer')"><i data-lucide="user-round" width="18"></i></button> <button class="icon-btn hidden md:inline-flex" type="button" aria-label="Wishlist" onclick="openDrawer('wishlist-drawer')"><i data-lucide="heart" width="18"></i><span id="wish-count" class="count">0</span></button> <button class="icon-btn" type="button" aria-label="Open cart" onclick="openDrawer('cart-drawer')"><i data-lucide="shopping-bag" width="18"></i><span id="cart-count" class="count">0</span></button>
+    </div>
+   </div>
+  </header>
+  <main id="top">
+   <nav class="max-w-[1600px] mx-auto px-5 md:px-8 py-5 utility text-[#746e65]" aria-label="Breadcrumb"><a href="#top" class="hover:text-[#201d19]">Home</a> <span class="px-2">/</span><a href="#collection-grid">Collections</a><span class="px-2">/</span><span data-template-id="breadcrumb-current" class="canva-text"></span>
+   </nav>
+   <section data-template-id="collection-hero" class="canva-section max-w-[1600px] mx-auto px-5 md:px-8 pb-12">
+    <div class="grid md:grid-cols-[1.14fr_.86fr] bg-[#e8e0d2]">
+     <div class="overflow-hidden min-h-[390px] md:min-h-[610px]"><img data-template-id="hero-image" loading="lazy" class="canva-image w-full h-full object-cover">
+     </div>
+     <div class="hero-copy flex flex-col justify-center p-10 md:p-[clamp(3rem,7vw,8rem)]">
+      <p data-template-id="hero-eyebrow" class="canva-text utility mb-5 text-[#746e65]"></p>
+      <h1 data-template-id="hero-title" class="canva-text leading-[.95] text-[clamp(2.8rem,5.2vw,5.4rem)] font-medium mb-6"></h1>
+      <p data-template-id="hero-copy" class="canva-text max-w-sm leading-7 text-[15px] mb-4"></p>
+      <p data-template-id="hero-support" class="canva-text max-w-sm leading-6 text-[13px] text-[#746e65] mb-9"></p><a data-template-id="hero-cta" class="canva-link under-link w-fit" href="#collection-grid"></a>
+     </div>
+    </div>
+   </section>
+   <section data-template-id="intro-strip" class="canva-section border-y border-[#d9d2c5] py-9 px-5">
+    <div class="max-w-[1060px] mx-auto flex flex-col md:flex-row gap-6 justify-between md:items-center">
+     <p data-template-id="intro-statement" class="canva-text serif text-2xl md:text-3xl leading-tight max-w-2xl"></p><a data-template-id="craft-link" class="canva-link text-[12px] underline underline-offset-4 whitespace-nowrap" href="#craftsmanship"></a>
+    </div>
+   </section>
+   <section id="collection-grid" class="max-w-[1600px] mx-auto px-5 md:px-8 pt-12 pb-20">
+    <div class="flex flex-wrap gap-4 items-center justify-between border-b border-[#d9d2c5] pb-5">
+     <p id="result-label" class="serif text-xl">12 pieces</p>
+     <div class="flex items-center gap-2 md:gap-3"><button data-template-id="filter-button" class="canva-button border border-[#201d19] px-4 py-3 utility" type="button" onclick="openDrawer('filter-drawer')"></button> <label class="sr-only" for="sort-control">Sort products</label> <select id="sort-control" class="border border-[#d9d2c5] bg-transparent px-3 py-3 text-[12px]" onchange="sortProducts()"> <option>Featured</option><option>Best selling</option><option>Newest</option><option>Price: low to high</option><option>Price: high to low</option> </select> <button class="hidden md:inline-flex icon-btn border border-[#d9d2c5]" type="button" aria-label="Comfortable grid" onclick="setGrid('')"><i data-lucide="grid-2x2" width="17"></i></button> <button class="hidden md:inline-flex icon-btn border border-[#d9d2c5]" type="button" aria-label="Compact grid" onclick="setGrid('compact')"><i data-lucide="layout-grid" width="17"></i></button>
+     </div>
+    </div>
+    <div id="filter-chips" class="flex flex-wrap items-center gap-2 min-h-[45px] py-3"></div>
+    <div id="empty-state" class="hide text-center py-20">
+     <p data-template-id="empty-title" class="canva-text serif text-3xl mb-3"></p><button data-template-id="empty-clear" class="canva-button under-link" type="button" onclick="clearFilters()"></button>
+    </div>
+    <div id="product-grid" class="product-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-11">
+     <article class="product-card" data-name="Celeste Gold Ring" data-price="148" data-rating="4.9" data-new="0" data-category="Rings" data-material="18k Gold Vermeil" data-style="Minimal Giftable" data-stock="1">
+      <div class="product-media">
+       <span class="badge">BEST SELLER</span><button class="heart" aria-label="Add Celeste Gold Ring to wishlist" onclick="toggleWish(this,'Celeste Gold Ring')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-celeste" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Celeste Gold Ring',148,true)">Celeste Gold Ring</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(126)</span></p>
+       <p class="mt-2 text-sm">$148.00 <s class="text-[#746e65] ml-1">$185.00</s></p><button class="quick mt-4" onclick="addCart('Celeste Gold Ring',148)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Luna Pendant Necklace" data-price="168" data-rating="4.8" data-new="0" data-category="Necklaces" data-material="18k Gold Vermeil" data-style="Minimal Giftable" data-stock="1">
+      <div class="product-media">
+       <button class="heart" aria-label="Add Luna Pendant Necklace to wishlist" onclick="toggleWish(this,'Luna Pendant Necklace')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-luna" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Luna Pendant Necklace',168)">Luna Pendant Necklace</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(94)</span></p>
+       <p class="mt-2 text-sm">$168.00</p><button class="quick mt-4" onclick="addCart('Luna Pendant Necklace',168)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Solara Hoop Earrings" data-price="98" data-rating="4.9" data-new="1" data-category="Earrings" data-material="18k Gold Vermeil" data-style="Minimal" data-stock="1">
+      <div class="product-media">
+       <span class="badge">NEW</span><button class="heart" aria-label="Add Solara Hoop Earrings to wishlist" onclick="toggleWish(this,'Solara Hoop Earrings')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-solara" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Solara Hoop Earrings',98)">Solara Hoop Earrings</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(72)</span></p>
+       <p class="mt-2 text-sm">$98.00</p><button class="quick mt-4" onclick="addCart('Solara Hoop Earrings',98)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Elysian Tennis Bracelet" data-price="220" data-rating="4.9" data-new="0" data-category="Bracelets" data-material="Sterling Silver" data-style="Statement Giftable" data-stock="1">
+      <div class="product-media">
+       <span class="badge">20% OFF</span><button class="heart" aria-label="Add Elysian Tennis Bracelet to wishlist" onclick="toggleWish(this,'Elysian Tennis Bracelet')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-elysian" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Elysian Tennis Bracelet',220)">Elysian Tennis Bracelet</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(88)</span></p>
+       <p class="mt-2 text-sm">$220.00 <s class="text-[#746e65] ml-1">$275.00</s></p><button class="quick mt-4" onclick="addCart('Elysian Tennis Bracelet',220)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Aurora Stackable Ring" data-price="128" data-rating="4.7" data-new="0" data-category="Rings" data-material="18k Gold Vermeil" data-style="Minimal" data-stock="1">
+      <div class="product-media">
+       <button class="heart" aria-label="Add Aurora Stackable Ring to wishlist" onclick="toggleWish(this,'Aurora Stackable Ring')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-aurora" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Aurora Stackable Ring',128)">Aurora Stackable Ring</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(61)</span></p>
+       <p class="mt-2 text-sm">$128.00</p><button class="quick mt-4" onclick="addCart('Aurora Stackable Ring',128)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Elara Fine Chain" data-price="115" data-rating="4.8" data-new="1" data-category="Chains" data-material="18k Gold Vermeil" data-style="Minimal" data-stock="1">
+      <div class="product-media">
+       <span class="badge">NEW</span><button class="heart" aria-label="Add Elara Fine Chain to wishlist" onclick="toggleWish(this,'Elara Fine Chain')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-elara" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Elara Fine Chain',115)">Elara Fine Chain</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(43)</span></p>
+       <p class="mt-2 text-sm">$115.00</p><button class="quick mt-4" onclick="addCart('Elara Fine Chain',115)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Maris Pearl Drops" data-price="132" data-rating="4.9" data-new="0" data-category="Earrings" data-material="Pearl Detail" data-style="Giftable Statement" data-stock="1">
+      <div class="product-media">
+       <button class="heart" aria-label="Add Maris Pearl Drops to wishlist" onclick="toggleWish(this,'Maris Pearl Drops')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-maris" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Maris Pearl Drops',132)">Maris Pearl Drops</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(39)</span></p>
+       <p class="mt-2 text-sm">$132.00</p><button class="quick mt-4" onclick="addCart('Maris Pearl Drops',132)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Lyra Charm Bracelet" data-price="156" data-rating="4.8" data-new="0" data-category="Bracelets" data-material="18k Gold Vermeil" data-style="Giftable" data-stock="1">
+      <div class="product-media">
+       <button class="heart" aria-label="Add Lyra Charm Bracelet to wishlist" onclick="toggleWish(this,'Lyra Charm Bracelet')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-lyra" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Lyra Charm Bracelet',156)">Lyra Charm Bracelet</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(51)</span></p>
+       <p class="mt-2 text-sm">$156.00</p><button class="quick mt-4" onclick="addCart('Lyra Charm Bracelet',156)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Noelle Signet Ring" data-price="142" data-rating="4.7" data-new="0" data-category="Rings" data-material="18k Gold Vermeil" data-style="Statement Giftable" data-stock="1">
+      <div class="product-media">
+       <button class="heart" aria-label="Add Noelle Signet Ring to wishlist" onclick="toggleWish(this,'Noelle Signet Ring')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-noelle" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Noelle Signet Ring',142)">Noelle Signet Ring</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(34)</span></p>
+       <p class="mt-2 text-sm">$142.00</p><button class="quick mt-4" onclick="addCart('Noelle Signet Ring',142)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Sienna Layered Necklace" data-price="198" data-rating="4.9" data-new="0" data-category="Necklaces" data-material="18k Gold Vermeil" data-style="Statement" data-stock="1">
+      <div class="product-media">
+       <button class="heart" aria-label="Add Sienna Layered Necklace to wishlist" onclick="toggleWish(this,'Sienna Layered Necklace')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-sienna" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Sienna Layered Necklace',198)">Sienna Layered Necklace</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(47)</span></p>
+       <p class="mt-2 text-sm">$198.00</p><button class="quick mt-4" onclick="addCart('Sienna Layered Necklace',198)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Celeste Mini Hoops" data-price="88" data-rating="4.8" data-new="0" data-category="Earrings" data-material="18k Gold Vermeil" data-style="Minimal" data-stock="1">
+      <div class="product-media">
+       <button class="heart" aria-label="Add Celeste Mini Hoops to wishlist" onclick="toggleWish(this,'Celeste Mini Hoops')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-minihoops" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Celeste Mini Hoops',88)">Celeste Mini Hoops</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(28)</span></p>
+       <p class="mt-2 text-sm">$88.00</p><button class="quick mt-4" onclick="addCart('Celeste Mini Hoops',88)">Quick add</button>
+      </div>
+     </article>
+     <article class="product-card" data-name="Aurelia Gift Set" data-price="245" data-rating="4.9" data-new="0" data-category="Sets" data-material="Pearl Detail" data-style="Giftable Statement" data-stock="1">
+      <div class="product-media">
+       <span class="badge">GIFT READY</span><button class="heart" aria-label="Add Aurelia Gift Set to wishlist" onclick="toggleWish(this,'Aurelia Gift Set')"><i data-lucide="heart" width="17"></i></button><img data-template-id="product-image-giftset" loading="lazy" class="canva-image product-image">
+      </div>
+      <div class="product-meta pt-4">
+       <button class="text-left serif text-lg hover:underline" onclick="openProduct('Aurelia Gift Set',245)">Aurelia Gift Set</button>
+       <p class="text-[11px] text-[#746e65] mt-2">★★★★★ <span>(19)</span></p>
+       <p class="mt-2 text-sm">$245.00 <s class="text-[#746e65] ml-1">$295.00</s></p><button class="quick mt-4" onclick="addCart('Aurelia Gift Set',245)">Quick add</button>
+      </div>
+     </article>
+    </div>
+    <div id="more-products" class="hide mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-11">
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Vela Pearl Ring</p>
+      <p class="text-sm mt-2">$118.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Mira Fine Bracelet</p>
+      <p class="text-sm mt-2">$136.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Oriana Chain</p>
+      <p class="text-sm mt-2">$165.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Nola Studs</p>
+      <p class="text-sm mt-2">$92.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Solis Cuff</p>
+      <p class="text-sm mt-2">$184.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Isla Charm</p>
+      <p class="text-sm mt-2">$104.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Dawn Signet</p>
+      <p class="text-sm mt-2">$152.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Aria Necklace</p>
+      <p class="text-sm mt-2">$178.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Lumi Hoops</p>
+      <p class="text-sm mt-2">$96.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Celine Ring</p>
+      <p class="text-sm mt-2">$138.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Amara Pendant</p>
+      <p class="text-sm mt-2">$172.00</p>
+     </div>
+     <div class="border-t border-[#d9d2c5] pt-4">
+      <p class="serif text-lg">Rhea Gift Box</p>
+      <p class="text-sm mt-2">$218.00</p>
+     </div>
+    </div>
+    <div class="text-center pt-14">
+     <p id="show-note" data-template-id="show-note" class="canva-text utility text-[#746e65] mb-5"></p><button id="load-more" data-template-id="load-more-button" class="canva-button border border-[#201d19] px-8 py-4 utility hover:bg-[#201d19] hover:text-white transition" type="button" onclick="loadMore()"></button>
+    </div>
+   </section>
+   <section data-template-id="layering-banner" class="canva-banner mx-0 md:mx-8 mb-20 bg-[#24211e] text-[#f7f4ed]">
+    <div class="grid md:grid-cols-2"><img data-template-id="layering-image" loading="lazy" class="canva-image w-full min-h-[360px] h-full object-cover">
+     <div class="editorial-copy flex flex-col justify-center p-10 md:p-[clamp(3rem,7vw,8rem)]">
+      <p data-template-id="layering-eyebrow" class="canva-text utility text-[#d7c29a] mb-5"></p>
+      <h2 data-template-id="layering-title" class="canva-text serif text-4xl md:text-5xl leading-none mb-6"></h2>
+      <p data-template-id="layering-copy" class="canva-text leading-7 text-[#eee8de] mb-9"></p><a data-template-id="layering-cta" class="canva-link under-link w-fit border-[#f7f4ed]" href="#complete-look"></a>
+     </div>
+    </div>
+   </section>
+   <section id="craftsmanship" data-template-id="craft-section" class="canva-section max-w-[1400px] mx-auto px-5 md:px-8 py-12 md:py-20">
+    <div class="grid md:grid-cols-[.95fr_1.05fr] gap-10 md:gap-20 items-center"><img data-template-id="craft-image" loading="lazy" class="canva-image w-full aspect-[1/.82] object-cover">
+     <div>
+      <p data-template-id="craft-eyebrow" class="canva-text utility text-[#746e65] mb-5"></p>
+      <h2 data-template-id="craft-title" class="canva-text serif text-4xl md:text-5xl leading-none mb-7"></h2>
+      <p data-template-id="craft-copy" class="canva-text leading-7 max-w-lg mb-8"></p><a data-template-id="craft-cta" class="canva-link under-link" href="#top"></a>
+     </div>
+    </div>
+   </section>
+   <section id="complete-look" data-template-id="complete-section" class="canva-section border-y border-[#d9d2c5] py-16 px-5 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+     <div class="flex items-end justify-between mb-8">
+      <h2 data-template-id="complete-title" class="canva-text serif text-3xl"></h2><a class="under-link hidden md:inline-flex" href="#collection-grid">Shop all</a>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div>
+       <img data-template-id="rec-luna" loading="lazy" class="canva-image w-full aspect-[.9] object-cover">
+       <p class="serif mt-3">Luna Pendant Necklace</p>
+       <p class="text-sm mt-1">$168.00 · ★★★★★</p><button class="quick mt-3" onclick="addCart('Luna Pendant Necklace',168)">Quick add</button>
+      </div>
+      <div>
+       <img data-template-id="rec-solara" loading="lazy" class="canva-image w-full aspect-[.9] object-cover">
+       <p class="serif mt-3">Solara Hoop Earrings</p>
+       <p class="text-sm mt-1">$98.00 · ★★★★★</p><button class="quick mt-3" onclick="addCart('Solara Hoop Earrings',98)">Quick add</button>
+      </div>
+      <div>
+       <img data-template-id="rec-elysian" loading="lazy" class="canva-image w-full aspect-[.9] object-cover">
+       <p class="serif mt-3">Elysian Tennis Bracelet</p>
+       <p class="text-sm mt-1">$220.00 · ★★★★★</p><button class="quick mt-3" onclick="addCart('Elysian Tennis Bracelet',220)">Quick add</button>
+      </div>
+      <div>
+       <img data-template-id="rec-aurora" loading="lazy" class="canva-image w-full aspect-[.9] object-cover">
+       <p class="serif mt-3">Aurora Stackable Ring</p>
+       <p class="text-sm mt-1">$128.00 · ★★★★★</p><button class="quick mt-3" onclick="addCart('Aurora Stackable Ring',128)">Quick add</button>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section data-template-id="newsletter-band" class="canva-banner bg-[#dfd4c1] py-16 md:py-24 px-5 text-center">
+    <div class="max-w-xl mx-auto">
+     <p data-template-id="newsletter-eyebrow" class="canva-text utility text-[#746e65] mb-5"></p>
+     <h2 data-template-id="newsletter-title" class="canva-text serif text-4xl md:text-5xl leading-none mb-5"></h2>
+     <p data-template-id="newsletter-copy" class="canva-text leading-7 mb-8"></p>
+     <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2" onsubmit="joinNewsletter(event)"><label class="sr-only" for="newsletter-email">Email address</label> <input id="newsletter-email" data-template-id="newsletter-input" class="canva-input flex-1 border border-[#201d19] bg-transparent px-4 py-4 text-sm" type="email" required> <button data-template-id="newsletter-button" class="canva-button bg-[#201d19] text-white px-7 py-4 utility" type="submit"></button>
+     </form>
+     <p id="newsletter-message" class="mt-4 text-sm" aria-live="polite"></p>
+    </div>
+   </section>
+  </main>
+  <footer data-template-id="site-footer" class="canva-footer bg-[#201d19] text-[#f7f4ed] px-5 md:px-8 pt-16 pb-7">
+   <div class="max-w-[1600px] mx-auto grid md:grid-cols-[1.5fr_repeat(4,1fr)] gap-10 pb-14 border-b border-[#ffffff33]">
+    <div>
+     <a data-template-id="footer-wordmark" class="canva-link serif text-3xl tracking-[.18em]" href="#top"></a>
+     <p data-template-id="footer-statement" class="canva-text text-sm leading-6 text-[#d8d0c4] max-w-xs mt-5"></p>
+     <div class="flex gap-3 mt-6">
+      <a href="#top" aria-label="Instagram"><i data-lucide="instagram" width="18"></i></a><a href="#top" aria-label="Pinterest"><i data-lucide="pin" width="18"></i></a><a href="#top" aria-label="Facebook"><i data-lucide="facebook" width="18"></i></a>
+     </div>
+    </div>
+    <div>
+     <h3 class="utility text-[#d7c29a] mb-4">Shop</h3><a class="block text-sm mb-3" href="#collection-grid">Collections</a><a class="block text-sm mb-3" href="#collection-grid">New arrivals</a><a class="block text-sm" href="#collection-grid">Best sellers</a>
+    </div>
+    <div>
+     <h3 class="utility text-[#d7c29a] mb-4">About</h3><a class="block text-sm mb-3" href="#craftsmanship">Our story</a><a class="block text-sm mb-3" href="#craftsmanship">Craftsmanship</a><a class="block text-sm" href="#top">Journal</a>
+    </div>
+    <div>
+     <h3 class="utility text-[#d7c29a] mb-4">Help</h3><a class="block text-sm mb-3" href="#top">Contact</a><a class="block text-sm mb-3" href="#top">Shipping &amp; returns</a><a class="block text-sm" href="#top">Care guide</a>
+    </div>
+    <div>
+     <h3 class="utility text-[#d7c29a] mb-4">Customer</h3><a class="block text-sm mb-3" href="#top">My account</a><a class="block text-sm mb-3" href="#top">Order status</a><a class="block text-sm" href="#top">Wishlist</a>
+    </div>
+   </div>
+   <div class="max-w-[1600px] mx-auto pt-6 flex flex-col md:flex-row gap-5 justify-between text-[10px] tracking-[.08em] uppercase text-[#d8d0c4]">
+    <div class="flex flex-wrap gap-4">
+     <a href="#top">Privacy Policy</a><a href="#top">Terms</a><a href="#top">Refund Policy</a>
+    </div>
+    <div class="flex gap-3">
+     <button type="button">India / English</button><span>•</span><button type="button">USD $</button><span>•</span><span>Visa · Mastercard · Amex</span>
+    </div>
+   </div>
+  </footer>
+  <div id="backdrop" class="backdrop" onclick="closeAll()"></div>
+  <aside id="filter-drawer" class="drawer" aria-label="Product filters" aria-hidden="true">
+   <div class="sticky top-0 bg-[#fffdfa] flex justify-between items-center p-6 border-b border-[#d9d2c5]">
+    <h2 data-template-id="filter-title" class="canva-text serif text-3xl"></h2><button class="icon-btn" onclick="closeAll()" aria-label="Close filters"><i data-lucide="x"></i></button>
+   </div>
+   <div class="p-6" id="filter-options"></div>
+   <div class="sticky bottom-0 bg-[#fffdfa] border-t border-[#d9d2c5] p-5 flex gap-3">
+    <button data-template-id="filter-clear" class="canva-button flex-1 border border-[#201d19] py-4 utility" onclick="clearFilters()"></button><button data-template-id="filter-apply" class="canva-button flex-1 bg-[#201d19] text-white py-4 utility" onclick="applyFilters()"></button>
+   </div>
+  </aside>
+  <aside id="cart-drawer" class="drawer" aria-label="Shopping bag" aria-hidden="true">
+   <div class="sticky top-0 bg-[#fffdfa] flex justify-between p-6 border-b border-[#d9d2c5]">
+    <h2 data-template-id="cart-title" class="canva-text serif text-3xl"></h2><button class="icon-btn" onclick="closeAll()" aria-label="Close cart"><i data-lucide="x"></i></button>
+   </div>
+   <div id="cart-items" class="p-6"></div>
+   <div class="sticky bottom-0 bg-[#fffdfa] p-6 border-t border-[#d9d2c5]">
+    <div class="flex justify-between text-sm mb-5">
+     <span>Subtotal</span><strong id="subtotal">$0.00</strong>
+    </div><button data-template-id="checkout-button" class="canva-button w-full bg-[#201d19] text-white py-4 utility" onclick="checkout()"></button>
+    <p id="checkout-message" class="text-xs text-center mt-3" aria-live="polite"></p>
+   </div>
+  </aside>
+  <aside id="wishlist-drawer" class="drawer" aria-label="Wishlist">
+   <div class="sticky top-0 bg-[#fffdfa] flex justify-between p-6 border-b border-[#d9d2c5]">
+    <h2 class="serif text-3xl">Your Wishlist</h2><button class="icon-btn" onclick="closeAll()" aria-label="Close wishlist"><i data-lucide="x"></i></button>
+   </div>
+   <div id="wishlist-items" class="p-6 text-sm text-[#746e65]">
+    Your saved pieces will appear here.
+   </div>
+  </aside>
+  <aside id="account-drawer" class="drawer" aria-label="Account">
+   <div class="sticky top-0 bg-[#fffdfa] flex justify-between p-6 border-b border-[#d9d2c5]">
+    <h2 class="serif text-3xl">AURELIA Account</h2><button class="icon-btn" onclick="closeAll()" aria-label="Close account"><i data-lucide="x"></i></button>
+   </div>
+   <div class="p-6">
+    <p class="leading-7 text-sm">Sign in to keep your saved pieces and orders together.</p><button class="quick mt-7" onclick="closeAll()">Continue shopping</button>
+   </div>
+  </aside>
+  <aside id="menu-drawer" class="drawer" aria-label="Mobile menu">
+   <div class="flex justify-between p-6 border-b border-[#d9d2c5]">
+    <span class="serif text-2xl">Menu</span><button class="icon-btn" onclick="closeAll()" aria-label="Close menu"><i data-lucide="x"></i></button>
+   </div>
+   <nav class="p-6 flex flex-col gap-6 serif text-3xl">
+    <a href="#collection-grid" onclick="closeAll()">Shop</a><a href="#collection-grid" onclick="closeAll()">Collections</a><a href="#craftsmanship" onclick="closeAll()">Our Story</a>
+   </nav>
+  </aside>
+  <div id="search-overlay" class="overlay" role="dialog" aria-modal="true" aria-label="Search AURELIA">
+   <div class="overlay-panel p-6 md:p-9">
+    <div class="flex justify-between items-center mb-7">
+     <h2 class="serif text-3xl">Search the collection</h2><button class="icon-btn" onclick="closeAll()" aria-label="Close search"><i data-lucide="x"></i></button>
+    </div><label class="sr-only" for="search-input">Search products</label><input id="search-input" class="w-full border-b border-[#201d19] bg-transparent py-4 text-xl outline-none" placeholder="Search for pieces, materials, styles…" oninput="searchProducts(this.value)">
+    <div id="search-results" class="mt-7 text-sm text-[#746e65]">
+     Try “ring”, “necklace”, or “gold”.
+    </div>
+   </div>
+  </div>
+  <div id="product-overlay" class="overlay" role="dialog" aria-modal="true" aria-label="Product detail">
+   <div class="overlay-panel p-8">
+    <button class="icon-btn float-right" onclick="closeAll()" aria-label="Close product detail"><i data-lucide="x"></i></button>
+    <p class="utility text-[#746e65] mb-4">AURELIA SIGNATURE COLLECTION</p>
+    <h2 id="detail-name" class="serif text-4xl mb-4"></h2>
+    <p id="detail-price" class="text-lg mb-6"></p>
+    <p id="detail-copy" class="leading-7 text-sm text-[#746e65] mb-8">A considered everyday piece, designed to be worn on repeat and kept for years to come.</p><button class="quick" onclick="detailAdd()">Add to bag</button>
+   </div>
+  </div>
+  <script>
+    const filterGroups={Category:['Rings','Necklaces','Earrings','Bracelets','Chains','Sets'],Collection:['Signature Collection','Everyday Collection','New Arrivals'],Material:['18k Gold Vermeil','Sterling Silver','Pearl Detail'],Price:['Under $100','$100–$200','Over $200'],Availability:['In stock'],Style:['Minimal','Statement','Giftable']};
+    const selected=new Set(), cart=[], wishes=new Set(); let detail={name:'',price:0};
+    function openDrawer(id){closeAll();document.getElementById('backdrop').classList.add('show');const d=document.getElementById(id);d.classList.add('open');d.setAttribute('aria-hidden','false')}
+    function openOverlay(id){closeAll();document.getElementById(id).classList.add('open');setTimeout(()=>document.getElementById('search-input')?.focus(),50)}
+    function closeAll(){document.querySelectorAll('.drawer').forEach(x=>{x.classList.remove('open');x.setAttribute('aria-hidden','true')});document.querySelectorAll('.overlay').forEach(x=>x.classList.remove('open'));document.getElementById('backdrop').classList.remove('show')}
+    function buildFilters(){const root=document.getElementById('filter-options');Object.entries(filterGroups).forEach(([group,items])=>{const s=document.createElement('section');s.className='mb-7';s.innerHTML='<h3 class="utility mb-2">'+group+'</h3>';items.forEach(item=>{const id='f-'+item.replace(/\W/g,'');const row=document.createElement('label');row.className='filter-option';row.innerHTML='<span>'+item+'</span><input id="'+id+'" type="checkbox" value="'+item+'">';row.querySelector('input').addEventListener('change',e=>e.target.checked?selected.add(item):selected.delete(item));s.appendChild(row)});root.appendChild(s)})}
+    function matches(card){const vals=[...selected];if(!vals.length)return true;return vals.every(v=>{if(v==='Signature Collection'||v==='Everyday Collection')return true;if(v==='New Arrivals')return card.dataset.new==='1';if(v==='In stock')return card.dataset.stock==='1';if(v==='Under $100')return +card.dataset.price<100;if(v==='$100–$200')return +card.dataset.price>=100&&+card.dataset.price<=200;if(v==='Over $200')return +card.dataset.price>200;return (card.dataset.category+' '+card.dataset.material+' '+card.dataset.style).includes(v)})}
+    function renderProducts(){let count=0;document.querySelectorAll('.product-card').forEach(c=>{const show=matches(c);c.classList.toggle('hide',!show);if(show)count++});document.getElementById('result-label').textContent=count+' '+(count===1?'piece':'pieces');document.getElementById('empty-state').classList.toggle('hide',count!==0);const chips=document.getElementById('filter-chips');chips.innerHTML='';selected.forEach(v=>{const b=document.createElement('button');b.className='border border-[#d9d2c5] px-3 py-2 text-[11px]';b.textContent=v+' ×';b.onclick=()=>{selected.delete(v);const input=[...document.querySelectorAll('#filter-options input')].find(i=>i.value===v);if(input)input.checked=false;renderProducts()};chips.appendChild(b)});if(selected.size){const clear=document.createElement('button');clear.className='text-[11px] underline underline-offset-4 ml-1';clear.textContent='Clear filters';clear.onclick=clearFilters;chips.appendChild(clear)}}
+    function applyFilters(){renderProducts();closeAll()}
+    function clearFilters(){selected.clear();document.querySelectorAll('#filter-options input').forEach(i=>i.checked=false);renderProducts();closeAll()}
+    function sortProducts(){const grid=document.getElementById('product-grid'),cards=[...grid.children],value=document.getElementById('sort-control').value;cards.sort((a,b)=>{if(value==='Price: low to high')return +a.dataset.price-+b.dataset.price;if(value==='Price: high to low')return +b.dataset.price-+a.dataset.price;if(value==='Best selling')return +b.dataset.rating-+a.dataset.rating;if(value==='Newest')return +b.dataset.new-+a.dataset.new;return 0}).forEach(c=>grid.appendChild(c))}
+    function setGrid(mode){const g=document.getElementById('product-grid');g.classList.remove('grid-compact','grid-comfort');if(mode==='compact')g.classList.add('grid-compact')}
+    function toggleWish(btn,name){if(wishes.has(name)){wishes.delete(name);btn.classList.remove('active')}else{wishes.add(name);btn.classList.add('active')}document.getElementById('wish-count').textContent=wishes.size;document.getElementById('wishlist-items').innerHTML=wishes.size?[...wishes].map(x=>'<div class="border-b border-[#d9d2c5] py-4 serif text-lg">'+x+'</div>').join(''):'Your saved pieces will appear here.'}
+    function addCart(name,price){const found=cart.find(x=>x.name===name);if(found)found.qty++;else cart.push({name,price,qty:1});renderCart();openDrawer('cart-drawer')}
+    function renderCart(){document.getElementById('cart-count').textContent=cart.reduce((n,x)=>n+x.qty,0);const el=document.getElementById('cart-items');el.innerHTML=cart.length?cart.map((x,i)=>'<div class="border-b border-[#d9d2c5] py-5"><div class="flex justify-between gap-3"><div><p class="serif text-xl">'+x.name+'</p><p class="text-sm mt-2">$'+x.price.toFixed(2)+'</p></div><button class="text-xs underline" onclick="removeCart('+i+')">Remove</button></div><div class="mt-4 flex gap-3 items-center"><button class="border px-3 py-1" onclick="qty('+i+',-1)" aria-label="Reduce quantity">−</button><span>'+x.qty+'</span><button class="border px-3 py-1" onclick="qty('+i+',1)" aria-label="Increase quantity">+</button></div></div>').join(''):'<p class="text-sm text-[#746e65]">Your bag is ready for something beautiful.</p>';document.getElementById('subtotal').textContent='$'+cart.reduce((n,x)=>n+x.price*x.qty,0).toFixed(2)}
+    function qty(i,n){cart[i].qty+=n;if(cart[i].qty<1)cart.splice(i,1);renderCart()} function removeCart(i){cart.splice(i,1);renderCart()}
+    function checkout(){document.getElementById('checkout-message').textContent=cart.length?'Checkout is ready for your secure AURELIA checkout.':'Your bag is currently empty.'}
+    function openProduct(name,price,celeste=false){detail={name,price};document.getElementById('detail-name').textContent=name;document.getElementById('detail-price').textContent='$'+price.toFixed(2);document.getElementById('detail-copy').textContent=celeste?'Explore the Celeste Gold Ring product page concept for sizing, material details, and styling notes.':'A considered everyday piece, designed to be worn on repeat and kept for years to come.';openOverlay('product-overlay')}
+    function detailAdd(){addCart(detail.name,detail.price)}
+    function loadMore(){document.getElementById('more-products').classList.remove('hide');document.getElementById('load-more').classList.add('hide');document.getElementById('show-note').textContent='Showing 24 of 24 pieces'}
+    function searchProducts(q){const results=[...document.querySelectorAll('.product-card')].filter(c=>c.dataset.name.toLowerCase().includes(q.toLowerCase())||c.dataset.category.toLowerCase().includes(q.toLowerCase())).slice(0,5);document.getElementById('search-results').innerHTML=q?(results.length?results.map(c=>'<button class="block w-full text-left border-b border-[#d9d2c5] py-3 serif text-lg" onclick="closeAll();document.getElementById(\'collection-grid\').scrollIntoView()">'+c.dataset.name+'</button>').join(''):'No pieces found. Try another search.'):'Try “ring”, “necklace”, or “gold”.'}
+    function joinNewsletter(e){e.preventDefault();const email=document.getElementById('newsletter-email');document.getElementById('newsletter-message').textContent=email.validity.valid?'Thank you — you are now on the AURELIA list.':'Please enter a valid email address.';if(email.validity.valid){e.target.reset()}}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});buildFilters();renderProducts();renderCart();lucide.createIcons();
+  </script>
+ </body>
+</html>

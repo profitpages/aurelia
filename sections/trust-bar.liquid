@@ -1,0 +1,68 @@
+{%- comment -%} Trust strip — hairline-divided promises (icon, title, short line). Home: with icons; product page: uppercase titles. {%- endcomment -%}
+{{ 'section-aurelia.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="trust-strip color-{{ s.color_scheme }}{% if s.caps %} trust-strip--caps{% endif %}{% if s.full_width %} trust-strip--full{% endif %}">
+  <div class="{% unless s.full_width %}page-width{% endunless %}">
+    <ul class="trust-strip__list" role="list" style="--cols: {{ section.blocks.size | at_least: 1 | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li class="trust-strip__item" {{ block.shopify_attributes }}>
+          {%- if s.show_icons and b.icon != 'none' -%}<span class="trust-strip__icon">{%- render 'icon', name: b.icon, size: 21 -%}</span>{%- endif -%}
+          <div class="trust-strip__body">
+            {%- if b.link != blank -%}
+              <a class="trust-strip__title" href="{{ b.link }}">{{ b.title | escape }}</a>
+            {%- else -%}
+              <p class="trust-strip__title">{{ b.title | escape }}</p>
+            {%- endif -%}
+            {%- if b.text != blank -%}<p class="trust-strip__text">{{ b.text | escape }}</p>{%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust strip",
+  "class": "section-trust",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "checkbox", "id": "show_icons", "label": "Show icons", "default": true },
+    { "type": "checkbox", "id": "caps", "label": "Uppercase titles", "default": false },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "item", "name": "Promise",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Delivery" }, { "value": "return", "label": "Returns" }, { "value": "gem", "label": "Gem" },
+            { "value": "shield-check", "label": "Secure" }, { "value": "award", "label": "Quality" }, { "value": "gift", "label": "Gift" },
+            { "value": "pen", "label": "Engraving" }, { "value": "package", "label": "Packaging" }, { "value": "credit-card", "label": "Payment" },
+            { "value": "sparkle", "label": "Sparkle" }, { "value": "leaf", "label": "Responsible" }, { "value": "none", "label": "None" }
+          ],
+          "default": "truck"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Free shipping" },
+        { "type": "text", "id": "text", "label": "Text", "default": "On orders over $100" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust strip",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "title": "Free shipping", "text": "On orders over $100" } },
+        { "type": "item", "settings": { "icon": "return", "title": "30-day returns", "text": "Shop with confidence" } },
+        { "type": "item", "settings": { "icon": "gem", "title": "Premium quality", "text": "Made to last" } },
+        { "type": "item", "settings": { "icon": "shield-check", "title": "Secure checkout", "text": "Safe & protected payments" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

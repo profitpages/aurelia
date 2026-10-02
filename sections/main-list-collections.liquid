@@ -1,0 +1,35 @@
+{{ 'section-aurelia.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign arts = 'ring,necklace,earrings,bracelet,chain,gift' | split: ','
+-%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'breadcrumb' -%}
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, align: 'center', tag: 'h1' -%}
+    {%- paginate collections by 24 -%}
+      <ul class="ctiles" role="list" style="--cols: {{ s.columns }}; --cols-m: 2;">
+        {%- for c in collections -%}
+          {%- assign i = forloop.index0 | modulo: 6 -%}
+          <li>{%- render 'collection-tile', collection: c, link_label: s.tile_link_label, art: arts[i], show_count: s.show_count, sizes: '(min-width: 990px) 31vw, 47vw' -%}</li>
+        {%- endfor -%}
+      </ul>
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "class": "section-list-collections",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "Discover Aurelia" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "All collections" },
+    { "type": "text", "id": "tile_link_label", "label": "Tile link label", "default": "Explore collection →" },
+    { "type": "checkbox", "id": "show_count", "label": "Show product count", "default": true },
+    { "type": "range", "id": "columns", "label": "Tiles per row", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ]
+}
+{% endschema %}
