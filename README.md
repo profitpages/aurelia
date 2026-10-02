@@ -11,7 +11,8 @@ The look is ivory paper with antique gold, set in uppercase Fraunces headings an
 assets/      theme.css (tokens, type, buttons, cards, header, footer, cart) · theme.js (vanilla, no dependencies) ·
              component-product.css · section-hero.css · section-aurelia.css (trust, tiles, image with text, editorial
              cards, social, statement, icon columns, testimonials, newsletter, reviews) · section-collection.css ·
-             section-content.css · section-features.css · section-extras.css · section-promo.css · section-routine.css
+             section-aurelia-extras.css (spotlight, gift & metal guides, engraving preview, bespoke, promise,
+             boutiques, size guide) · section-content.css · section-features.css · section-extras.css · section-promo.css · section-routine.css
 config/      settings_schema.json (8 color schemes, typography, layout, cards, cart, wishlist, social) · settings_data.json
 layout/      theme.liquid · password.liquid
 locales/     en.default.json

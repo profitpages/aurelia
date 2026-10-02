@@ -1,0 +1,83 @@
+{%- comment -%} Promise band — a dark band with a slowly turning circular seal and up to four aftercare promises. {%- endcomment -%}
+{{ 'section-aurelia-extras.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign seal_id = 'Seal-' | append: section.id
+-%}
+<section class="promise color-{{ s.color_scheme }}">
+  <div class="page-width promise__inner">
+    <div class="promise__head">
+      {%- if s.show_seal -%}
+        <div class="promise__seal" aria-hidden="true">
+          <svg viewBox="0 0 200 200" focusable="false">
+            <defs><path id="{{ seal_id }}" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0"/></defs>
+            <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+            <circle cx="100" cy="100" r="56" fill="none" stroke="currentColor" stroke-opacity=".35"/>
+            <text class="promise__seal-text"><textPath href="#{{ seal_id }}">{{ s.seal_text | escape }}</textPath></text>
+          </svg>
+          <span class="promise__seal-icon">{%- render 'icon', name: 'gem', size: 34 -%}</span>
+        </div>
+      {%- endif -%}
+      <div class="promise__copy">
+        {%- if s.kicker != blank -%}<p class="kicker">{{ s.kicker | escape }}</p>{%- endif -%}
+        {%- if s.heading != blank -%}<h2 class="h2">{{ s.heading | escape }}</h2>{%- endif -%}
+        {%- if s.link_label != blank -%}<a class="link-underline" href="{{ s.link | default: routes.root_url }}">{{ s.link_label | escape }}</a>{%- endif -%}
+      </div>
+    </div>
+    <ul class="promise__list" role="list" style="--cols: {{ section.blocks.size | at_least: 1 | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li class="promise__item" data-reveal {{ block.shopify_attributes }}>
+          {%- if b.icon != 'none' -%}<span class="promise__icon">{%- render 'icon', name: b.icon, size: 22 -%}</span>{%- endif -%}
+          <h3 class="promise__title">{{ b.title | escape }}</h3>
+          {%- if b.text != blank -%}<p class="promise__text">{{ b.text | escape }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Promise band",
+  "class": "section-promise",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "checkbox", "id": "show_seal", "label": "Show circular seal", "default": true },
+    { "type": "text", "id": "seal_text", "label": "Seal text", "default": "AURELIA · MADE TO LAST · AURELIA · MADE TO LAST ·" },
+    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "The Aurelia promise" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Cared for, for life" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Our aftercare" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-5" }
+  ],
+  "blocks": [
+    {
+      "type": "promise", "name": "Promise",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon",
+          "options": [
+            { "value": "shield-check", "label": "Warranty" }, { "value": "ring", "label": "Ring" }, { "value": "sparkle", "label": "Polish" },
+            { "value": "return", "label": "Returns" }, { "value": "pen", "label": "Engraving" }, { "value": "package", "label": "Packaging" },
+            { "value": "truck", "label": "Delivery" }, { "value": "gem", "label": "Gem" }, { "value": "none", "label": "None" }
+          ],
+          "default": "shield-check"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Two-year warranty" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Every piece is covered against manufacturing faults." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promise band",
+      "blocks": [
+        { "type": "promise" },
+        { "type": "promise", "settings": { "icon": "ring", "title": "Free resizing", "text": "One complimentary resize on any ring within 60 days." } },
+        { "type": "promise", "settings": { "icon": "sparkle", "title": "Lifetime polish", "text": "Send any piece back for a free clean and polish." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

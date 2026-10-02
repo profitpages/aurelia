@@ -1,0 +1,76 @@
+{%- comment -%} Size guide — a hairline size table (one block per row) beside numbered measuring tips. Ideal on a "Size guide" page. {%- endcomment -%}
+{{ 'section-aurelia-extras.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text, align: 'center' -%}
+    <div class="sizes">
+      <div class="sizes__table-wrap table-wrap">
+        <table class="sizes__table">
+          <caption class="visually-hidden">{{ s.heading | escape }}</caption>
+          <thead>
+            <tr><th scope="col">{{ s.col_1 | escape }}</th><th scope="col">{{ s.col_2 | escape }}</th><th scope="col">{{ s.col_3 | escape }}</th>{%- if s.col_4 != blank -%}<th scope="col">{{ s.col_4 | escape }}</th>{%- endif -%}</tr>
+          </thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              {%- assign b = block.settings -%}
+              <tr {{ block.shopify_attributes }}>
+                <th scope="row">{{ b.size | escape }}</th><td>{{ b.value_2 | escape }}</td><td>{{ b.value_3 | escape }}</td>{%- if s.col_4 != blank -%}<td>{{ b.value_4 | escape }}</td>{%- endif -%}
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+      <aside class="sizes__tips">
+        {%- if s.tips_heading != blank -%}<h3 class="sizes__tips-title">{{ s.tips_heading | escape }}</h3>{%- endif -%}
+        {%- if s.tips != blank -%}<div class="rte sizes__tips-body">{{ s.tips }}</div>{%- endif -%}
+        {%- if s.link_label != blank and s.link != blank -%}<a class="link-underline" href="{{ s.link }}">{{ s.link_label | escape }}</a>{%- endif -%}
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Size guide",
+  "class": "section-size-guide",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "Find your fit" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ring size guide" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Between sizes? We recommend choosing the larger size.</p>" },
+    { "type": "text", "id": "col_1", "label": "Column 1 heading", "default": "US size" },
+    { "type": "text", "id": "col_2", "label": "Column 2 heading", "default": "Inside diameter" },
+    { "type": "text", "id": "col_3", "label": "Column 3 heading", "default": "Circumference" },
+    { "type": "text", "id": "col_4", "label": "Column 4 heading (optional)", "default": "UK size" },
+    { "type": "text", "id": "tips_heading", "label": "Tips heading", "default": "How to measure" },
+    { "type": "richtext", "id": "tips", "label": "Tips", "default": "<ol><li>Choose a ring that fits the finger you want to wear it on.</li><li>Measure the inside diameter edge to edge, in millimetres.</li><li>Match your measurement to the closest size in the table.</li></ol>" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Download a printable sizer" },
+    { "type": "url", "id": "link", "label": "Link", "info": "E.g. a PDF uploaded in Content › Files." },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "row", "name": "Size row",
+      "settings": [
+        { "type": "text", "id": "size", "label": "Column 1", "default": "5" },
+        { "type": "text", "id": "value_2", "label": "Column 2", "default": "15.7 mm" },
+        { "type": "text", "id": "value_3", "label": "Column 3", "default": "49.3 mm" },
+        { "type": "text", "id": "value_4", "label": "Column 4", "default": "J ½" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Size guide",
+      "blocks": [
+        { "type": "row" },
+        { "type": "row", "settings": { "size": "6", "value_2": "16.5 mm", "value_3": "51.9 mm", "value_4": "L ½" } },
+        { "type": "row", "settings": { "size": "7", "value_2": "17.3 mm", "value_3": "54.4 mm", "value_4": "O" } },
+        { "type": "row", "settings": { "size": "8", "value_2": "18.2 mm", "value_3": "57.0 mm", "value_4": "Q" } },
+        { "type": "row", "settings": { "size": "9", "value_2": "19.0 mm", "value_3": "59.5 mm", "value_4": "S" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -94,9 +94,75 @@
         "benefit_5"
       ]
     },
+    "bespoke_process_bespoke_process": {
+      "type": "bespoke-process",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {}
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Design",
+            "text": "We sketch and render your piece, refining every detail until it feels right."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Craft",
+            "text": "Your piece is cast, set and polished by hand in our studio."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Delivery",
+            "text": "Presented in our signature box, insured and delivered to your door."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
     "blog_posts_blog_posts": {
       "type": "blog-posts",
       "settings": {}
+    },
+    "boutiques_boutiques": {
+      "type": "boutiques",
+      "settings": {},
+      "blocks": {
+        "store_1": {
+          "type": "store",
+          "settings": {}
+        },
+        "store_2": {
+          "type": "store",
+          "settings": {
+            "city": "Paris",
+            "address": "8 Rue Exemple\n75003 Paris"
+          }
+        },
+        "store_3": {
+          "type": "store",
+          "settings": {
+            "city": "New York",
+            "address": "100 Example Avenue\nNew York, NY"
+          }
+        }
+      },
+      "block_order": [
+        "store_1",
+        "store_2",
+        "store_3"
+      ]
     },
     "collage_editorial_collage": {
       "type": "collage",
@@ -175,6 +241,10 @@
     },
     "collection_hero_collection_banner": {
       "type": "collection-hero",
+      "settings": {}
+    },
+    "collection_spotlight_collection_spotligh": {
+      "type": "collection-spotlight",
       "settings": {}
     },
     "collection_tabs_collection_tabs": {
@@ -322,6 +392,10 @@
         "card_4"
       ]
     },
+    "engraving_preview_engraving_preview": {
+      "type": "engraving-preview",
+      "settings": {}
+    },
     "faq_faq": {
       "type": "faq",
       "settings": {},
@@ -449,91 +523,48 @@
       "type": "founder-note",
       "settings": {}
     },
-    "hero_hero": {
-      "type": "hero",
-      "settings": {}
-    },
-    "hero_image_banner": {
-      "type": "hero",
-      "settings": {
-        "height": "md",
-        "content_x": "left",
-        "content_y": "center",
-        "overlay": 45,
-        "placeholder_art": "ring",
-        "title_as_h1": false,
-        "kicker": "Our process",
-        "heading": "Crafted to be remembered",
-        "text": "<p>Thoughtfully designed pieces made to celebrate your individuality, your milestones, and the moments you never want to forget.</p>",
-        "button_label": "Discover our story",
-        "button_style": "link",
-        "button2_label": ""
-      }
-    },
-    "hero_image_banner_centered": {
-      "type": "hero",
-      "settings": {
-        "height": "md",
-        "content_x": "center",
-        "content_y": "center",
-        "overlay": 55,
-        "placeholder_art": "stack",
-        "title_as_h1": false,
-        "kicker": "Aurelia icons",
-        "heading": "The signature collection",
-        "text": "<p>Iconic pieces designed to become timeless essentials.</p>",
-        "button_label": "Explore the collection",
-        "button_style": "light",
-        "button2_label": ""
-      }
-    },
-    "icon_columns_icon_columns": {
-      "type": "icon-columns",
+    "gift_guide_gift_guide": {
+      "type": "gift-guide",
       "settings": {},
       "blocks": {
-        "column_1": {
-          "type": "column",
+        "tier_1": {
+          "type": "tier",
+          "settings": {}
+        },
+        "tier_2": {
+          "type": "tier",
           "settings": {
-            "icon": "sparkle",
-            "title": "Everyday ease",
-            "text": "A comfortable silhouette designed for repeat wear."
+            "label": "Under $200",
+            "title": "Thoughtful classics",
+            "text": "Pendants, hoops and pearls to wear every day."
           }
         },
-        "column_2": {
-          "type": "column",
+        "tier_3": {
+          "type": "tier",
           "settings": {
-            "icon": "leaf",
-            "title": "Responsible finish",
-            "text": "Made with considered materials and lasting detail."
-          }
-        },
-        "column_3": {
-          "type": "column",
-          "settings": {
-            "icon": "gift",
-            "title": "Gift ready",
-            "text": "Presented in our signature Aurelia packaging."
+            "label": "Something special",
+            "title": "Heirloom pieces",
+            "text": "Statement rings and tennis bracelets to mark a milestone."
           }
         }
       },
       "block_order": [
-        "column_1",
-        "column_2",
-        "column_3"
+        "tier_1",
+        "tier_2",
+        "tier_3"
       ]
-    },
-    "image_with_text_image_with_text": {
-      "type": "image-with-text",
-      "settings": {}
     }
   },
   "order": [
     "benefits_benefits",
     "benefits_key_benefits",
+    "bespoke_process_bespoke_process",
     "blog_posts_blog_posts",
+    "boutiques_boutiques",
     "collage_editorial_collage",
     "collection_grid_collection_grid",
     "collection_hero_collection_banner",
+    "collection_spotlight_collection_spotligh",
     "collection_tabs_collection_tabs",
     "comparison_table_comparison_table",
     "consultation_consultation_atelier",
@@ -541,6 +572,7 @@
     "countdown_countdown_banner",
     "custom_liquid_custom_liquid",
     "editorial_cards_editorial_cards",
+    "engraving_preview_engraving_preview",
     "faq_faq",
     "faq_product_details_faq",
     "featured_product_featured_product",
@@ -548,10 +580,6 @@
     "featured_products_gift_sets",
     "featured_products_bestseller_carousel",
     "founder_note_founder_s_note",
-    "hero_hero",
-    "hero_image_banner",
-    "hero_image_banner_centered",
-    "icon_columns_icon_columns",
-    "image_with_text_image_with_text"
+    "gift_guide_gift_guide"
   ]
 }

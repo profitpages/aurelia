@@ -199,7 +199,12 @@
     "yes": "Yes",
     "no": "No",
     "compare_label": "Compare before and after",
-    "social_post": "Social post {{ index }}"
+    "social_post": "Social post {{ index }}",
+    "engraving_serif": "Serif",
+    "engraving_script": "Script",
+    "engraving_caps": "Capitals",
+    "opening_hours": "Opening hours",
+    "get_directions": "Get directions"
   },
   "newsletter": {
     "email_label": "Your email address",

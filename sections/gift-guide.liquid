@@ -1,0 +1,68 @@
+{%- comment -%} Gift guide — price-tier or recipient cards (photo, gold label, serif title, short line, link). {%- endcomment -%}
+{{ 'section-aurelia-extras.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign arts = 'gift,necklace,ring,earrings' | split: ','
+-%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text, align: 'center' -%}
+    <ul class="gifts" role="list" style="--cols: {{ section.blocks.size | at_least: 1 | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        {%- assign i = forloop.index0 | modulo: 4 -%}
+        {%- assign url = b.link | default: b.collection.url | default: routes.all_products_collection_url -%}
+        {%- assign img = b.image | default: b.collection.featured_image -%}
+        <li class="gift" data-reveal {{ block.shopify_attributes }}>
+          <a class="gift__link" href="{{ url }}">
+            <span class="gift__media">{%- render 'responsive-image', image: img, max: 900, sizes: '(min-width: 990px) 24vw, 75vw', class: 'gift__img', art: arts[i], alt: '' -%}</span>
+            <span class="gift__body">
+              {%- if b.label != blank -%}<span class="kicker">{{ b.label | escape }}</span>{%- endif -%}
+              <span class="gift__title">{{ b.title | escape }}</span>
+              {%- if b.text != blank -%}<span class="gift__text">{{ b.text | escape }}</span>{%- endif -%}
+              {%- if b.link_label != blank -%}<span class="link-underline gift__go">{{ b.link_label | escape }}</span>{%- endif -%}
+            </span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gift guide",
+  "class": "section-gift-guide",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "The gift guide" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Gifts they'll treasure" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Every piece arrives gift-wrapped, with a handwritten note on request.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+  ],
+  "blocks": [
+    {
+      "type": "tier", "name": "Gift card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Defaults to the collection image." },
+        { "type": "text", "id": "label", "label": "Label", "default": "Under $100" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Little luxuries" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Delicate studs, fine chains and stacking rings." },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop gifts" },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "url", "id": "link", "label": "Custom link", "info": "E.g. /collections/all?filter.v.price.lte=100" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift guide",
+      "blocks": [
+        { "type": "tier" },
+        { "type": "tier", "settings": { "label": "Under $200", "title": "Thoughtful classics", "text": "Pendants, hoops and pearls to wear every day." } },
+        { "type": "tier", "settings": { "label": "Something special", "title": "Heirloom pieces", "text": "Statement rings and tennis bracelets to mark a milestone." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

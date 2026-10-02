@@ -446,6 +446,29 @@
   }
   define('engraving-field', EngravingField);
 
+  /* ---------- Aurelia: engraving preview (section) ---------- */
+  class EngravingPreview extends HTMLElement {
+    connectedCallback() {
+      const input = $('[data-engp-input]', this);
+      const text = $('[data-engp-text]', this);
+      const path = text && $('textPath', text);
+      const count = $('[data-engp-count]', this);
+      const max = Number(this.dataset.max) || 18;
+      if (!input || !path) return;
+      const sync = () => {
+        path.textContent = input.value || '\u00a0';
+        if (count) count.textContent = `${input.value.length}/${max}`;
+      };
+      input.addEventListener('input', sync);
+      $$('[data-engp-style]', this).forEach((b) => b.addEventListener('click', () => {
+        $$('[data-engp-style]', this).forEach((x) => x.setAttribute('aria-checked', String(x === b)));
+        text.setAttribute('class', `engp__text engp__text--${b.dataset.engpStyle}`);
+      }));
+      sync();
+    }
+  }
+  define('engraving-preview', EngravingPreview);
+
   /* ---------- Aurelia: generic dialogs (size guide) ---------- */
   document.addEventListener('click', (e) => {
     const opener = e.target.closest('[data-dialog-open]');

@@ -114,6 +114,16 @@ Below the info column come: the trust strip, the product story, icon columns, St
 11. As seen on you
 12. Newsletter
 
+**Aurelia additions:**
+- **Collection spotlight:** an editorial photo panel beside a product rail with arrows.
+- **Gift guide:** price-tier or recipient cards (for example "Under $100"), each linking to a collection or a filtered URL.
+- **Metal guide:** gold, rose gold and silver swatches with key facts.
+- **Engraving preview:** shoppers type initials and see them engraved inside a gold ring, in serif, script or capitals. The order engraving itself comes from the product page's Engraving block.
+- **Bespoke process:** a sticky photo beside numbered steps (consultation, design, craft, delivery).
+- **Promise band:** a dark band with a slowly turning seal and up to four aftercare promises.
+- **Boutiques:** store cards with address, opening hours, phone and a directions link.
+- **Size guide:** a ring-size table with measuring tips. Add it to a "Size guide" page.
+
 **Also included:**
 - **Merchandising:** Slideshow, Featured product, Collection tabs, Promotional cards, Countdown, Scrolling text, Logos.
 - **Discovery:** Shop the look (hotspots), Complete the set (bundle), Gift finder quiz, Shop by occasion, Material tabs, Comparison table.

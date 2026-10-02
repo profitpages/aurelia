@@ -1,0 +1,67 @@
+{%- comment -%} Metal guide — finish swatches with a short description and key facts, each linking to a collection. {%- endcomment -%}
+{{ 'section-aurelia-extras.css' | asset_url | stylesheet_tag }}
+{%- assign s = section.settings -%}
+<section class="section color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- render 'section-heading', kicker: s.kicker, title: s.heading, text: s.text, align: 'center' -%}
+    <ul class="metals" role="list" style="--cols: {{ section.blocks.size | at_least: 1 | at_most: 4 }};">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        {%- assign url = b.link | default: b.collection.url -%}
+        <li class="metal" data-reveal {{ block.shopify_attributes }}>
+          <span class="metal__swatch" style="--metal: {{ b.color }};" aria-hidden="true">
+            {%- if b.image != blank -%}{{ b.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', width: 96, height: 96 }}{%- endif -%}
+          </span>
+          <h3 class="metal__title">{{ b.title | escape }}</h3>
+          {%- if b.text != blank -%}<p class="metal__text">{{ b.text | escape }}</p>{%- endif -%}
+          {%- assign facts = b.facts | newline_to_br | split: '<br />' -%}
+          {%- if b.facts != blank -%}
+            <ul class="metal__facts" role="list">
+              {%- for f in facts -%}{%- assign ft = f | strip -%}{%- if ft != blank -%}<li>{{ ft | escape }}</li>{%- endif -%}{%- endfor -%}
+            </ul>
+          {%- endif -%}
+          {%- if url != blank and b.link_label != blank -%}<a class="link-underline metal__go" href="{{ url }}">{{ b.link_label | escape }}</a>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Metal guide",
+  "class": "section-metal-guide",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "Know your metals" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find your finish" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Every finish is made to be worn daily. Here is how they compare.</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+  ],
+  "blocks": [
+    {
+      "type": "metal", "name": "Metal",
+      "settings": [
+        { "type": "color", "id": "color", "label": "Swatch color", "default": "#d4af6a" },
+        { "type": "image_picker", "id": "image", "label": "Swatch image", "info": "Optional close-up of the metal; replaces the color." },
+        { "type": "text", "id": "title", "label": "Title", "default": "18k Yellow Gold" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Warm and timeless, the classic Aurelia finish." },
+        { "type": "textarea", "id": "facts", "label": "Key facts (one per line)", "default": "Gold vermeil over sterling silver\nTarnish resistant\nHypoallergenic" },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop yellow gold" },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "url", "id": "link", "label": "Custom link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Metal guide",
+      "blocks": [
+        { "type": "metal" },
+        { "type": "metal", "settings": { "color": "#d8a48f", "title": "Rose Gold", "text": "A soft blush tone that flatters every skin tone.", "facts": "Rose gold vermeil\nTarnish resistant\nHypoallergenic", "link_label": "Shop rose gold" } },
+        { "type": "metal", "settings": { "color": "#c9c9c6", "title": "Sterling Silver", "text": "Cool, bright and endlessly versatile.", "facts": "Solid 925 silver\nRhodium finish\nNickel-free", "link_label": "Shop silver" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

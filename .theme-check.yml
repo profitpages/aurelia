@@ -1,3 +1,4 @@
 RemoteAsset:
   ignore:
     - snippets/theme-styles.liquid
+    - sections/engraving-preview.liquid

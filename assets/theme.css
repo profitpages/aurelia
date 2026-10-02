@@ -21,7 +21,7 @@ p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
 ul[role='list'], ol[role='list'] { list-style: none; margin: 0; padding: 0; }
 [hidden] { display: none !important; }
-announcement-bar, site-header, facet-form, product-info, product-recommendations, recently-viewed, wishlist-page, rail-slider, media-gallery, cart-recommendations, routine-bundle, tab-set, quote-slider, look-book, engraving-field { display: block; }
+announcement-bar, site-header, facet-form, product-info, product-recommendations, recently-viewed, wishlist-page, rail-slider, media-gallery, cart-recommendations, routine-bundle, tab-set, quote-slider, look-book, engraving-field, engraving-preview { display: block; }
 :focus-visible { outline: 2px solid #8c7046; outline-offset: 3px; }
 ::selection { background: color-mix(in srgb, var(--champagne) 60%, transparent); }
 

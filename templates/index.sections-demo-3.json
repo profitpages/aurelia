@@ -1,5 +1,392 @@
 {
   "sections": {
+    "routine_complete_the_set": {
+      "type": "routine",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "label": "Ring"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "label": "Polish",
+            "use_current": true
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "label": "Earrings"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "label": "Refresh"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    },
+    "shop_by_concern_shop_by_occasion": {
+      "type": "shop-by-concern",
+      "settings": {},
+      "blocks": {
+        "concern_1": {
+          "type": "concern",
+          "settings": {
+            "title": "Everyday",
+            "text": "Effortless pieces for every day."
+          }
+        },
+        "concern_2": {
+          "type": "concern",
+          "settings": {
+            "title": "Celebration",
+            "text": "Pieces for life’s biggest moments."
+          }
+        },
+        "concern_3": {
+          "type": "concern",
+          "settings": {
+            "title": "Date night",
+            "text": "Make an unforgettable impression."
+          }
+        },
+        "concern_4": {
+          "type": "concern",
+          "settings": {
+            "title": "Gifting",
+            "text": "Gifts they will treasure."
+          }
+        }
+      },
+      "block_order": [
+        "concern_1",
+        "concern_2",
+        "concern_3",
+        "concern_4"
+      ]
+    },
+    "shop_by_concern_occasion_chips": {
+      "type": "shop-by-concern",
+      "settings": {
+        "layout": "chips",
+        "heading": "Shop by occasion",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "concern_1": {
+          "type": "concern",
+          "settings": {
+            "title": "Everyday"
+          }
+        },
+        "concern_2": {
+          "type": "concern",
+          "settings": {
+            "title": "Celebration"
+          }
+        },
+        "concern_3": {
+          "type": "concern",
+          "settings": {
+            "title": "Date night"
+          }
+        },
+        "concern_4": {
+          "type": "concern",
+          "settings": {
+            "title": "Gifting"
+          }
+        },
+        "concern_5": {
+          "type": "concern",
+          "settings": {
+            "title": "Wedding"
+          }
+        }
+      },
+      "block_order": [
+        "concern_1",
+        "concern_2",
+        "concern_3",
+        "concern_4",
+        "concern_5"
+      ]
+    },
+    "shop_the_look_shop_the_look": {
+      "type": "shop-the-look",
+      "settings": {},
+      "blocks": {
+        "hotspot_1": {
+          "type": "hotspot",
+          "settings": {
+            "x": 34,
+            "y": 38
+          }
+        },
+        "hotspot_2": {
+          "type": "hotspot",
+          "settings": {
+            "x": 62,
+            "y": 56
+          }
+        },
+        "hotspot_3": {
+          "type": "hotspot",
+          "settings": {
+            "x": 46,
+            "y": 76
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_1",
+        "hotspot_2",
+        "hotspot_3"
+      ]
+    },
+    "shoppable_gallery_shoppable_gallery": {
+      "type": "shoppable-gallery",
+      "settings": {},
+      "blocks": {
+        "photo_1": {
+          "type": "photo",
+          "settings": {
+            "handle": "@maya.stacks"
+          }
+        },
+        "photo_2": {
+          "type": "photo",
+          "settings": {
+            "handle": "@anika.wears"
+          }
+        },
+        "photo_3": {
+          "type": "photo",
+          "settings": {
+            "handle": "@leena.layers"
+          }
+        },
+        "photo_4": {
+          "type": "photo",
+          "settings": {
+            "handle": "@goldandlinen"
+          }
+        },
+        "photo_5": {
+          "type": "photo",
+          "settings": {
+            "handle": "@aureliajewellery"
+          }
+        }
+      },
+      "block_order": [
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4",
+        "photo_5"
+      ]
+    },
+    "size_guide_size_guide": {
+      "type": "size-guide",
+      "settings": {},
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {}
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "size": "6",
+            "value_2": "16.5 mm",
+            "value_3": "51.9 mm",
+            "value_4": "L ½"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "size": "7",
+            "value_2": "17.3 mm",
+            "value_3": "54.4 mm",
+            "value_4": "O"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "size": "8",
+            "value_2": "18.2 mm",
+            "value_3": "57.0 mm",
+            "value_4": "Q"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "size": "9",
+            "value_2": "19.0 mm",
+            "value_3": "59.5 mm",
+            "value_4": "S"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5"
+      ]
+    },
+    "skin_quiz_gift_finder_quiz": {
+      "type": "skin-quiz",
+      "settings": {},
+      "blocks": {
+        "skin_1": {
+          "type": "skin",
+          "settings": {
+            "label": "For her",
+            "note": "Partner, sister, friend",
+            "icon": "heart",
+            "param": "filter.p.tag=for-her"
+          }
+        },
+        "skin_2": {
+          "type": "skin",
+          "settings": {
+            "label": "For him",
+            "note": "Partner, brother, dad",
+            "icon": "leaf",
+            "param": "filter.p.tag=for-him"
+          }
+        },
+        "skin_3": {
+          "type": "skin",
+          "settings": {
+            "label": "For me",
+            "note": "A little treat",
+            "icon": "sparkle",
+            "param": "filter.p.tag=self-purchase"
+          }
+        },
+        "concern_4": {
+          "type": "concern",
+          "settings": {
+            "label": "Rings",
+            "icon": "sparkle",
+            "param": "filter.p.product_type=Rings"
+          }
+        },
+        "concern_5": {
+          "type": "concern",
+          "settings": {
+            "label": "Necklaces",
+            "icon": "sun",
+            "param": "filter.p.product_type=Necklaces"
+          }
+        },
+        "concern_6": {
+          "type": "concern",
+          "settings": {
+            "label": "Earrings",
+            "icon": "drop",
+            "param": "filter.p.product_type=Earrings"
+          }
+        },
+        "concern_7": {
+          "type": "concern",
+          "settings": {
+            "label": "Bracelets",
+            "icon": "leaf",
+            "param": "filter.p.product_type=Bracelets"
+          }
+        },
+        "budget_8": {
+          "type": "budget",
+          "settings": {
+            "label": "Under $100",
+            "icon": "tag",
+            "param": "filter.v.price.lte=100"
+          }
+        },
+        "budget_9": {
+          "type": "budget",
+          "settings": {
+            "label": "Under $200",
+            "icon": "gift",
+            "param": "filter.v.price.lte=200"
+          }
+        },
+        "budget_10": {
+          "type": "budget",
+          "settings": {
+            "label": "Something special",
+            "icon": "sparkle",
+            "param": "filter.v.price.gte=200"
+          }
+        }
+      },
+      "block_order": [
+        "skin_1",
+        "skin_2",
+        "skin_3",
+        "concern_4",
+        "concern_5",
+        "concern_6",
+        "concern_7",
+        "budget_8",
+        "budget_9",
+        "budget_10"
+      ]
+    },
+    "slideshow_slideshow": {
+      "type": "slideshow",
+      "settings": {},
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "kicker": "Just landed",
+            "heading": "New arrivals",
+            "art": "earrings",
+            "content_x": "center",
+            "text": "<p>Meet the latest additions to our collection.</p>"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "kicker": "Aurelia icons",
+            "heading": "The signature collection",
+            "art": "stack",
+            "text": "<p>Iconic pieces designed to become timeless essentials.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ]
+    },
     "social_gallery_social_gallery": {
       "type": "social-gallery",
       "settings": {},
@@ -217,6 +604,14 @@
     }
   },
   "order": [
+    "routine_complete_the_set",
+    "shop_by_concern_shop_by_occasion",
+    "shop_by_concern_occasion_chips",
+    "shop_the_look_shop_the_look",
+    "shoppable_gallery_shoppable_gallery",
+    "size_guide_size_guide",
+    "skin_quiz_gift_finder_quiz",
+    "slideshow_slideshow",
     "social_gallery_social_gallery",
     "statement_strip_statement_strip",
     "testimonials_testimonials",
