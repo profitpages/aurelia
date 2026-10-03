@@ -245,6 +245,16 @@
                 </dialog>
               {%- endif -%}
 
+            {%- when 'quantity_breaks' -%}
+              <div class="pdp__qb" {{ block.shopify_attributes }}>
+                {%- render 'pp-quantity-breaks', product: product, variant: current_variant, form_id: form_id, heading: block.settings.heading, uid: section.id -%}
+              </div>
+
+            {%- when 'bundle' -%}
+              <div class="pdp__bundle" {{ block.shopify_attributes }}>
+                {%- render 'pp-bundle', product: product, variant: current_variant, heading: block.settings.heading -%}
+              </div>
+
             {%- when 'buy_buttons' -%}
               <div class="pdp__buy" {{ block.shopify_attributes }}>
                 {%- assign qty_note = block.settings.qty_note -%}
@@ -320,147 +330,566 @@
   "name": "Product information",
   "class": "section-main-product",
   "settings": [
-    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
-    { "type": "checkbox", "id": "enable_zoom", "label": "Enable image zoom", "default": true },
-    { "type": "text", "id": "zoom_hint", "label": "Hint under the image", "default": "Click image to expand" },
-    { "type": "checkbox", "id": "show_badge", "label": "Show badge on the main image", "default": true, "info": "Sold out, sale, custom (custom.badge) or New." },
-    { "type": "checkbox", "id": "show_wishlist", "label": "Show wishlist heart on the main image", "default": true },
-    { "type": "checkbox", "id": "sticky_bar", "label": "Sticky add-to-bag bar", "default": true },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "Show breadcrumb",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_zoom",
+      "label": "Enable image zoom",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "zoom_hint",
+      "label": "Hint under the image",
+      "default": "Click image to expand"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show badge on the main image",
+      "default": true,
+      "info": "Sold out, sale, custom (custom.badge) or New."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "label": "Show wishlist heart on the main image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_bar",
+      "label": "Sticky add-to-bag bar",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
-    { "type": "@app" },
     {
-      "type": "kicker", "name": "Collection label", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "text", "label": "Label", "info": "The product metafield custom.collection_label overrides it." },
-        { "type": "checkbox", "id": "use_collection", "label": "When empty, use the product's first collection", "default": true },
-        { "type": "checkbox", "id": "show_save", "label": "Show Save (wishlist) button", "default": false }
-      ]
-    },
-    { "type": "title", "name": "Title", "limit": 1, "settings": [{ "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false }] },
-    {
-      "type": "description", "name": "Short description", "limit": 1,
-      "settings": [
-        { "type": "richtext", "id": "text", "label": "Text", "info": "Connect a metafield, or leave empty to use the start of the description." },
-        { "type": "range", "id": "words", "label": "Words from description", "min": 10, "max": 60, "step": 5, "default": 25 }
-      ]
-    },
-    { "type": "rating", "name": "Rating", "limit": 1 },
-    { "type": "divider", "name": "Divider" },
-    { "type": "price", "name": "Price", "limit": 1, "settings": [{ "type": "checkbox", "id": "show_stock", "label": "Show stock status beside the price", "default": false }] },
-    {
-      "type": "gift_line", "name": "Gift line", "limit": 1,
-      "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Complimentary gift packaging included.", "info": "The product metafield custom.gift_note overrides it." }]
+      "type": "@app"
     },
     {
-      "type": "material_line", "name": "Materials line", "limit": 1,
+      "type": "kicker",
+      "name": "Collection label",
+      "limit": 1,
       "settings": [
-        { "type": "text", "id": "text", "label": "Fallback text", "placeholder": "18k gold vermeil · Tarnish resistant", "info": "Built automatically from custom.material (or custom.metal_type), custom.stone_type, custom.plating and custom.hypoallergenic when they have values. Separate fallback items with ·" }
-      ]
-    },
-    {
-      "type": "engraving", "name": "Engraving", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "label", "label": "Toggle label", "default": "Add complimentary engraving" },
-        { "type": "text", "id": "input_label", "label": "Field label", "default": "Your engraving" },
-        { "type": "range", "id": "max_chars", "label": "Maximum characters", "min": 6, "max": 40, "step": 1, "default": 18 },
-        { "type": "text", "id": "property_name", "label": "Order note name", "default": "Engraving", "info": "Shown on the order and in the cart, e.g. 'Engraving: A & J'." },
-        { "type": "text", "id": "note", "label": "Small print", "default": "Personalized items are final sale." }
-      ]
-    },
-    {
-      "type": "microcopy", "name": "Shipping lines", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "text_1", "label": "First line", "default": "Free shipping on orders over $100", "info": "The product metafield custom.shipping_note overrides it." },
-        { "type": "text", "id": "text_2", "label": "Second line", "default": "Usually ships within 1–2 business days" }
-      ]
-    },
-    {
-      "type": "details", "name": "Jewellery details", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Jewellery details" },
-        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false },
-        { "type": "checkbox", "id": "show_sku", "label": "Show SKU", "default": true },
-        { "type": "paragraph", "content": "Lists any of these product metafields that have values: custom.material, custom.metal_type, custom.metal_color, custom.stone_type, custom.stone_size, custom.carat, custom.weight, custom.dimensions, custom.finish, custom.plating, custom.hypoallergenic, custom.water_resistance." }
-      ]
-    },
-    {
-      "type": "inventory", "name": "Stock status", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "in_stock_text", "label": "In-stock message", "default": "In stock — ships within 24 hours" },
-        { "type": "range", "id": "threshold", "label": "Show low stock below", "min": 1, "max": 20, "step": 1, "default": 5 }
-      ]
-    },
-    {
-      "type": "highlights", "name": "Highlight pills", "limit": 1,
-      "settings": [
-        { "type": "textarea", "id": "items", "label": "Pills (one per line)", "default": "Tarnish resistant\nHypoallergenic\nGift ready", "info": "The product metafield custom.highlights (list) overrides these." }
-      ]
-    },
-    {
-      "type": "variant_picker", "name": "Variant picker", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "label_prefix", "label": "Option label prefix", "default": "Select", "info": "E.g. 'Select' shows 'Select ring size'." },
-        { "type": "header", "content": "Size guide" },
-        { "type": "text", "id": "size_guide_option", "label": "Show the guide link beside the option named", "default": "Size", "info": "Matches any option whose name contains this word, e.g. 'Ring size'." },
-        { "type": "text", "id": "size_guide_label", "label": "Link label", "default": "Size Guide" },
-        { "type": "text", "id": "size_guide_title", "label": "Guide title", "default": "Ring Size Guide" },
-        { "type": "page", "id": "size_guide_page", "label": "Guide content from page" },
-        { "type": "richtext", "id": "size_guide_text", "label": "Guide content", "default": "<p>Measure the inside diameter of a ring that fits comfortably, then compare it below. Between sizes? We recommend choosing the larger size.</p><p>US 5 — 15.7 mm · US 6 — 16.5 mm · US 7 — 17.3 mm · US 8 — 18.2 mm · US 9 — 19.0 mm</p>" }
-      ]
-    },
-    {
-      "type": "buy_buttons", "name": "Buy buttons", "limit": 1,
-      "settings": [
-        { "type": "checkbox", "id": "show_qty", "label": "Show quantity", "default": true },
-        { "type": "checkbox", "id": "show_buy_now", "label": "Show Buy it now", "default": true },
-        { "type": "checkbox", "id": "show_wishlist", "label": "Show wishlist button beside Add to bag", "default": false },
-        { "type": "text", "id": "qty_note", "label": "Note beside quantity" }
-      ]
-    },
-    {
-      "type": "reassurance", "name": "Reassurance panel", "limit": 1,
-      "settings": [
-        { "type": "text", "id": "text_1", "label": "Shipping", "default": "Free shipping over $100" },
-        { "type": "text", "id": "text_2", "label": "Returns", "default": "30-day easy returns" },
-        { "type": "text", "id": "text_3", "label": "Security", "default": "Secure checkout" },
-        { "type": "text", "id": "text_4", "label": "Gift", "default": "Complimentary gift packaging" },
-        { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
-      ]
-    },
-    {
-      "type": "shipping_note", "name": "Icon note",
-      "settings": [
-        { "type": "text", "id": "text", "label": "Text", "default": "Secure checkout · Visa · Mastercard · Amex" },
-        { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "shield-check", "label": "Secure" }, { "value": "credit-card", "label": "Payment" }, { "value": "gift", "label": "Gift" }, { "value": "truck", "label": "Delivery" }, { "value": "return", "label": "Returns" }], "default": "shield-check" },
-        { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
-      ]
-    },
-    {
-      "type": "collapsible", "name": "Collapsible row",
-      "settings": [
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Shipping & Delivery" },
-        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false },
         {
-          "type": "select", "id": "source", "label": "Content source",
+          "type": "text",
+          "id": "text",
+          "label": "Label",
+          "info": "The product metafield custom.collection_label overrides it."
+        },
+        {
+          "type": "checkbox",
+          "id": "use_collection",
+          "label": "When empty, use the product's first collection",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_save",
+          "label": "Show Save (wishlist) button",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "label": "Show vendor",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Short description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "info": "Connect a metafield, or leave empty to use the start of the description."
+        },
+        {
+          "type": "range",
+          "id": "words",
+          "label": "Words from description",
+          "min": 10,
+          "max": 60,
+          "step": 5,
+          "default": 25
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Rating",
+      "limit": 1
+    },
+    {
+      "type": "divider",
+      "name": "Divider"
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_stock",
+          "label": "Show stock status beside the price",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "gift_line",
+      "name": "Gift line",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Complimentary gift packaging included.",
+          "info": "The product metafield custom.gift_note overrides it."
+        }
+      ]
+    },
+    {
+      "type": "material_line",
+      "name": "Materials line",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Fallback text",
+          "placeholder": "18k gold vermeil · Tarnish resistant",
+          "info": "Built automatically from custom.material (or custom.metal_type), custom.stone_type, custom.plating and custom.hypoallergenic when they have values. Separate fallback items with ·"
+        }
+      ]
+    },
+    {
+      "type": "engraving",
+      "name": "Engraving",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Toggle label",
+          "default": "Add complimentary engraving"
+        },
+        {
+          "type": "text",
+          "id": "input_label",
+          "label": "Field label",
+          "default": "Your engraving"
+        },
+        {
+          "type": "range",
+          "id": "max_chars",
+          "label": "Maximum characters",
+          "min": 6,
+          "max": 40,
+          "step": 1,
+          "default": 18
+        },
+        {
+          "type": "text",
+          "id": "property_name",
+          "label": "Order note name",
+          "default": "Engraving",
+          "info": "Shown on the order and in the cart, e.g. 'Engraving: A & J'."
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Small print",
+          "default": "Personalized items are final sale."
+        }
+      ]
+    },
+    {
+      "type": "microcopy",
+      "name": "Shipping lines",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_1",
+          "label": "First line",
+          "default": "Free shipping on orders over $100",
+          "info": "The product metafield custom.shipping_note overrides it."
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Second line",
+          "default": "Usually ships within 1–2 business days"
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "name": "Jewellery details",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Jewellery details"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_sku",
+          "label": "Show SKU",
+          "default": true
+        },
+        {
+          "type": "paragraph",
+          "content": "Lists any of these product metafields that have values: custom.material, custom.metal_type, custom.metal_color, custom.stone_type, custom.stone_size, custom.carat, custom.weight, custom.dimensions, custom.finish, custom.plating, custom.hypoallergenic, custom.water_resistance."
+        }
+      ]
+    },
+    {
+      "type": "inventory",
+      "name": "Stock status",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "in_stock_text",
+          "label": "In-stock message",
+          "default": "In stock — ships within 24 hours"
+        },
+        {
+          "type": "range",
+          "id": "threshold",
+          "label": "Show low stock below",
+          "min": 1,
+          "max": 20,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    },
+    {
+      "type": "highlights",
+      "name": "Highlight pills",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "Pills (one per line)",
+          "default": "Tarnish resistant\nHypoallergenic\nGift ready",
+          "info": "The product metafield custom.highlights (list) overrides these."
+        }
+      ]
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label_prefix",
+          "label": "Option label prefix",
+          "default": "Select",
+          "info": "E.g. 'Select' shows 'Select ring size'."
+        },
+        {
+          "type": "header",
+          "content": "Size guide"
+        },
+        {
+          "type": "text",
+          "id": "size_guide_option",
+          "label": "Show the guide link beside the option named",
+          "default": "Size",
+          "info": "Matches any option whose name contains this word, e.g. 'Ring size'."
+        },
+        {
+          "type": "text",
+          "id": "size_guide_label",
+          "label": "Link label",
+          "default": "Size Guide"
+        },
+        {
+          "type": "text",
+          "id": "size_guide_title",
+          "label": "Guide title",
+          "default": "Ring Size Guide"
+        },
+        {
+          "type": "page",
+          "id": "size_guide_page",
+          "label": "Guide content from page"
+        },
+        {
+          "type": "richtext",
+          "id": "size_guide_text",
+          "label": "Guide content",
+          "default": "<p>Measure the inside diameter of a ring that fits comfortably, then compare it below. Between sizes? We recommend choosing the larger size.</p><p>US 5 — 15.7 mm · US 6 — 16.5 mm · US 7 — 17.3 mm · US 8 — 18.2 mm · US 9 — 19.0 mm</p>"
+        }
+      ]
+    },
+    {
+      "type": "quantity_breaks",
+      "name": "Quantity breaks",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Choose your quantity"
+        },
+        {
+          "type": "paragraph",
+          "content": "Shows the tiers you set up in Profit Pages → Bundle Offers → Quantity breaks. Hidden on products without a rule."
+        }
+      ]
+    },
+    {
+      "type": "bundle",
+      "name": "Bought together",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Complete the set"
+        },
+        {
+          "type": "paragraph",
+          "content": "Shows the bundle you set up in Profit Pages → Bundle Offers → Bought together. Hidden on products without one."
+        }
+      ]
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_qty",
+          "label": "Show quantity",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_buy_now",
+          "label": "Show Buy it now",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_wishlist",
+          "label": "Show wishlist button beside Add to bag",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "qty_note",
+          "label": "Note beside quantity"
+        }
+      ]
+    },
+    {
+      "type": "reassurance",
+      "name": "Reassurance panel",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_1",
+          "label": "Shipping",
+          "default": "Free shipping over $100"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Returns",
+          "default": "30-day easy returns"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Security",
+          "default": "Secure checkout"
+        },
+        {
+          "type": "text",
+          "id": "text_4",
+          "label": "Gift",
+          "default": "Complimentary gift packaging"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Color scheme",
+          "default": "scheme-2"
+        }
+      ]
+    },
+    {
+      "type": "shipping_note",
+      "name": "Icon note",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Secure checkout · Visa · Mastercard · Amex"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
           "options": [
-            { "value": "custom", "label": "Text below" },
-            { "value": "description", "label": "Product description" },
-            { "value": "care", "label": "Metafield: care (custom.care)" },
-            { "value": "materials", "label": "Metafield: material (custom.material)" },
-            { "value": "shipping", "label": "Metafield: shipping note (custom.shipping_note)" },
-            { "value": "story", "label": "Metafield: product story (custom.product_story)" },
-            { "value": "dimensions", "label": "Metafield: dimensions (custom.dimensions)" }
+            {
+              "value": "shield-check",
+              "label": "Secure"
+            },
+            {
+              "value": "credit-card",
+              "label": "Payment"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "truck",
+              "label": "Delivery"
+            },
+            {
+              "value": "return",
+              "label": "Returns"
+            }
+          ],
+          "default": "shield-check"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Color scheme",
+          "default": "scheme-1"
+        }
+      ]
+    },
+    {
+      "type": "collapsible",
+      "name": "Collapsible row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shipping & Delivery"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "source",
+          "label": "Content source",
+          "options": [
+            {
+              "value": "custom",
+              "label": "Text below"
+            },
+            {
+              "value": "description",
+              "label": "Product description"
+            },
+            {
+              "value": "care",
+              "label": "Metafield: care (custom.care)"
+            },
+            {
+              "value": "materials",
+              "label": "Metafield: material (custom.material)"
+            },
+            {
+              "value": "shipping",
+              "label": "Metafield: shipping note (custom.shipping_note)"
+            },
+            {
+              "value": "story",
+              "label": "Metafield: product story (custom.product_story)"
+            },
+            {
+              "value": "dimensions",
+              "label": "Metafield: dimensions (custom.dimensions)"
+            }
           ],
           "default": "custom"
         },
-        { "type": "richtext", "id": "content", "label": "Text", "default": "<p>Free standard shipping on orders over $100. Orders typically ship within 1–2 business days.</p>" },
-        { "type": "page", "id": "page", "label": "Content from page" }
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Text",
+          "default": "<p>Free standard shipping on orders over $100. Orders typically ship within 1–2 business days.</p>"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Content from page"
+        }
       ]
     },
-    { "type": "share", "name": "Share", "limit": 1 },
-    { "type": "custom_liquid", "name": "Custom Liquid", "settings": [{ "type": "liquid", "id": "custom_liquid", "label": "Custom Liquid" }] }
+    {
+      "type": "share",
+      "name": "Share",
+      "limit": 1
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid"
+        }
+      ]
+    }
   ]
 }
 {% endschema %}

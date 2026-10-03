@@ -70,7 +70,7 @@
     "wishlist_add": "Save {{ title }} to wishlist",
     "zoom": "Open image zoom",
     "zoom_short": "Zoom",
-    "average_from": "{{ rating }} average from {{ count }} verified reviews",
+    "average_from": "{{ rating }} average from {{ count }} reviews",
     "new": "New",
     "hypoallergenic": "Hypoallergenic",
     "engraving_placeholder": "Up to {{ count }} characters",
@@ -312,5 +312,25 @@
     "kicker": "Your gift card",
     "shop": "Start shopping",
     "title": "{{ value }} gift card"
+  },
+  "addons": {
+    "qb_heading": "Choose your quantity",
+    "qb_each": "{{ price }} each",
+    "qb_save": "Save {{ amount }}",
+    "bundle_kicker": "Complete the set",
+    "bundle_this": "This item",
+    "bundle_save": "Save {{ amount }}",
+    "bundle_total": "The set",
+    "bundle_add": "Add the set to bag",
+    "reviews_more": "More reviews",
+    "reward_percent_html": "You're <strong>{{ amount }}</strong> away from {{ percent }}% off.",
+    "reward_gift_html": "You're <strong>{{ amount }}</strong> away from a free gift.",
+    "reward_all": "You've unlocked every reward.",
+    "reward_ship_short": "Free shipping",
+    "reward_percent_short": "{{ percent }}% off",
+    "reward_gift_short": "Free gift",
+    "timer_default": "Your pieces are reserved for {{ time }}",
+    "upsells_heading": "Finish the look",
+    "payment_methods": "Payment methods we accept"
   }
 }

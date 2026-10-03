@@ -90,6 +90,18 @@
           "settings": {
             "heading": "Materials & Details"
           }
+        },
+        "quantity_breaks": {
+          "type": "quantity_breaks",
+          "settings": {
+            "heading": "Choose your quantity"
+          }
+        },
+        "bundle": {
+          "type": "bundle",
+          "settings": {
+            "heading": "Complete the set"
+          }
         }
       },
       "block_order": [
@@ -102,7 +114,9 @@
         "material_line_7",
         "variant_picker_8",
         "engraving_9",
+        "quantity_breaks",
         "buy_buttons_10",
+        "bundle",
         "microcopy_11",
         "shipping_note_12",
         "collapsible_13",
