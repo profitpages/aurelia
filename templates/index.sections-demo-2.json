@@ -102,75 +102,6 @@
         "placeholder_art": "ring"
       }
     },
-    "ingredients_material_tabs": {
-      "type": "ingredients",
-      "settings": {},
-      "blocks": {
-        "ingredient_1": {
-          "type": "ingredient",
-          "settings": {}
-        },
-        "ingredient_2": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Freshwater pearl",
-            "benefit": "Soft lustre",
-            "text": "<p>Lustrous freshwater pearls, each one slightly different, hand-selected for their glow.</p>"
-          }
-        },
-        "ingredient_3": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Lab-grown stones",
-            "benefit": "Brilliant sparkle",
-            "text": "<p>Brilliant lab-grown stones, cut to sparkle and set by hand in recycled metals.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "ingredient_1",
-        "ingredient_2",
-        "ingredient_3"
-      ]
-    },
-    "ingredients_material_tabs_panel": {
-      "type": "ingredients",
-      "settings": {
-        "layout": "panel",
-        "kicker": "The materials",
-        "heading": "Chosen to catch the light.",
-        "color_scheme": "scheme-1"
-      },
-      "blocks": {
-        "ingredient_1": {
-          "type": "ingredient",
-          "settings": {
-            "text": "<p>A thick layer of 18k gold over sterling silver: the warmth of solid gold, made for everyday wear.</p>"
-          }
-        },
-        "ingredient_2": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Freshwater pearl",
-            "benefit": "Soft lustre",
-            "text": "<p>Lustrous freshwater pearls, each one slightly different, hand-selected for their glow.</p>"
-          }
-        },
-        "ingredient_3": {
-          "type": "ingredient",
-          "settings": {
-            "name": "Lab-grown stones",
-            "benefit": "Brilliant sparkle",
-            "text": "<p>Brilliant lab-grown stones, cut to sparkle and set by hand in recycled metals.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "ingredient_1",
-        "ingredient_2",
-        "ingredient_3"
-      ]
-    },
     "logo_list_press_logos": {
       "type": "logo-list",
       "settings": {},
@@ -572,82 +503,6 @@
         "text_3",
         "signature_4"
       ]
-    },
-    "ritual_steps_care_guide": {
-      "type": "ritual-steps",
-      "settings": {},
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Wear",
-            "text": "Put jewellery on last, after perfume, lotion and hairspray have settled."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Polish",
-            "text": "Wipe with a soft dry cloth after wearing to keep the polish bright."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Store",
-            "text": "Store each piece in its pouch, away from moisture and other jewellery."
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
-      ]
-    },
-    "ritual_steps_steps": {
-      "type": "ritual-steps",
-      "settings": {
-        "kicker": "Care guide",
-        "heading": "Wear, polish, store.",
-        "section_scheme": "scheme-1"
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "title": "Wear",
-            "text": "Put jewellery on last, after perfume and lotion."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Polish",
-            "text": "Polish gently with the soft cloth in your box."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Store",
-            "text": "Keep pieces apart so chains do not tangle."
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "title": "Refresh",
-            "text": "Bring it to us for a free polish once a year."
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
-      ]
     }
   },
   "order": [
@@ -658,8 +513,6 @@
     "image_with_text_image_with_text",
     "image_with_text_image_with_text_dark_blo",
     "image_with_text_image_with_text_split",
-    "ingredients_material_tabs",
-    "ingredients_material_tabs_panel",
     "logo_list_press_logos",
     "marquee_scrolling_text",
     "metal_guide_metal_guide",
@@ -673,8 +526,6 @@
     "promo_banner_promotional_cards",
     "promo_banner_editorial_banner",
     "recently_viewed_recently_viewed",
-    "rich_text_rich_text",
-    "ritual_steps_care_guide",
-    "ritual_steps_steps"
+    "rich_text_rich_text"
   ]
 }
