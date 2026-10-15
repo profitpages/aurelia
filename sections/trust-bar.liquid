@@ -24,43 +24,152 @@
 
 {% schema %}
 {
-  "name": "Trust strip",
+  "name": "t:sections.trust-bar.name",
   "class": "section-trust",
   "max_blocks": 4,
   "settings": [
-    { "type": "checkbox", "id": "show_icons", "label": "Show icons", "default": true },
-    { "type": "checkbox", "id": "caps", "label": "Uppercase titles", "default": false },
-    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-2" }
+    {
+      "type": "checkbox",
+      "id": "show_icons",
+      "label": "t:sections.trust-bar.settings.show_icons.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "caps",
+      "label": "t:sections.trust-bar.settings.caps.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.trust-bar.settings.full_width.label",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.trust-bar.settings.color_scheme.label",
+      "default": "scheme-2"
+    }
   ],
   "blocks": [
     {
-      "type": "item", "name": "Promise",
+      "type": "item",
+      "name": "t:sections.trust-bar.blocks.item.name",
       "settings": [
         {
-          "type": "select", "id": "icon", "label": "Icon",
+          "type": "select",
+          "id": "icon",
+          "label": "t:sections.trust-bar.blocks.item.settings.icon.label",
           "options": [
-            { "value": "truck", "label": "Delivery" }, { "value": "return", "label": "Returns" }, { "value": "gem", "label": "Gem" },
-            { "value": "shield-check", "label": "Secure" }, { "value": "award", "label": "Quality" }, { "value": "gift", "label": "Gift" },
-            { "value": "pen", "label": "Engraving" }, { "value": "package", "label": "Packaging" }, { "value": "credit-card", "label": "Payment" },
-            { "value": "sparkle", "label": "Sparkle" }, { "value": "leaf", "label": "Responsible" }, { "value": "none", "label": "None" }
+            {
+              "value": "truck",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__1.label"
+            },
+            {
+              "value": "return",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__2.label"
+            },
+            {
+              "value": "gem",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__3.label"
+            },
+            {
+              "value": "shield-check",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__4.label"
+            },
+            {
+              "value": "award",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__5.label"
+            },
+            {
+              "value": "gift",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__6.label"
+            },
+            {
+              "value": "pen",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__7.label"
+            },
+            {
+              "value": "package",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__8.label"
+            },
+            {
+              "value": "credit-card",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__9.label"
+            },
+            {
+              "value": "sparkle",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__10.label"
+            },
+            {
+              "value": "leaf",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__11.label"
+            },
+            {
+              "value": "none",
+              "label": "t:sections.trust-bar.blocks.item.settings.icon.options__12.label"
+            }
           ],
           "default": "truck"
         },
-        { "type": "text", "id": "title", "label": "Title", "default": "Free shipping" },
-        { "type": "text", "id": "text", "label": "Text", "default": "On orders over $100" },
-        { "type": "url", "id": "link", "label": "Link" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.trust-bar.blocks.item.settings.title.label",
+          "default": "Free shipping"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.trust-bar.blocks.item.settings.text.label",
+          "default": "On orders over $100"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.trust-bar.blocks.item.settings.link.label"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Trust strip",
+      "name": "t:sections.trust-bar.presets.presets__1.name",
       "blocks": [
-        { "type": "item", "settings": { "icon": "truck", "title": "Free shipping", "text": "On orders over $100" } },
-        { "type": "item", "settings": { "icon": "return", "title": "30-day returns", "text": "Shop with confidence" } },
-        { "type": "item", "settings": { "icon": "gem", "title": "Premium quality", "text": "Made to last" } },
-        { "type": "item", "settings": { "icon": "shield-check", "title": "Secure checkout", "text": "Safe & protected payments" } }
+        {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": "On orders over $100"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "30-day returns",
+            "text": "Shop with confidence"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "gem",
+            "title": "Premium quality",
+            "text": "Made to last"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Secure checkout",
+            "text": "Safe & protected payments"
+          }
+        }
       ]
     }
   ]

@@ -48,7 +48,7 @@ ol.look__list { display: grid; width: 100%; list-style: none; margin: 6px 0 4px;
 
 /* ---------- Editorial collage ---------- */
 .collage { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: clamp(14px, 2vw, 24px); }
-.collage__tile { position: relative; display: grid; gap: 12px; text-decoration: none; color: inherit; }
+.collage__tile { position: relative; display: grid; min-width: 0; gap: 12px; text-decoration: none; color: inherit; }
 .collage__tile--1 { grid-row: 1 / span 2; }
 .collage--right .collage__tile--1 { grid-column: 2; }
 .collage--right .collage__tile--2, .collage--right .collage__tile--3 { grid-column: 1; }
@@ -202,7 +202,7 @@ ul.lcol { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0,
   ol.tline { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; }
   .tline::before { display: none; }
   .tline__dot { top: -20px; }
-  .collage { grid-template-columns: 1fr 1fr; }
+  .collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .collage__tile--1 { grid-column: 1 / -1 !important; grid-row: auto; }
   .collage--right .collage__tile--2, .collage--right .collage__tile--3 { grid-column: auto; }
   .collage__tile--1 .collage__media { min-height: 0; aspect-ratio: 4 / 3; }
@@ -213,7 +213,7 @@ ul.lcol { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0,
   .look__thumb { width: 48px; height: 48px; }
   .look__pop { min-width: 150px; }
   .ctabs__list { width: 100%; }
-  .collage { grid-template-columns: 1fr; }
+  .collage { grid-template-columns: minmax(0, 1fr); }
   ol.tline { grid-template-columns: 1fr; padding-left: 26px; padding-top: 0; row-gap: 32px; }
   .tline::before { display: block; left: 6px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
   .tline__dot { top: 8px; left: -26px; }

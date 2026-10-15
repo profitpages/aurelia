@@ -44,22 +44,86 @@
 
 {% schema %}
 {
-  "name": "Collection banner",
+  "name": "t:sections.collection-hero.name",
   "class": "section-collection-hero",
   "settings": [
-    { "type": "checkbox", "id": "show_breadcrumb", "label": "Show breadcrumb", "default": true },
-    { "type": "checkbox", "id": "show_image", "label": "Show image", "default": true },
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Defaults to the collection image, then the first product's image." },
-    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "Aurelia collections" },
-    { "type": "text", "id": "heading", "label": "Heading (when not on a collection)", "default": "The signature collection" },
-    { "type": "richtext", "id": "text", "label": "Text (when the collection has no description)", "default": "<p>Iconic pieces designed to become timeless essentials.</p>" },
-    { "type": "text", "id": "support", "label": "Support line", "default": "Discover luminous silhouettes made for the moments you keep." },
-    { "type": "checkbox", "id": "show_count", "label": "Show product count", "default": false },
-    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop the collection" },
-    { "type": "url", "id": "link", "label": "Link", "info": "Defaults to the product grid on this page." },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Panel color scheme", "default": "scheme-4" },
-    { "type": "color_scheme", "id": "section_scheme", "label": "Section background", "default": "scheme-1" }
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "t:sections.collection-hero.settings.show_breadcrumb.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "t:sections.collection-hero.settings.show_image.label",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.collection-hero.settings.image.label",
+      "info": "t:sections.collection-hero.settings.image.info"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.collection-hero.settings.kicker.label",
+      "default": "Aurelia collections"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.collection-hero.settings.heading.label",
+      "default": "The signature collection"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.collection-hero.settings.text.label",
+      "default": "<p>Iconic pieces designed to become timeless essentials.</p>"
+    },
+    {
+      "type": "text",
+      "id": "support",
+      "label": "t:sections.collection-hero.settings.support.label",
+      "default": "Discover luminous silhouettes made for the moments you keep."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "t:sections.collection-hero.settings.show_count.label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:sections.collection-hero.settings.link_label.label",
+      "default": "Shop the collection"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.collection-hero.settings.link.label",
+      "info": "t:sections.collection-hero.settings.link.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.collection-hero.settings.color_scheme.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_scheme",
+      "label": "t:sections.collection-hero.settings.section_scheme.label",
+      "default": "scheme-1"
+    }
   ],
-  "presets": [{ "name": "Collection banner" }]
+  "presets": [
+    {
+      "name": "t:sections.collection-hero.presets.presets__1.name"
+    }
+  ]
 }
 {% endschema %}

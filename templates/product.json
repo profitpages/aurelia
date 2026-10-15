@@ -233,7 +233,7 @@
         "limit": 4,
         "columns": 4,
         "card_style": "plain",
-        "image_ratio": "portrait",
+        "image_ratio": "adapt",
         "card_button": "solid",
         "show_quick_add": true
       }
@@ -253,7 +253,7 @@
         "limit": 4,
         "columns": 4,
         "card_style": "plain",
-        "image_ratio": "portrait",
+        "image_ratio": "adapt",
         "show_quick_add": false
       }
     },

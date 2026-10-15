@@ -26,7 +26,7 @@
 
 {% schema %}
 {
-  "name": "Product recommendations",
+  "name": "t:sections.product-recommendations.name",
   "class": "section-recommendations",
   "enabled_on": {
     "templates": [
@@ -37,36 +37,36 @@
     {
       "type": "select",
       "id": "intent",
-      "label": "Type",
+      "label": "t:sections.product-recommendations.settings.intent.label",
       "options": [
         {
           "value": "complementary",
-          "label": "Complementary (Pair it with)"
+          "label": "t:sections.product-recommendations.settings.intent.options__1.label"
         },
         {
           "value": "related",
-          "label": "Related (You may also like)"
+          "label": "t:sections.product-recommendations.settings.intent.options__2.label"
         }
       ],
       "default": "related",
-      "info": "Complementary products are chosen in the Search & Discovery app."
+      "info": "t:sections.product-recommendations.settings.intent.info"
     },
     {
       "type": "text",
       "id": "kicker",
-      "label": "Kicker",
+      "label": "t:sections.product-recommendations.settings.kicker.label",
       "default": "Style it with"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:sections.product-recommendations.settings.heading.label",
       "default": "Pairs beautifully with."
     },
     {
       "type": "range",
       "id": "limit",
-      "label": "Products",
+      "label": "t:sections.product-recommendations.settings.limit.label",
       "min": 2,
       "max": 10,
       "step": 1,
@@ -75,7 +75,7 @@
     {
       "type": "range",
       "id": "columns",
-      "label": "Columns (desktop)",
+      "label": "t:sections.product-recommendations.settings.columns.label",
       "min": 2,
       "max": 5,
       "step": 1,
@@ -84,15 +84,15 @@
     {
       "type": "select",
       "id": "layout",
-      "label": "Layout",
+      "label": "t:sections.product-recommendations.settings.layout.label",
       "options": [
         {
           "value": "grid",
-          "label": "Grid"
+          "label": "t:sections.product-recommendations.settings.layout.options__1.label"
         },
         {
           "value": "carousel",
-          "label": "Carousel"
+          "label": "t:sections.product-recommendations.settings.layout.options__2.label"
         }
       ],
       "default": "grid"
@@ -100,19 +100,19 @@
     {
       "type": "select",
       "id": "card_style",
-      "label": "Card style",
+      "label": "t:sections.product-recommendations.settings.card_style.label",
       "options": [
         {
           "value": "boxed",
-          "label": "Boxed (paper panel)"
+          "label": "t:sections.product-recommendations.settings.card_style.options__1.label"
         },
         {
           "value": "bordered",
-          "label": "Bordered (hairline outline)"
+          "label": "t:sections.product-recommendations.settings.card_style.options__2.label"
         },
         {
           "value": "plain",
-          "label": "Plain (frameless)"
+          "label": "t:sections.product-recommendations.settings.card_style.options__3.label"
         }
       ],
       "default": "plain"
@@ -120,39 +120,43 @@
     {
       "type": "select",
       "id": "image_ratio",
-      "label": "Image ratio",
+      "label": "t:sections.product-recommendations.settings.image_ratio.label",
       "options": [
         {
+          "value": "adapt",
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+        },
+        {
           "value": "square",
-          "label": "Square"
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
         },
         {
           "value": "jewel",
-          "label": "Jewellery portrait (5:6)"
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
         },
         {
           "value": "portrait",
-          "label": "Portrait 4:5"
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__4.label"
         },
         {
           "value": "tall",
-          "label": "Tall 3:4"
+          "label": "t:sections.product-recommendations.settings.image_ratio.options__5.label"
         }
       ],
-      "default": "square"
+      "default": "adapt"
     },
     {
       "type": "select",
       "id": "card_button",
-      "label": "Quick add button",
+      "label": "t:sections.product-recommendations.settings.card_button.label",
       "options": [
         {
           "value": "outline",
-          "label": "Outline"
+          "label": "t:sections.product-recommendations.settings.card_button.options__1.label"
         },
         {
           "value": "solid",
-          "label": "Solid"
+          "label": "t:sections.product-recommendations.settings.card_button.options__2.label"
         }
       ],
       "default": "outline"
@@ -160,19 +164,19 @@
     {
       "type": "checkbox",
       "id": "show_quick_add",
-      "label": "Show quick add",
+      "label": "t:sections.product-recommendations.settings.show_quick_add.label",
       "default": true
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "t:sections.product-recommendations.settings.color_scheme.label",
       "default": "scheme-1"
     }
   ],
   "presets": [
     {
-      "name": "Product recommendations"
+      "name": "t:sections.product-recommendations.presets.presets__1.name"
     }
   ]
 }

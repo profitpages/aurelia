@@ -31,52 +31,192 @@
 
 {% schema %}
 {
-  "name": "Collection grid",
+  "name": "t:sections.collection-grid.name",
   "class": "section-collection-grid",
   "max_blocks": 12,
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "Discover Aurelia" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Find the piece that completes your look.</p>" },
     {
-      "type": "select", "id": "heading_align", "label": "Heading alignment",
-      "options": [{ "value": "center", "label": "Center" }, { "value": "left", "label": "Left" }],
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.collection-grid.settings.kicker.label",
+      "default": "Discover Aurelia"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.collection-grid.settings.heading.label",
+      "default": "Shop by category"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.collection-grid.settings.text.label",
+      "default": "<p>Find the piece that completes your look.</p>"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:sections.collection-grid.settings.heading_align.label",
+      "options": [
+        {
+          "value": "center",
+          "label": "t:sections.collection-grid.settings.heading_align.options__1.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.collection-grid.settings.heading_align.options__2.label"
+        }
+      ],
       "default": "center"
     },
-    { "type": "text", "id": "link_label", "label": "Heading link label" },
-    { "type": "url", "id": "link", "label": "Heading link" },
-    { "type": "text", "id": "tile_link_label", "label": "Tile link label", "default": "Explore collection →" },
     {
-      "type": "select", "id": "ratio", "label": "Tile shape",
-      "options": [{ "value": "jewel", "label": "Portrait 5:6" }, { "value": "portrait", "label": "Portrait 4:5" }, { "value": "square", "label": "Square" }, { "value": "landscape", "label": "Landscape" }],
+      "type": "text",
+      "id": "link_label",
+      "label": "t:sections.collection-grid.settings.link_label.label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.collection-grid.settings.link.label"
+    },
+    {
+      "type": "text",
+      "id": "tile_link_label",
+      "label": "t:sections.collection-grid.settings.tile_link_label.label",
+      "default": "Explore collection →"
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "t:sections.collection-grid.settings.ratio.label",
+      "options": [
+        {
+          "value": "jewel",
+          "label": "t:sections.collection-grid.settings.ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.collection-grid.settings.ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.collection-grid.settings.ratio.options__3.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.collection-grid.settings.ratio.options__4.label"
+        }
+      ],
       "default": "jewel"
     },
-    { "type": "range", "id": "columns", "label": "Tiles per row (desktop)", "min": 2, "max": 4, "step": 1, "default": 3 },
-    { "type": "select", "id": "columns_mobile", "label": "Tiles per row (mobile)", "options": [{ "value": "1", "label": "1" }, { "value": "2", "label": "2" }], "default": "2" },
-    { "type": "checkbox", "id": "show_count", "label": "Show product count", "default": false },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:sections.collection-grid.settings.columns.label",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:sections.collection-grid.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.collection-grid.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.collection-grid.settings.columns_mobile.options__2.label"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "t:sections.collection-grid.settings.show_count.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.collection-grid.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
     {
-      "type": "collection", "name": "Collection",
+      "type": "collection",
+      "name": "t:sections.collection-grid.blocks.collection.name",
       "settings": [
-        { "type": "collection", "id": "collection", "label": "Collection" },
-        { "type": "image_picker", "id": "image", "label": "Image", "info": "Defaults to the collection image." },
-        { "type": "text", "id": "title", "label": "Title", "info": "Defaults to the collection title." },
-        { "type": "url", "id": "link", "label": "Custom link" }
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-grid.blocks.collection.settings.collection.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.collection-grid.blocks.collection.settings.image.label",
+          "info": "t:sections.collection-grid.blocks.collection.settings.image.info"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.collection-grid.blocks.collection.settings.title.label",
+          "info": "t:sections.collection-grid.blocks.collection.settings.title.info"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.collection-grid.blocks.collection.settings.link.label"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Collection grid",
+      "name": "t:sections.collection-grid.presets.presets__1.name",
       "blocks": [
-        { "type": "collection", "settings": { "title": "Rings" } },
-        { "type": "collection", "settings": { "title": "Necklaces" } },
-        { "type": "collection", "settings": { "title": "Earrings" } },
-        { "type": "collection", "settings": { "title": "Bracelets" } },
-        { "type": "collection", "settings": { "title": "Chains" } },
-        { "type": "collection", "settings": { "title": "Gift sets" } }
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Rings"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Necklaces"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Earrings"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Bracelets"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Chains"
+          }
+        },
+        {
+          "type": "collection",
+          "settings": {
+            "title": "Gift sets"
+          }
+        }
       ]
     }
   ]

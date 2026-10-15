@@ -45,25 +45,77 @@
 
 {% schema %}
 {
-  "name": "Newsletter",
+  "name": "t:sections.newsletter.name",
   "class": "section-newsletter",
   "settings": [
     {
-      "type": "select", "id": "layout", "label": "Layout",
-      "options": [{ "value": "center", "label": "Centered" }, { "value": "split", "label": "Split" }],
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.newsletter.settings.layout.label",
+      "options": [
+        {
+          "value": "center",
+          "label": "t:sections.newsletter.settings.layout.options__1.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.newsletter.settings.layout.options__2.label"
+        }
+      ],
       "default": "center"
     },
-    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "The Aurelia letter" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "A little luxury, in your inbox" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Be the first to discover new collections, exclusive offers, and styling inspiration.</p>" },
-    { "type": "text", "id": "placeholder", "label": "Field placeholder", "default": "Enter your email address" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Join us" },
-    { "type": "text", "id": "consent", "label": "Small print" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-5" }
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.newsletter.settings.kicker.label",
+      "default": "The Aurelia letter"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.newsletter.settings.heading.label",
+      "default": "A little luxury, in your inbox"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.newsletter.settings.text.label",
+      "default": "<p>Be the first to discover new collections, exclusive offers, and styling inspiration.</p>"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "t:sections.newsletter.settings.placeholder.label",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.newsletter.settings.button_label.label",
+      "default": "Join us"
+    },
+    {
+      "type": "text",
+      "id": "consent",
+      "label": "t:sections.newsletter.settings.consent.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.newsletter.settings.color_scheme.label",
+      "default": "scheme-5"
+    }
   ],
   "presets": [
-    { "name": "Newsletter" },
-    { "name": "Newsletter — champagne", "settings": { "color_scheme": "scheme-8" } }
+    {
+      "name": "t:sections.newsletter.presets.presets__1.name"
+    },
+    {
+      "name": "t:sections.newsletter.presets.presets__2.name",
+      "settings": {
+        "color_scheme": "scheme-8"
+      }
+    }
   ]
 }
 {% endschema %}

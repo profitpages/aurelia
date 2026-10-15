@@ -42,44 +42,133 @@
 
 {% schema %}
 {
-  "name": "Testimonials",
+  "name": "t:sections.testimonials.name",
   "class": "section-testimonials",
   "max_blocks": 6,
   "settings": [
     {
-      "type": "select", "id": "layout", "label": "Layout",
-      "options": [{ "value": "cards", "label": "Cards" }, { "value": "single", "label": "Single quote" }],
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.testimonials.settings.layout.label",
+      "options": [
+        {
+          "value": "cards",
+          "label": "t:sections.testimonials.settings.layout.options__1.label"
+        },
+        {
+          "value": "single",
+          "label": "t:sections.testimonials.settings.layout.options__2.label"
+        }
+      ],
       "default": "cards"
     },
-    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "Our community" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Loved by thousands" },
-    { "type": "richtext", "id": "text", "label": "Text" },
-    { "type": "paragraph", "content": "Only publish words your customers actually wrote. For product reviews, use a reviews app." },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" }
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.testimonials.settings.kicker.label",
+      "default": "Our community"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.testimonials.settings.heading.label",
+      "default": "Loved by thousands"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.testimonials.settings.text.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.testimonials.settings.paragraph__5.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.testimonials.settings.color_scheme.label",
+      "default": "scheme-3"
+    }
   ],
   "blocks": [
     {
-      "type": "testimonial", "name": "Testimonial",
+      "type": "testimonial",
+      "name": "t:sections.testimonials.blocks.testimonial.name",
       "settings": [
-        { "type": "range", "id": "stars", "label": "Stars", "min": 0, "max": 5, "step": 1, "default": 5 },
-        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Absolutely stunning. The quality is even better than I expected and it looks beautiful in person." },
-        { "type": "text", "id": "author", "label": "Name", "default": "Customer name" },
-        { "type": "text", "id": "detail", "label": "Detail", "default": "Verified buyer" },
-        { "type": "image_picker", "id": "avatar", "label": "Photo" },
-        { "type": "product", "id": "product", "label": "Product" }
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "t:sections.testimonials.blocks.testimonial.settings.stars.label",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "t:sections.testimonials.blocks.testimonial.settings.quote.label",
+          "default": "Absolutely stunning. The quality is even better than I expected and it looks beautiful in person."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "t:sections.testimonials.blocks.testimonial.settings.author.label",
+          "default": "Customer name"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "t:sections.testimonials.blocks.testimonial.settings.detail.label",
+          "default": "Verified buyer"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "t:sections.testimonials.blocks.testimonial.settings.avatar.label"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.testimonials.blocks.testimonial.settings.product.label"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Testimonials",
+      "name": "t:sections.testimonials.presets.presets__1.name",
       "blocks": [
-        { "type": "testimonial" },
-        { "type": "testimonial", "settings": { "quote": "My necklace has become part of my everyday uniform. It is delicate, polished, and endlessly wearable." } },
-        { "type": "testimonial", "settings": { "quote": "The presentation made it feel truly special. A beautiful gift that felt considered from start to finish." } }
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My necklace has become part of my everyday uniform. It is delicate, polished, and endlessly wearable."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The presentation made it feel truly special. A beautiful gift that felt considered from start to finish."
+          }
+        }
       ]
     },
-    { "name": "Quote band", "settings": { "layout": "single", "kicker": "", "color_scheme": "scheme-2" }, "blocks": [{ "type": "testimonial" }] }
+    {
+      "name": "t:sections.testimonials.presets.presets__2.name",
+      "settings": {
+        "layout": "single",
+        "kicker": "",
+        "color_scheme": "scheme-2"
+      },
+      "blocks": [
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
   ]
 }
 {% endschema %}

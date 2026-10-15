@@ -23,68 +23,68 @@
 
 {% schema %}
 {
-  "name": "Timeline",
+  "name": "t:sections.timeline.name",
   "class": "section-timeline",
   "max_blocks": 8,
   "settings": [
     {
       "type": "text",
       "id": "kicker",
-      "label": "Kicker",
+      "label": "t:sections.timeline.settings.kicker.label",
       "default": "Our journey"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:sections.timeline.settings.heading.label",
       "default": "From a single ring to a house of modern heirlooms."
     },
     {
       "type": "richtext",
       "id": "text",
-      "label": "Text"
+      "label": "t:sections.timeline.settings.text.label"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "t:sections.timeline.settings.color_scheme.label",
       "default": "scheme-1"
     }
   ],
   "blocks": [
     {
       "type": "milestone",
-      "name": "Milestone",
+      "name": "t:sections.timeline.blocks.milestone.name",
       "settings": [
         {
           "type": "text",
           "id": "year",
-          "label": "Year or label",
+          "label": "t:sections.timeline.blocks.milestone.settings.year.label",
           "default": "2019"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Title",
+          "label": "t:sections.timeline.blocks.milestone.settings.title.label",
           "default": "The first ring"
         },
         {
           "type": "textarea",
           "id": "text",
-          "label": "Text",
+          "label": "t:sections.timeline.blocks.milestone.settings.text.label",
           "default": "One gold band, cast by hand at a kitchen-table bench."
         },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image (optional)"
+          "label": "t:sections.timeline.blocks.milestone.settings.image.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Timeline",
+      "name": "t:sections.timeline.presets.presets__1.name",
       "blocks": [
         {
           "type": "milestone"

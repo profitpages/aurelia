@@ -30,78 +30,78 @@
 
 {% schema %}
 {
-  "name": "Shoppable gallery",
+  "name": "t:sections.shoppable-gallery.name",
   "class": "section-ugc",
   "max_blocks": 10,
   "settings": [
     {
       "type": "text",
       "id": "kicker",
-      "label": "Kicker",
+      "label": "t:sections.shoppable-gallery.settings.kicker.label",
       "default": "#WornWithAurelia"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:sections.shoppable-gallery.settings.heading.label",
       "default": "On real shelves, in real light."
     },
     {
       "type": "richtext",
       "id": "text",
-      "label": "Text",
+      "label": "t:sections.shoppable-gallery.settings.text.label",
       "default": "<p>Tap a moment to shop the pieces in it.</p>"
     },
     {
       "type": "text",
       "id": "link_label",
-      "label": "Link label",
+      "label": "t:sections.shoppable-gallery.settings.link_label.label",
       "default": "Follow along"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "Link"
+      "label": "t:sections.shoppable-gallery.settings.link.label"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "t:sections.shoppable-gallery.settings.color_scheme.label",
       "default": "scheme-1"
     }
   ],
   "blocks": [
     {
       "type": "photo",
-      "name": "Photo",
+      "name": "t:sections.shoppable-gallery.blocks.photo.name",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image"
+          "label": "t:sections.shoppable-gallery.blocks.photo.settings.image.label"
         },
         {
           "type": "text",
           "id": "handle",
-          "label": "Credit",
+          "label": "t:sections.shoppable-gallery.blocks.photo.settings.handle.label",
           "default": "@aureliajewellery"
         },
         {
           "type": "text",
           "id": "caption",
-          "label": "Image description (screen readers)"
+          "label": "t:sections.shoppable-gallery.blocks.photo.settings.caption.label"
         },
         {
           "type": "product",
           "id": "product",
-          "label": "Tagged product"
+          "label": "t:sections.shoppable-gallery.blocks.photo.settings.product.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Shoppable gallery",
+      "name": "t:sections.shoppable-gallery.presets.presets__1.name",
       "blocks": [
         {
           "type": "photo",

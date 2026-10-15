@@ -14,7 +14,7 @@
         "filter_layout": "drawer",
         "columns": 4,
         "card_style": "plain",
-        "image_ratio": "jewel",
+        "image_ratio": "adapt",
         "per_page": 12,
         "load_more": true
       }
@@ -54,7 +54,7 @@
         "limit": 4,
         "columns": 4,
         "card_style": "plain",
-        "image_ratio": "portrait",
+        "image_ratio": "adapt",
         "color_scheme": "scheme-1"
       }
     },

@@ -30,7 +30,9 @@
     "country": "Country / region",
     "language": "Language",
     "update": "Update",
-    "social_x": "X (Twitter)"
+    "social_x": "X (Twitter)",
+    "image_placeholder": "Image placeholder",
+    "product_details": "Product details"
   },
   "products": {
     "add_title": "Add {{ title }} to bag",

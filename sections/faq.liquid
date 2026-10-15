@@ -35,39 +35,39 @@
 
 {% schema %}
 {
-  "name": "FAQ",
+  "name": "t:sections.faq.name",
   "class": "section-faq",
   "max_blocks": 16,
   "settings": [
     {
       "type": "text",
       "id": "kicker",
-      "label": "Kicker",
+      "label": "t:sections.faq.settings.kicker.label",
       "default": "A few helpful notes"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:sections.faq.settings.heading.label",
       "default": "Frequently asked."
     },
     {
       "type": "richtext",
       "id": "text",
-      "label": "Text"
+      "label": "t:sections.faq.settings.text.label"
     },
     {
       "type": "select",
       "id": "layout",
-      "label": "Layout",
+      "label": "t:sections.faq.settings.layout.label",
       "options": [
         {
           "value": "stacked",
-          "label": "Narrow, stacked"
+          "label": "t:sections.faq.settings.layout.options__1.label"
         },
         {
           "value": "side",
-          "label": "Heading beside questions"
+          "label": "t:sections.faq.settings.layout.options__2.label"
         }
       ],
       "default": "stacked"
@@ -75,15 +75,15 @@
     {
       "type": "select",
       "id": "style",
-      "label": "Question style",
+      "label": "t:sections.faq.settings.style.label",
       "options": [
         {
           "value": "faq",
-          "label": "Arrow marker, sans"
+          "label": "t:sections.faq.settings.style.options__1.label"
         },
         {
           "value": "plus",
-          "label": "Serif with plus"
+          "label": "t:sections.faq.settings.style.options__2.label"
         }
       ],
       "default": "faq"
@@ -91,15 +91,15 @@
     {
       "type": "select",
       "id": "align",
-      "label": "Heading alignment",
+      "label": "t:sections.faq.settings.align.label",
       "options": [
         {
           "value": "left",
-          "label": "Left"
+          "label": "t:sections.faq.settings.align.options__1.label"
         },
         {
           "value": "center",
-          "label": "Center"
+          "label": "t:sections.faq.settings.align.options__2.label"
         }
       ],
       "default": "left"
@@ -107,37 +107,37 @@
     {
       "type": "checkbox",
       "id": "schema_markup",
-      "label": "Add FAQ markup for search engines",
+      "label": "t:sections.faq.settings.schema_markup.label",
       "default": true
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "t:sections.faq.settings.color_scheme.label",
       "default": "scheme-1"
     }
   ],
   "blocks": [
     {
       "type": "question",
-      "name": "Question",
+      "name": "t:sections.faq.blocks.question.name",
       "settings": [
         {
           "type": "text",
           "id": "question",
-          "label": "Question",
+          "label": "t:sections.faq.blocks.question.settings.question.label",
           "default": "How long does shipping take?"
         },
         {
           "type": "richtext",
           "id": "answer",
-          "label": "Answer",
+          "label": "t:sections.faq.blocks.question.settings.answer.label",
           "default": "<p>Orders are prepared within 24 hours on business days and usually arrive in 2–5 days.</p>"
         },
         {
           "type": "checkbox",
           "id": "open",
-          "label": "Open by default",
+          "label": "t:sections.faq.blocks.question.settings.open.label",
           "default": false
         }
       ]
@@ -145,7 +145,7 @@
   ],
   "presets": [
     {
-      "name": "FAQ",
+      "name": "t:sections.faq.presets.presets__1.name",
       "blocks": [
         {
           "type": "question",
@@ -192,7 +192,7 @@
       ]
     },
     {
-      "name": "Product details — FAQ",
+      "name": "t:sections.faq.presets.presets__2.name",
       "settings": {
         "layout": "side",
         "style": "plus",

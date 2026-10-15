@@ -17,36 +17,36 @@
 
 {% schema %}
 {
-  "name": "Scrolling text",
+  "name": "t:sections.marquee.name",
   "class": "section-marquee",
   "max_blocks": 10,
   "settings": [
     {
       "type": "text",
       "id": "label",
-      "label": "Accessible name",
+      "label": "t:sections.marquee.settings.label.label",
       "default": "Brand promises"
     },
     {
       "type": "select",
       "id": "separator",
-      "label": "Separator",
+      "label": "t:sections.marquee.settings.separator.label",
       "options": [
         {
           "value": "sparkle",
-          "label": "Sparkle"
+          "label": "t:sections.marquee.settings.separator.options__1.label"
         },
         {
           "value": "flower",
-          "label": "Flower"
+          "label": "t:sections.marquee.settings.separator.options__2.label"
         },
         {
           "value": "dot",
-          "label": "Dot"
+          "label": "t:sections.marquee.settings.separator.options__3.label"
         },
         {
           "value": "leaf",
-          "label": "Leaf"
+          "label": "t:sections.marquee.settings.separator.options__4.label"
         }
       ],
       "default": "sparkle"
@@ -54,13 +54,13 @@
     {
       "type": "checkbox",
       "id": "serif",
-      "label": "Large serif text",
+      "label": "t:sections.marquee.settings.serif.label",
       "default": true
     },
     {
       "type": "range",
       "id": "speed",
-      "label": "Loop duration (higher = slower)",
+      "label": "t:sections.marquee.settings.speed.label",
       "min": 16,
       "max": 80,
       "step": 4,
@@ -70,15 +70,15 @@
     {
       "type": "select",
       "id": "direction",
-      "label": "Direction",
+      "label": "t:sections.marquee.settings.direction.label",
       "options": [
         {
           "value": "left",
-          "label": "Left"
+          "label": "t:sections.marquee.settings.direction.options__1.label"
         },
         {
           "value": "right",
-          "label": "Right"
+          "label": "t:sections.marquee.settings.direction.options__2.label"
         }
       ],
       "default": "left"
@@ -86,32 +86,32 @@
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "t:sections.marquee.settings.color_scheme.label",
       "default": "scheme-4"
     }
   ],
   "blocks": [
     {
       "type": "item",
-      "name": "Text",
+      "name": "t:sections.marquee.blocks.item.name",
       "settings": [
         {
           "type": "text",
           "id": "text",
-          "label": "Text",
+          "label": "t:sections.marquee.blocks.item.settings.text.label",
           "default": "Hypoallergenic"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link"
+          "label": "t:sections.marquee.blocks.item.settings.link.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Scrolling text",
+      "name": "t:sections.marquee.presets.presets__1.name",
       "blocks": [
         {
           "type": "item",

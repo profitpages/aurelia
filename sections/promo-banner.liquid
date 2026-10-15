@@ -28,55 +28,55 @@
 
 {% schema %}
 {
-  "name": "Promotional banner",
+  "name": "t:sections.promo-banner.name",
   "class": "section-promo",
   "max_blocks": 3,
   "settings": [
     {
       "type": "text",
       "id": "kicker",
-      "label": "Kicker",
+      "label": "t:sections.promo-banner.settings.kicker.label",
       "default": "Chosen for you"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:sections.promo-banner.settings.heading.label",
       "default": "A little more to love"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Section color scheme",
+      "label": "t:sections.promo-banner.settings.color_scheme.label",
       "default": "scheme-1"
     }
   ],
   "blocks": [
     {
       "type": "promo",
-      "name": "Promo card",
+      "name": "t:sections.promo-banner.blocks.promo.name",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image"
+          "label": "t:sections.promo-banner.blocks.promo.settings.image.label"
         },
         {
           "type": "select",
           "id": "layout",
-          "label": "Layout",
+          "label": "t:sections.promo-banner.blocks.promo.settings.layout.label",
           "options": [
             {
               "value": "side",
-              "label": "Image beside text"
+              "label": "t:sections.promo-banner.blocks.promo.settings.layout.options__1.label"
             },
             {
               "value": "stack",
-              "label": "Image above text"
+              "label": "t:sections.promo-banner.blocks.promo.settings.layout.options__2.label"
             },
             {
               "value": "overlay",
-              "label": "Text over image"
+              "label": "t:sections.promo-banner.blocks.promo.settings.layout.options__3.label"
             }
           ],
           "default": "side"
@@ -84,35 +84,35 @@
         {
           "type": "text",
           "id": "kicker",
-          "label": "Kicker",
+          "label": "t:sections.promo-banner.blocks.promo.settings.kicker.label",
           "default": "Gift edit"
         },
         {
           "type": "text",
           "id": "heading",
-          "label": "Heading",
+          "label": "t:sections.promo-banner.blocks.promo.settings.heading.label",
           "default": "Comforting essentials for sensitive days."
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Text"
+          "label": "t:sections.promo-banner.blocks.promo.settings.text.label"
         },
         {
           "type": "text",
           "id": "link_label",
-          "label": "Link label",
+          "label": "t:sections.promo-banner.blocks.promo.settings.link_label.label",
           "default": "Discover gifts"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link"
+          "label": "t:sections.promo-banner.blocks.promo.settings.link.label"
         },
         {
           "type": "color_scheme",
           "id": "color_scheme",
-          "label": "Card color scheme",
+          "label": "t:sections.promo-banner.blocks.promo.settings.color_scheme.label",
           "default": "scheme-5"
         }
       ]
@@ -120,7 +120,7 @@
   ],
   "presets": [
     {
-      "name": "Promotional cards",
+      "name": "t:sections.promo-banner.presets.presets__1.name",
       "blocks": [
         {
           "type": "promo"
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "name": "Editorial banner",
+      "name": "t:sections.promo-banner.presets.presets__2.name",
       "settings": {
         "kicker": "",
         "heading": ""

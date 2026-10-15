@@ -54,53 +54,196 @@
 
 {% schema %}
 {
-  "name": "Slideshow",
+  "name": "t:sections.slideshow.name",
   "class": "section-slideshow",
   "max_blocks": 5,
   "settings": [
-    { "type": "text", "id": "label", "label": "Accessible name", "default": "Featured collections" },
     {
-      "type": "select", "id": "height", "label": "Height",
-      "options": [{ "value": "sm", "label": "Small" }, { "value": "md", "label": "Medium" }, { "value": "lg", "label": "Large" }],
+      "type": "text",
+      "id": "label",
+      "label": "t:sections.slideshow.settings.label.label",
+      "default": "Featured collections"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:sections.slideshow.settings.height.label",
+      "options": [
+        {
+          "value": "sm",
+          "label": "t:sections.slideshow.settings.height.options__1.label"
+        },
+        {
+          "value": "md",
+          "label": "t:sections.slideshow.settings.height.options__2.label"
+        },
+        {
+          "value": "lg",
+          "label": "t:sections.slideshow.settings.height.options__3.label"
+        }
+      ],
       "default": "lg"
     },
-    { "type": "checkbox", "id": "autoplay", "label": "Auto-rotate slides", "default": true },
-    { "type": "range", "id": "interval", "label": "Change every", "min": 3, "max": 10, "step": 1, "unit": "s", "default": 6 }
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.slideshow.settings.autoplay.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "interval",
+      "label": "t:sections.slideshow.settings.interval.label",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 6
+    }
   ],
   "blocks": [
     {
-      "type": "slide", "name": "Slide",
+      "type": "slide",
+      "name": "t:sections.slideshow.blocks.slide.name",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image", "info": "2800 × 1500px or larger." },
         {
-          "type": "select", "id": "art", "label": "Placeholder drawing (no image)",
-          "options": [{ "value": "bust", "label": "Necklace on bust" }, { "value": "ring", "label": "Ring" }, { "value": "stack", "label": "Ring stack" }, { "value": "earrings", "label": "Earrings" }, { "value": "bracelet", "label": "Bracelet" }],
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.slideshow.blocks.slide.settings.image.label",
+          "info": "t:sections.slideshow.blocks.slide.settings.image.info"
+        },
+        {
+          "type": "select",
+          "id": "art",
+          "label": "t:sections.slideshow.blocks.slide.settings.art.label",
+          "options": [
+            {
+              "value": "bust",
+              "label": "t:sections.slideshow.blocks.slide.settings.art.options__1.label"
+            },
+            {
+              "value": "ring",
+              "label": "t:sections.slideshow.blocks.slide.settings.art.options__2.label"
+            },
+            {
+              "value": "stack",
+              "label": "t:sections.slideshow.blocks.slide.settings.art.options__3.label"
+            },
+            {
+              "value": "earrings",
+              "label": "t:sections.slideshow.blocks.slide.settings.art.options__4.label"
+            },
+            {
+              "value": "bracelet",
+              "label": "t:sections.slideshow.blocks.slide.settings.art.options__5.label"
+            }
+          ],
           "default": "bust"
         },
-        { "type": "range", "id": "overlay", "label": "Overlay strength", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 45 },
         {
-          "type": "select", "id": "content_x", "label": "Content position",
-          "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }],
+          "type": "range",
+          "id": "overlay",
+          "label": "t:sections.slideshow.blocks.slide.settings.overlay.label",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "default": 45
+        },
+        {
+          "type": "select",
+          "id": "content_x",
+          "label": "t:sections.slideshow.blocks.slide.settings.content_x.label",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.slideshow.blocks.slide.settings.content_x.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.slideshow.blocks.slide.settings.content_x.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.slideshow.blocks.slide.settings.content_x.options__3.label"
+            }
+          ],
           "default": "left"
         },
-        { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "The Aurelia collection" },
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Jewelry that tells your story" },
-        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Timeless pieces designed to become part of your everyday.</p>" },
-        { "type": "text", "id": "button_label", "label": "Ivory button", "default": "Shop now" },
-        { "type": "url", "id": "button_link", "label": "Ivory button link" },
-        { "type": "text", "id": "button2_label", "label": "Outline button" },
-        { "type": "url", "id": "button2_link", "label": "Outline button link" },
-        { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-5" }
+        {
+          "type": "text",
+          "id": "kicker",
+          "label": "t:sections.slideshow.blocks.slide.settings.kicker.label",
+          "default": "The Aurelia collection"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:sections.slideshow.blocks.slide.settings.heading.label",
+          "default": "Jewelry that tells your story"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.slideshow.blocks.slide.settings.text.label",
+          "default": "<p>Timeless pieces designed to become part of your everyday.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_label.label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.slideshow.blocks.slide.settings.button_link.label"
+        },
+        {
+          "type": "text",
+          "id": "button2_label",
+          "label": "t:sections.slideshow.blocks.slide.settings.button2_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button2_link",
+          "label": "t:sections.slideshow.blocks.slide.settings.button2_link.label"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.slideshow.blocks.slide.settings.color_scheme.label",
+          "default": "scheme-5"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Slideshow",
+      "name": "t:sections.slideshow.presets.presets__1.name",
       "blocks": [
-        { "type": "slide" },
-        { "type": "slide", "settings": { "kicker": "Just landed", "heading": "New arrivals", "art": "earrings", "content_x": "center", "text": "<p>Meet the latest additions to our collection.</p>" } },
-        { "type": "slide", "settings": { "kicker": "Aurelia icons", "heading": "The signature collection", "art": "stack", "text": "<p>Iconic pieces designed to become timeless essentials.</p>" } }
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "kicker": "Just landed",
+            "heading": "New arrivals",
+            "art": "earrings",
+            "content_x": "center",
+            "text": "<p>Meet the latest additions to our collection.</p>"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "kicker": "Aurelia icons",
+            "heading": "The signature collection",
+            "art": "stack",
+            "text": "<p>Iconic pieces designed to become timeless essentials.</p>"
+          }
+        }
       ]
     }
   ]

@@ -33,35 +33,97 @@
 
 {% schema %}
 {
-  "name": "Boutiques",
+  "name": "t:sections.boutiques.name",
   "class": "section-boutiques",
   "max_blocks": 6,
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "Visit us" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Our boutiques" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Try pieces on, book a fitting, or have your jewellery cleaned while you wait.</p>" },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.boutiques.settings.kicker.label",
+      "default": "Visit us"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.boutiques.settings.heading.label",
+      "default": "Our boutiques"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.boutiques.settings.text.label",
+      "default": "<p>Try pieces on, book a fitting, or have your jewellery cleaned while you wait.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.boutiques.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
     {
-      "type": "store", "name": "Boutique",
+      "type": "store",
+      "name": "t:sections.boutiques.blocks.store.name",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "city", "label": "City", "default": "London" },
-        { "type": "textarea", "id": "address", "label": "Address", "default": "12 Example Street\nLondon W1" },
-        { "type": "textarea", "id": "hours", "label": "Opening hours", "default": "Mon–Sat 10am–7pm\nSun 11am–5pm" },
-        { "type": "text", "id": "phone", "label": "Phone" },
-        { "type": "url", "id": "map_link", "label": "Map link" }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.boutiques.blocks.store.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "t:sections.boutiques.blocks.store.settings.city.label",
+          "default": "London"
+        },
+        {
+          "type": "textarea",
+          "id": "address",
+          "label": "t:sections.boutiques.blocks.store.settings.address.label",
+          "default": "12 Example Street\nLondon W1"
+        },
+        {
+          "type": "textarea",
+          "id": "hours",
+          "label": "t:sections.boutiques.blocks.store.settings.hours.label",
+          "default": "Mon–Sat 10am–7pm\nSun 11am–5pm"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "t:sections.boutiques.blocks.store.settings.phone.label"
+        },
+        {
+          "type": "url",
+          "id": "map_link",
+          "label": "t:sections.boutiques.blocks.store.settings.map_link.label"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Boutiques",
+      "name": "t:sections.boutiques.presets.presets__1.name",
       "blocks": [
-        { "type": "store" },
-        { "type": "store", "settings": { "city": "Paris", "address": "8 Rue Exemple\n75003 Paris" } },
-        { "type": "store", "settings": { "city": "New York", "address": "100 Example Avenue\nNew York, NY" } }
+        {
+          "type": "store"
+        },
+        {
+          "type": "store",
+          "settings": {
+            "city": "Paris",
+            "address": "8 Rue Exemple\n75003 Paris"
+          }
+        },
+        {
+          "type": "store",
+          "settings": {
+            "city": "New York",
+            "address": "100 Example Avenue\nNew York, NY"
+          }
+        }
       ]
     }
   ]

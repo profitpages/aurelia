@@ -58,92 +58,92 @@
 
 {% schema %}
 {
-  "name": "Video reviews",
+  "name": "t:sections.video-reviews.name",
   "class": "section-video-reviews",
   "max_blocks": 12,
   "settings": [
     {
       "type": "text",
       "id": "kicker",
-      "label": "Kicker",
+      "label": "t:sections.video-reviews.settings.kicker.label",
       "default": "#WornWithAurelia"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "t:sections.video-reviews.settings.heading.label",
       "default": "Seen on your feed."
     },
     {
       "type": "richtext",
       "id": "text",
-      "label": "Text",
+      "label": "t:sections.video-reviews.settings.text.label",
       "default": "<p>Real stacks from our community — tap to play.</p>"
     },
     {
       "type": "checkbox",
       "id": "autoplay",
-      "label": "Autoplay muted while in view",
+      "label": "t:sections.video-reviews.settings.autoplay.label",
       "default": true
     },
     {
       "type": "paragraph",
-      "content": "Upload short vertical (9:16) clips you have the rights to use. Please only feature genuine customers."
+      "content": "t:sections.video-reviews.settings.paragraph__5.content"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "t:sections.video-reviews.settings.color_scheme.label",
       "default": "scheme-3"
     }
   ],
   "blocks": [
     {
       "type": "video",
-      "name": "Video review",
+      "name": "t:sections.video-reviews.blocks.video.name",
       "settings": [
         {
           "type": "video",
           "id": "video",
-          "label": "Video"
+          "label": "t:sections.video-reviews.blocks.video.settings.video.label"
         },
         {
           "type": "url",
           "id": "video_url",
-          "label": "…or direct .mp4 URL"
+          "label": "t:sections.video-reviews.blocks.video.settings.video_url.label"
         },
         {
           "type": "image_picker",
           "id": "poster",
-          "label": "Cover image"
+          "label": "t:sections.video-reviews.blocks.video.settings.poster.label"
         },
         {
           "type": "text",
           "id": "handle",
-          "label": "Creator handle",
+          "label": "t:sections.video-reviews.blocks.video.settings.handle.label",
           "default": "@yourcustomer"
         },
         {
           "type": "text",
           "id": "quote",
-          "label": "Short quote overlay"
+          "label": "t:sections.video-reviews.blocks.video.settings.quote.label"
         },
         {
           "type": "product",
           "id": "product",
-          "label": "Tagged product"
+          "label": "t:sections.video-reviews.blocks.video.settings.product.label"
         },
         {
           "type": "text",
           "id": "caption",
-          "label": "Caption (when no product)"
+          "label": "t:sections.video-reviews.blocks.video.settings.caption.label"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Video reviews",
+      "name": "t:sections.video-reviews.presets.presets__1.name",
       "blocks": [
         {
           "type": "video",

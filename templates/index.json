@@ -114,7 +114,7 @@
         "limit": 4,
         "columns": 4,
         "card_style": "boxed",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "color_scheme": "scheme-3"
       }
     },
@@ -135,7 +135,7 @@
         "limit": 4,
         "columns": 4,
         "card_style": "bordered",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "color_scheme": "scheme-1"
       }
     },

@@ -50,68 +50,226 @@
 
 {% schema %}
 {
-  "name": "Image with text",
+  "name": "t:sections.image-with-text.name",
   "class": "section-image-with-text",
   "settings": [
     {
-      "type": "select", "id": "layout", "label": "Layout",
+      "type": "select",
+      "id": "layout",
+      "label": "t:sections.image-with-text.settings.layout.label",
       "options": [
-        { "value": "panel", "label": "Full width with color panel" },
-        { "value": "inset", "label": "Contained block" },
-        { "value": "split", "label": "Split on page background" }
+        {
+          "value": "panel",
+          "label": "t:sections.image-with-text.settings.layout.options__1.label"
+        },
+        {
+          "value": "inset",
+          "label": "t:sections.image-with-text.settings.layout.options__2.label"
+        },
+        {
+          "value": "split",
+          "label": "t:sections.image-with-text.settings.layout.options__3.label"
+        }
       ],
       "default": "panel"
     },
     {
-      "type": "select", "id": "image_side", "label": "Image position",
-      "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }],
+      "type": "select",
+      "id": "image_side",
+      "label": "t:sections.image-with-text.settings.image_side.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.image-with-text.settings.image_side.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.image-with-text.settings.image_side.options__2.label"
+        }
+      ],
       "default": "left"
     },
-    { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "checkbox", "id": "use_product_image", "label": "Use the product's second image on product pages", "default": false },
     {
-      "type": "select", "id": "image_ratio", "label": "Image shape",
-      "options": [{ "value": "fill", "label": "Fill the height" }, { "value": "portrait", "label": "Portrait 4:5" }, { "value": "landscape", "label": "Landscape" }, { "value": "square", "label": "Square" }],
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_image",
+      "label": "t:sections.image-with-text.settings.use_product_image.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:sections.image-with-text.settings.image_ratio.label",
+      "options": [
+        {
+          "value": "fill",
+          "label": "t:sections.image-with-text.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.image-with-text.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "landscape",
+          "label": "t:sections.image-with-text.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.image-with-text.settings.image_ratio.options__4.label"
+        }
+      ],
       "default": "fill"
     },
     {
-      "type": "select", "id": "placeholder_art", "label": "Placeholder drawing",
-      "options": [{ "value": "necklace", "label": "Necklace" }, { "value": "ring", "label": "Ring" }, { "value": "stack", "label": "Ring stack" }, { "value": "bust", "label": "Bust" }, { "value": "gift", "label": "Gift box" }],
+      "type": "select",
+      "id": "placeholder_art",
+      "label": "t:sections.image-with-text.settings.placeholder_art.label",
+      "options": [
+        {
+          "value": "necklace",
+          "label": "t:sections.image-with-text.settings.placeholder_art.options__1.label"
+        },
+        {
+          "value": "ring",
+          "label": "t:sections.image-with-text.settings.placeholder_art.options__2.label"
+        },
+        {
+          "value": "stack",
+          "label": "t:sections.image-with-text.settings.placeholder_art.options__3.label"
+        },
+        {
+          "value": "bust",
+          "label": "t:sections.image-with-text.settings.placeholder_art.options__4.label"
+        },
+        {
+          "value": "gift",
+          "label": "t:sections.image-with-text.settings.placeholder_art.options__5.label"
+        }
+      ],
       "default": "necklace"
     },
-    { "type": "range", "id": "min_height", "label": "Minimum height", "min": 300, "max": 720, "step": 20, "unit": "px", "default": 460 },
-    { "type": "text", "id": "kicker", "label": "Eyebrow", "default": "The edit" },
-    { "type": "checkbox", "id": "kicker_plain", "label": "Eyebrow in text color (not gold)", "default": true },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "The everyday collection" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Designed to elevate the moments that matter.</p>" },
-    { "type": "checkbox", "id": "use_product_story", "label": "Use product story metafield on product pages", "info": "Shows custom.product_story when the product has one.", "default": false },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop everyday jewellery" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
     {
-      "type": "select", "id": "button_style", "label": "Button style",
-      "options": [{ "value": "link", "label": "Underlined link" }, { "value": "solid", "label": "Solid" }, { "value": "outline", "label": "Outline" }],
+      "type": "range",
+      "id": "min_height",
+      "label": "t:sections.image-with-text.settings.min_height.label",
+      "min": 300,
+      "max": 720,
+      "step": 20,
+      "unit": "px",
+      "default": 460
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.image-with-text.settings.kicker.label",
+      "default": "The edit"
+    },
+    {
+      "type": "checkbox",
+      "id": "kicker_plain",
+      "label": "t:sections.image-with-text.settings.kicker_plain.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.image-with-text.settings.heading.label",
+      "default": "The everyday collection"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.image-with-text.settings.text.label",
+      "default": "<p>Designed to elevate the moments that matter.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_story",
+      "label": "t:sections.image-with-text.settings.use_product_story.label",
+      "info": "t:sections.image-with-text.settings.use_product_story.info",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.image-with-text.settings.button_label.label",
+      "default": "Shop everyday jewellery"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.image-with-text.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.image-with-text.settings.button_style.label",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:sections.image-with-text.settings.button_style.options__1.label"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.image-with-text.settings.button_style.options__2.label"
+        },
+        {
+          "value": "outline",
+          "label": "t:sections.image-with-text.settings.button_style.options__3.label"
+        }
+      ],
       "default": "link"
     },
-    { "type": "checkbox", "id": "tight", "label": "Reduce top spacing", "default": false },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Panel color scheme", "default": "scheme-4" },
-    { "type": "color_scheme", "id": "section_scheme", "label": "Section background", "default": "scheme-1" }
+    {
+      "type": "checkbox",
+      "id": "tight",
+      "label": "t:sections.image-with-text.settings.tight.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.image-with-text.settings.color_scheme.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_scheme",
+      "label": "t:sections.image-with-text.settings.section_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "presets": [
-    { "name": "Image with text" },
     {
-      "name": "Image with text — dark block",
+      "name": "t:sections.image-with-text.presets.presets__1.name"
+    },
+    {
+      "name": "t:sections.image-with-text.presets.presets__2.name",
       "settings": {
-        "layout": "inset", "color_scheme": "scheme-7", "kicker": "The Aurelia edit", "kicker_plain": false, "heading": "The art of layering",
+        "layout": "inset",
+        "color_scheme": "scheme-7",
+        "kicker": "The Aurelia edit",
+        "kicker_plain": false,
+        "heading": "The art of layering",
         "text": "<p>Build a collection that feels entirely your own, from delicate essentials to unmistakable statement pieces.</p>",
-        "button_label": "Explore styling notes", "placeholder_art": "stack"
+        "button_label": "Explore styling notes",
+        "placeholder_art": "stack"
       }
     },
     {
-      "name": "Image with text — split",
+      "name": "t:sections.image-with-text.presets.presets__3.name",
       "settings": {
-        "layout": "split", "image_ratio": "landscape", "kicker": "Our approach", "heading": "Crafted for your every day",
+        "layout": "split",
+        "image_ratio": "landscape",
+        "kicker": "Our approach",
+        "heading": "Crafted for your every day",
         "text": "<p>Every Aurelia piece is thoughtfully designed to feel effortless, distinctive, and enduring.</p>",
-        "button_label": "Discover our story", "placeholder_art": "ring"
+        "button_label": "Discover our story",
+        "placeholder_art": "ring"
       }
     }
   ]

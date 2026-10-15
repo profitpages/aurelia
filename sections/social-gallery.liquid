@@ -31,30 +31,103 @@
 
 {% schema %}
 {
-  "name": "Social gallery",
+  "name": "t:sections.social-gallery.name",
   "class": "section-social-gallery",
   "max_blocks": 12,
   "settings": [
-    { "type": "text", "id": "kicker", "label": "Eyebrow" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "As seen on you" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Share your style with @aureliajewellery</p>" },
-    { "type": "url", "id": "profile_link", "label": "Profile link", "info": "Defaults to Theme settings › Social media › Instagram." },
-    { "type": "range", "id": "columns", "label": "Photos per row (desktop)", "min": 3, "max": 6, "step": 1, "default": 6 },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" }
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.social-gallery.settings.kicker.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.social-gallery.settings.heading.label",
+      "default": "As seen on you"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.social-gallery.settings.text.label",
+      "default": "<p>Share your style with @aureliajewellery</p>"
+    },
+    {
+      "type": "url",
+      "id": "profile_link",
+      "label": "t:sections.social-gallery.settings.profile_link.label",
+      "info": "t:sections.social-gallery.settings.profile_link.info"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:sections.social-gallery.settings.columns.label",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.social-gallery.settings.color_scheme.label",
+      "default": "scheme-1"
+    }
   ],
   "blocks": [
     {
-      "type": "photo", "name": "Photo",
+      "type": "photo",
+      "name": "t:sections.social-gallery.blocks.photo.name",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "alt", "label": "Description (for screen readers)" },
-        { "type": "product", "id": "product", "label": "Tagged product", "info": "The photo links to this product." },
-        { "type": "url", "id": "link", "label": "Post link", "info": "Overrides the product link." }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.social-gallery.blocks.photo.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "t:sections.social-gallery.blocks.photo.settings.alt.label"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.social-gallery.blocks.photo.settings.product.label",
+          "info": "t:sections.social-gallery.blocks.photo.settings.product.info"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.social-gallery.blocks.photo.settings.link.label",
+          "info": "t:sections.social-gallery.blocks.photo.settings.link.info"
+        }
       ]
     }
   ],
   "presets": [
-    { "name": "Social gallery", "blocks": [{ "type": "photo" }, { "type": "photo" }, { "type": "photo" }, { "type": "photo" }, { "type": "photo" }, { "type": "photo" }] }
+    {
+      "name": "t:sections.social-gallery.presets.presets__1.name",
+      "blocks": [
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        }
+      ]
+    }
   ]
 }
 {% endschema %}
